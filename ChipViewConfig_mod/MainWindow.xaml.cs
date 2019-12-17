@@ -318,7 +318,7 @@ namespace ChipViewConfig
                 Console.WriteLine("Exception in ParseChipDesignjson API = " + ex);
             }
         }
-               
+
         public delegate void ChipDesignViewEventHandler(object sender);  //, ChipViewEventArgs Args);
         public event ChipDesignViewEventHandler chipviewHandler;
         private void OnApplyConfigClicked(object sender, RoutedEventArgs e)
@@ -477,8 +477,6 @@ namespace ChipViewConfig
                 Console.WriteLine("Exception in UpdateChipView Parameters API = " + ex);
             }
         }
-
-
 
         private void Add_TimingDiagram()
         {
@@ -699,17 +697,6 @@ namespace ChipViewConfig
 
         private void UpdateComboBox_border(string nSettingsKey, string nNameKey)
         {
-            //if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters != null)
-            //{
-            //    for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
-            //    {
-            //        var control_name = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString();
-            //        if ((string)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Control"] == "ComboBox")
-            //        {
-
-            //        }
-            //    }
-            //}
 
             foreach (var border in lst_comboBorder)
             {
@@ -742,11 +729,11 @@ namespace ChipViewConfig
 
                         TextBlock nParamName = new TextBlock();
                         nParamName.Text = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"] + ":";
-                        nParamName.FontSize = 12;
+                        nParamName.FontSize = 14;
                         nParamName.FontWeight = FontWeights.Normal;
                         nParamName.TextAlignment = TextAlignment.Left;
                         nParamName.VerticalAlignment = VerticalAlignment.Top;
-                        nParamName.Margin = new Thickness(5);
+                        nParamName.Margin = new Thickness(20, 9, 5, 15);
                         Grid.SetColumn(nParamName, 0);
                         Grid.SetRow(nParamName, (nParamIdx + rowidx));
                         nSettingsGrid.Children.Add(nParamName);
@@ -754,39 +741,46 @@ namespace ChipViewConfig
                         nParamRow = new RowDefinition();
                         nSettingsGrid.RowDefinitions.Add(nParamRow);
                         nParamRow.Height = GridLength.Auto;
+
                         if ((string)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Control"] == "ComboBox")
                         {
-                            Border nborder = new Border();
-                            nborder.Height = 22;
-                            nborder.Width = 80;
-                            nborder.HorizontalAlignment = HorizontalAlignment.Left;
+                            //Border nborder = new Border();
+                            //nborder.Height = 30;
+                            //nborder.Width = 90;
+                            //nborder.HorizontalAlignment = HorizontalAlignment.Left;
 
                             ComboBox nEnCtrl = new ComboBox();
                             nEnCtrl.Name = nNameKey + "_Param_" + nParamIdx.ToString();
                             JArray aArr = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Listval"];
                             List<string> aItems = aArr.ToObject<List<string>>();
                             nEnCtrl.ItemsSource = aItems;
-                            //nEnCtrl.Width = 80;
-                            //nEnCtrl.Height = 20;
-                            //nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                            nEnCtrl.FontSize = 11;
+
+                            nEnCtrl.Width = 90;
+                            nEnCtrl.Height = 30;
+
+                            nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
+                            nEnCtrl.FontSize = 14;
                             nEnCtrl.FontWeight = FontWeights.Normal;
-                            nEnCtrl.HorizontalAlignment = HorizontalAlignment.Stretch;
-                            nEnCtrl.VerticalAlignment = VerticalAlignment.Stretch;
-                            nborder.BorderBrush = Brushes.Transparent;
-                            nborder.BorderThickness = new Thickness(1);
-                            nborder.Child = nEnCtrl;
+                            //nEnCtrl.HorizontalAlignment = HorizontalAlignment.Stretch;
+                            //nEnCtrl.VerticalAlignment = VerticalAlignment.Stretch;
+                            nEnCtrl.HorizontalContentAlignment = HorizontalAlignment.Center;
+                            nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
 
 
-                            Grid.SetColumn(nborder, 1);
-                            Grid.SetRow(nborder, (nParamIdx + rowidx));
+                            //nborder.BorderBrush = Brushes.Transparent;
+                            //nborder.BorderThickness = new Thickness(1);
+                            //nborder.Child = nEnCtrl;
 
-                            nborder.Name = nNameKey + "_Border_" + nParamIdx;
-                            nborder.Margin = new Thickness(5);
 
-                            nSettingsGrid.Children.Add(nborder);
+                            Grid.SetColumn(nEnCtrl, 1);
+                            Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
 
-                            lst_comboBorder.Add(nborder);
+                            //nborder.Name = nNameKey + "_Border_" + nParamIdx;
+                            //nborder.Margin = new Thickness(5, 0, 5, 5);
+
+                            nSettingsGrid.Children.Add(nEnCtrl);
+
+                            //lst_comboBorder.Add(nborder);
 
                             iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"]);
 
@@ -837,12 +831,12 @@ namespace ChipViewConfig
 
                             nEnCtrl.Name = nNameKey + "_Param_" + nParamIdx.ToString();
                             nEnCtrl.FontSize = 12;
-                            nEnCtrl.Width = 80;
-                            nEnCtrl.Height = 20;
+                            nEnCtrl.Width = 90;
+                            nEnCtrl.Height = 25;
                             nEnCtrl.FontWeight = FontWeights.Normal;
                             Grid.SetColumn(nEnCtrl, 1);
                             Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                            nEnCtrl.Margin = new Thickness(5);
+                            nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                             nSettingsGrid.Children.Add(nEnCtrl);
                         }
                         else if ((string)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Control"] == "NumericUpDown")
@@ -859,13 +853,14 @@ namespace ChipViewConfig
                                 nEnCtrl.Minimum = nVals[0];
                                 nEnCtrl.Maximum = nVals[1];
                                 nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                                nEnCtrl.FontSize = 12;
-                                nEnCtrl.Width = 80;
+                                nEnCtrl.Width = 90;
+                                nEnCtrl.Height = 25;
+                                nEnCtrl.FontSize = 16;
                                 nEnCtrl.FontWeight = FontWeights.Normal;
 
                                 Grid.SetColumn(nEnCtrl, 1);
                                 Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                                nEnCtrl.Margin = new Thickness(5);
+                                nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                                 nSettingsGrid.Children.Add(nEnCtrl);
 
                                 if (IsDynamic_ChipSetting)
@@ -901,13 +896,14 @@ namespace ChipViewConfig
                                 nEnCtrl.Minimum = nVals[0];
                                 nEnCtrl.Maximum = nVals[1];
                                 nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                                nEnCtrl.FontSize = 12;
-                                nEnCtrl.Width = 80;
+                                nEnCtrl.FontSize = 16;
+                                nEnCtrl.Width = 90;
+                                nEnCtrl.Height = 25;
                                 nEnCtrl.FontWeight = FontWeights.Normal;
 
                                 Grid.SetColumn(nEnCtrl, 1);
                                 Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                                nEnCtrl.Margin = new Thickness(5);
+                                nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                                 nSettingsGrid.Children.Add(nEnCtrl);
 
                                 if (IsDynamic_ChipSetting)
@@ -1533,13 +1529,22 @@ namespace ChipViewConfig
                 nParamIdx = System.Convert.ToInt32(aParamName[2]);
                 ComboBox nSendParamCtrl = (ComboBox)sender;
                 string nCtrlName = nNameKey + "Lbl";
-                var border = (Border)((FrameworkElement)sender).Parent;
-                string nGridName = ((Grid)(FrameworkElement)border.Parent).Name;
-                //string nGridName = ((Grid)((FrameworkElement)sender).Parent).Name;
+
+                //For Border red highlight
+                //var border = (Border)((FrameworkElement)sender).Parent;
+                //string nGridName = ((Grid)(FrameworkElement)border.Parent).Name;                
+
+                //if (is_InitCompleted)
+                //{
+                //    UpdateComboBox_border("GlobalSettings", nNameKey);
+                //}
+
+
+                string nGridName = ((Grid)((FrameworkElement)sender).Parent).Name;
 
                 if (is_InitCompleted)
                 {
-                    UpdateComboBox_border("GlobalSettings", nNameKey);
+                    // UpdateComboBox_border("GlobalSettings", nNameKey);
                 }
 
                 JArray aArr_value = (JArray)aRegAdpdCtrlItems[nGridName][nNameKey].Parameters[nParamIdx]["Value"];
@@ -2575,6 +2580,8 @@ namespace ChipViewConfig
                     nParamName.FontWeight = FontWeights.Normal;
                     nParamName.TextAlignment = TextAlignment.Center;
                     nParamName.VerticalAlignment = VerticalAlignment.Top;
+                    nParamName.HorizontalAlignment = HorizontalAlignment.Right;
+                    //nParamName.Margin = new Thickness(relativePoint.X - 50, 10, 0, 0);
                     Grid.SetRow(nParamName, 0);
                     nSettingsGrid.Children.Add(nParamName);
 
