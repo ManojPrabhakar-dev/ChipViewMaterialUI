@@ -1,0 +1,29 @@
+{	
+	"NormalMode":[
+		{
+			"Name":Mux1,
+			"Content":"",
+			"Description":"Input Mux",
+			"Geometry":"M0 792 L112.5 792 L101.25 756 L11.25 756 L0 792 Z",
+			"Size":"40,200",
+			"Position":"1",
+			"Spacing": "0,0"
+		},
+		{
+			"Name":Rin1Ch1,
+			"Content":"",
+			"Description":"Resistor Rin Channel1",
+			"Geometry":"M0 781.95 L4.19 771.91 L12.56 792 L20.93 771.91 L29.3 792 L37.67 771.91 L46.04 792 L50.23 781.95",
+			"Size":"2,2",
+			"Position":"2_1",		
+		},
+		{
+			"Name":Rin2Ch1,
+			"Content":"",
+			"Description":"Resistor Rin Channel2",
+			"Geometry":"M0 781.95 L4.19 771.91 L12.56 792 L20.93 771.91 L29.3 792 L37.67 771.91 L46.04 792 L50.23 781.95",
+			"Size":"2,2",
+			"Position":"2_2",		
+		}
+	]
+}

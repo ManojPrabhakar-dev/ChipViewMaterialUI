@@ -1,0 +1,387 @@
+{
+  "GlobalSettings": {
+    "SamplingRate": {
+      "Parameters": [
+        {
+          "Name": "Sampling Rate",
+          "Control": "NumericUpDown",
+          "Listval": [ "5", "1000" ],
+          "Value": 100,
+          "RegisterName": "TS_FREQ",
+          "SlotName": "NA",
+          "RegisterFieldName": "NA",
+          "StartBit": 0,
+          "EndBit": 15,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "LFOsc": {
+      "Parameters": [
+        {
+          "Name": "LF OSC",
+          "Control": "ComboBox",
+          "Listval": [ "32k", "1M" ],
+          "Value": 0,
+          "RegisterName": "SYS_CTL",
+          "SlotName": "NA",
+          "RegisterFieldName": "LFOSC_SEL",
+          "StartBit": 3,
+          "EndBit": 3,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "NumActiveSlots": {
+      "Parameters": [
+        {
+          "Name": "Active Slots Num",
+          "Control": "ComboBox",
+          "Listval": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
+          "Value": 0,
+          "RegisterName": "OPMODE",
+          "SlotName": "NA",
+          "RegisterFieldName": "TIMESLOT_EN",
+          "StartBit": 8,
+          "EndBit": 11,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "InputConfig": {
+      "Parameters": [
+        {
+          "Name": "Pair12 Config",
+          "Control": "Button",
+          "Listval": [ "Single", "Differential" ],
+          "Value": "Single",
+          "RegisterName": "INPUT_CFG",
+          "SlotName": "NA",
+          "RegisterFieldName": "PAIR12",
+          "StartBit": 0,
+          "EndBit": 0,
+          "IsValueChanged": "False"
+        },
+        {
+          "Name": "Pair34 Config",
+          "Control": "Button",
+          "Listval": [ "Single", "Differential" ],
+          "Value": "Single",
+          "RegisterName": "INPUT_CFG",
+          "SlotName": "NA",
+          "RegisterFieldName": "PAIR34",
+          "StartBit": 1,
+          "EndBit": 1,
+          "IsValueChanged": "False"
+        },
+        {
+          "Name": "Pair56 Config",
+          "Control": "Button",
+          "Listval": [ "Single", "Differential" ],
+          "Value": "Single",
+          "RegisterName": "INPUT_CFG",
+          "SlotName": "NA",
+          "RegisterFieldName": "PAIR56",
+          "StartBit": 2,
+          "EndBit": 2,
+          "IsValueChanged": "False"
+        },
+        {
+          "Name": "Pair78 Config",
+          "Control": "Button",
+          "Listval": [ "Single", "Differential" ],
+          "Value": "Single",
+          "RegisterName": "INPUT_CFG",
+          "SlotName": "NA",
+          "RegisterFieldName": "PAIR78",
+          "StartBit": 3,
+          "EndBit": 3,
+          "IsValueChanged": "False"
+        }
+      ]
+    }
+  },
+  "SlotGlobalSettings": {
+    "TiaVref": {
+      "Parameters": [
+        {
+          "Name": "TiaVref",
+          "Control": "TextBox",
+          "Listval": [ ],
+          "Value": 0.0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_VREF",
+          "StartBit": 8,
+          "EndBit": 9,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "VC1": {
+      "Parameters": [
+        {
+          "Name": "VC1",
+          "Control": "TextBox",
+          "Listval": [ ],
+          "Value": 0.0,
+          "RegisterName": "CATHODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",  //VC1_PULSE[3:2] VC1_ALT[4:5]
+          "StartBit": 2,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "VC2": {
+      "Parameters": [
+        {
+          "Name": "VC2",
+          "Control": "TextBox",
+          "Listval": [ ],
+          "Value": 0.0,
+          "RegisterName": "CATHODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",  //VC1_PULSE[3:2] VC1_ALT[4:5]
+          "StartBit": 2,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    }
+  },
+  "SlotChipSettings": {
+    "RinChX": {
+      "Parameters": [
+        {
+          "Name": "Rin",
+          "Control": "ComboBox",
+          "Listval": [ "0.5K", "6.5K" ],
+          "Value": 0,
+          "RegisterName": "TS_CTRL",
+          "SlotName": "A",
+          "RegisterFieldName": "INPUT_R_SELECT",
+          "StartBit": 10,
+          "EndBit": 11,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "RfCh1": {
+      "Parameters": [
+        {
+          "Name": "Rf",
+          "Control": "ComboBox",
+          "Listval": ["200K","100K","50K","25K","12.5K" ],
+          "Value": 0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "TIA_GAIN_CH1",
+          "StartBit": 0,
+          "EndBit": 2,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "RfCh2": {
+      "Parameters": [
+        {
+          "Name": "Rf",
+          "Control": "ComboBox",
+          "Listval": ["200K","100K","50K","25K","12.5K" ],
+          "Value": 0.0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "TIA_GAIN_CH2",
+          "StartBit": 3,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "BPFCh1": {
+      "Parameters": [
+        {
+        }
+      ]
+    },
+    "BPFCh2": {
+      "Parameters": [
+        {
+        }
+      ]
+    },
+    "SwapCh1": {
+      "Parameters": [
+        {
+        }
+      ]
+    },
+    "SwapCh2": {
+      "Parameters": [
+        {
+        }
+      ]
+    },
+    "RintCh1": {
+      "Parameters": [
+        {
+          "Name": "Rint",
+          "Control": "ComboBox",
+          "Listval": ["400K","200K","100K","100K" ],
+          "Value": 0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_INT1", //for ADPD4000 -> AFE_TRIM_INT (1) should be removed . TODO: Need to Handle this case.
+          "StartBit": 11,
+          "EndBit": 12,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "RintCh2": {
+      "Parameters": [
+        {
+          "Name": "Rint", //Only for 4100
+          "Control": "ComboBox",
+          "Listval": ["400K","200K","100K","100K" ],
+          "Value": 0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_INT2",
+          "StartBit": 13,
+          "EndBit": 14,
+          "IsValueChanged": "False"
+        }
+      ]
+
+    },
+    "ADC": {
+      "Parameters": [
+        {
+          "Name": "ADCOffset_Ch1", //Value 0 if chop mode is enabled
+          "Control": "TextBox",
+          "Listval": [ ],
+          "Value": 0.0,
+          "RegisterName": "ADC_OFF1",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",
+          "StartBit": 0,
+          "EndBit": 15,
+          "IsValueChanged": "False"
+        },
+        {
+          "Name": "ADCOffset_Ch2",
+          "Control": "TextBox",
+          "Listval": [ ],
+          "Value": 0.0,
+          "RegisterName": "ADC_OFF2",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",
+          "StartBit": 0,
+          "EndBit": 15,
+          "IsValueChanged": "False"
+        }
+      ]
+    }
+  },
+  "TimingSettings": {
+    "IntegratorOffset": {
+      "Parameters": [
+        {
+          "Name": "IntOffset",
+          "Control": "NumericUpDown",
+          "Listval": [0, 255968.75],
+          "Value": 16625.0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_VREF",
+          "StartBit": 8,
+          "EndBit": 9,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "PulseWidth": {
+      "Parameters": [
+        {
+          "Name": "PulseWidth",
+          "Control": "NumericUpDown",
+          "Listval": [0,  255],
+          "Value": 2,
+          "RegisterName": "CATHODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",  //VC1_PULSE[3:2] VC1_ALT[4:5]
+          "StartBit": 2,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "MODOffset": {
+      "Parameters": [
+        {
+          "Name": "MODOffset",
+          "Control": "NumericUpDown",
+          "Listval": [0, 255968.75],
+          "Value": 16625.0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_VREF",
+          "StartBit": 8,
+          "EndBit": 9,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "MODWidth": {
+      "Parameters": [
+        {
+          "Name": "MODWidth",
+          "Control": "NumericUpDown",
+          "Listval": [0,  255],
+          "Value": 2,
+          "RegisterName": "CATHODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",  //VC1_PULSE[3:2] VC1_ALT[4:5]
+          "StartBit": 2,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "LEDOffset": {
+      "Parameters": [
+        {
+          "Name": "LEDOffset",
+          "Control": "NumericUpDown",
+          "Listval": [0, 255968.75],
+          "Value": 16625.0,
+          "RegisterName": "AFE_TRIM",
+          "SlotName": "A",
+          "RegisterFieldName": "AFE_TRIM_VREF",
+          "StartBit": 8,
+          "EndBit": 9,
+          "IsValueChanged": "False"
+        }
+      ]
+    },
+    "LEDWidth": {
+      "Parameters": [
+        {
+          "Name": "LEDWidth",
+          "Control": "NumericUpDown",
+          "Listval": [0,  255],
+          "Value": 2,
+          "RegisterName": "CATHODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA", 
+          "StartBit": 2,
+          "EndBit": 5,
+          "IsValueChanged": "False"
+        }
+      ]
+    }
+  }  
+}
