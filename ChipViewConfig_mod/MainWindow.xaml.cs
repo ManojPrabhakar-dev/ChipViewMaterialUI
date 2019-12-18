@@ -2601,12 +2601,12 @@ namespace ChipViewConfig
                         ChipView.Width = ChipView.Width + 100;
                     }
 
-                    if ((nNameKey.Equals("RinChX") || nNameKey.Equals("RintCh2")) && (relativePoint.Y > 300))
+                    if ((nNameKey.Equals("RinChX") || nNameKey.Equals("RintCh2")) && (relativePoint.Y > 280))
                     {
                         ChipView.Height += 32;
                     }
 
-                    if (nNameKey.Equals("RfCh2") && relativePoint.Y > 300)
+                    if (nNameKey.Equals("RfCh2") && relativePoint.Y > 280)
                     {
                         ChipView.Height += 55;
                     }
