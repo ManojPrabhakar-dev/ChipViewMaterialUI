@@ -195,6 +195,7 @@ namespace ChipViewConfig
                                 //  IN4Text,IN5Text,IN6Text, IN7Text, IN8Text};
         System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
         double ChipGridAcWid;
+        double ChipGridAcHeight;
         double nLeftDelta = 10;
         double nTopDelta = 10;
         double FontSizeLbl = 8;
@@ -347,6 +348,7 @@ namespace ChipViewConfig
             try
             {
                 ChipGridAcWid = ChipView.Width;
+                ChipGridAcHeight = ChipView.Height;
                 aInpLine[0] = IN1Line;
                 aInpLine[1] = IN2Line;
                 aInpLine[2] = IN3Line;
@@ -2267,6 +2269,7 @@ namespace ChipViewConfig
         private void RadExpChipSettings_Collapsed(object sender, RoutedEventArgs e)
         {
             ChipView.Width = ChipGridAcWid;
+            ChipView.Height = ChipGridAcHeight;
             RadExpChipSettings.Visibility = Visibility.Hidden;
         }
 
@@ -2592,9 +2595,20 @@ namespace ChipViewConfig
                     nExp.IsExpanded = true;
                     RadExpChipSettings.IsExpanded = true;
                     FrameworkElementExt.BringToFront(nExp);
+
                     if (nNameKey.Contains("ADC"))
                     {
                         ChipView.Width = ChipView.Width + 100;
+                    }
+
+                    if ((nNameKey.Equals("RinChX") || nNameKey.Equals("RintCh2")) && (relativePoint.Y > 300))
+                    {
+                        ChipView.Height += 32;
+                    }
+
+                    if (nNameKey.Equals("RfCh2") && relativePoint.Y > 300)
+                    {
+                        ChipView.Height += 55;
                     }
                 }
                 else
