@@ -7,39 +7,54 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- MahApps -->
+                 <!--MahApps--> 
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
 
-                <!-- Material Design -->
+                 <!--Material Design--> 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Teal.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Pink.xaml" />
 
                 <!--Material Design: MahApps Compatibility-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Defaults.xaml "/>
 
-                <!-- Accent and AppTheme setting -->
-                <!--
+                 <!--Accent and AppTheme setting--> 
+                
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
 
-                <!-- Dragablz Material Design -->
+                 <!--Dragablz Material Design--> 
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- MahApps Brushes -->
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource Accent400}" />
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{StaticResource Accent200Foreground}"/>
+            
+            <!--MahApps Brushes--> 
             <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource Primary700}"/>
+
+            <SolidColorBrush x:Key="WindowTitleColorBrush" Color="WhiteSmoke"/>
+            
+            <!--<SolidColorBrush x:Key="PrimaryColorBrush" Color="{DynamicResource Primary500}"/>
+            <SolidColorBrush x:Key="PrimaryColorBrush2" Color="{DynamicResource Primary400}"/>
+            <SolidColorBrush x:Key="PrimaryColorBrush3" Color="{DynamicResource Primary300}"/>
+            <SolidColorBrush x:Key="PrimaryColorBrush4" Color="{DynamicResource Primary200}"/>
+            <SolidColorBrush x:Key="PrimarySelectedColorBrush" Color="{DynamicResource Primary500Foreground}"/>-->
+            
+           
+
             <SolidColorBrush x:Key="AccentColorBrush" Color="{DynamicResource Primary500}"/>
             <SolidColorBrush x:Key="AccentColorBrush2" Color="{DynamicResource Primary400}"/>
             <SolidColorBrush x:Key="AccentColorBrush3" Color="{DynamicResource Primary300}"/>
-            <SolidColorBrush x:Key="AccentColorBrush4" Color="{DynamicResource Primary200}"/>
-            <SolidColorBrush x:Key="WindowTitleColorBrush" Color="{DynamicResource Primary700}"/>
+            <SolidColorBrush x:Key="AccentColorBrush4" Color="{DynamicResource Primary200}"/>    
+            
             <SolidColorBrush x:Key="AccentSelectedColorBrush" Color="{DynamicResource Primary500Foreground}"/>
+            
             <LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
                 <GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
                 <GradientStop Color="{DynamicResource Primary300}" Offset="1"/>
@@ -49,8 +64,117 @@
             <SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}"/>
             <SolidColorBrush x:Key="IdealForegroundDisabledBrush" Color="{DynamicResource Primary500}" Opacity="0.4"/>
 
-            <!-- Dragablz Material Design -->
-            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+            
+                            <!--include three hues from the primary palette (and the associated forecolours).
+                            Do not rename, keep in sequence; light to dark.-->
+                        
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary100}"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#FF1b9fc9"/>
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary700}"/>
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="White"/>
+            
+             <!--Dragablz Material Design--> 
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}">
+                
+            </Style>
+
+             <!--Application Style Resource--> 
+            <SolidColorBrush x:Key="App_Background" Color="#FFFAFAFE" />
+            <SolidColorBrush x:Key="card_Background" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="App_Background1" Color="#FFf3f5f9" />
         </ResourceDictionary>
+
+        <!--<ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        --><!-- MahApps --><!--
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                        --><!--Material Design: MahApps Compatibility--><!--
+
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Defaults.xaml "/>
+
+
+                        --><!-- Accent and AppTheme setting --><!--
+
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                    </ResourceDictionary.MergedDictionaries>
+
+                    --><!-- MahApps Brushes --><!--
+
+                    <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource Primary700}"/>
+                    <SolidColorBrush x:Key="AccentColorBrush" Color="{DynamicResource Primary500}"/>
+                    <SolidColorBrush x:Key="AccentColorBrush2" Color="{DynamicResource Primary400}"/>
+                    <SolidColorBrush x:Key="AccentColorBrush3" Color="{DynamicResource Primary300}"/>
+                    <SolidColorBrush x:Key="AccentColorBrush4" Color="{DynamicResource Primary200}"/>
+                    <SolidColorBrush x:Key="WindowTitleColorBrush" Color="{DynamicResource Primary900}"/>
+                    <SolidColorBrush x:Key="AccentSelectedColorBrush" Color="{DynamicResource Primary500Foreground}"/>
+                    <LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
+                        <GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
+                        <GradientStop Color="{DynamicResource Primary300}" Offset="1"/>
+                    </LinearGradientBrush>
+                    <SolidColorBrush x:Key="CheckmarkFill" Color="{DynamicResource Primary500}"/>
+                    <SolidColorBrush x:Key="RightArrowFill" Color="{DynamicResource Primary500}"/>
+                    <SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}"/>
+                    <SolidColorBrush x:Key="IdealForegroundDisabledBrush" Color="{DynamicResource Primary500}" Opacity="0.4"/>
+
+                </ResourceDictionary>
+
+                --><!-- primary color --><!--
+                <ResourceDictionary>
+
+                    --><!-- include your primary palette --><!--
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Cyan.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                    --><!--
+                            include three hues from the primary palette (and the associated forecolours).
+                            Do not rename, keep in sequence; light to dark.
+                        --><!--
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="{StaticResource Primary100}"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="White"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="{StaticResource Primary600}"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="White"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="{StaticResource Primary700}"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="White"/>
+                </ResourceDictionary>
+
+                --><!-- secondary colour --><!--
+                <ResourceDictionary>
+                    --><!-- include your secondary pallette --><!--
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Deeporange.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+
+                    --><!-- include a single secondary accent color (and the associated forecolour) --><!--
+                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="{StaticResource Accent200}" />
+                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="{StaticResource Accent200Foreground}"/>
+                </ResourceDictionary>
+
+                --><!-- Include the Dragablz Material Design style --><!--
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/materialdesign.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+
+            --><!-- tell Dragablz tab control to use the Material Design theme --><!--
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
+
+            --><!-- Application Style Resource --><!--            
+            <SolidColorBrush x:Key="App_Background" Color="#FFFAFAFE" />
+            <SolidColorBrush x:Key="card_Background" Color="#FFFFFFFF" />
+            <SolidColorBrush x:Key="App_Background1" Color="#FFf3f5f9" />
+            
+        </ResourceDictionary>-->
     </Application.Resources>
 </Application>

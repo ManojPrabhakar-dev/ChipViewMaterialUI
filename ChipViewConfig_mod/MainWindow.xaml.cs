@@ -199,7 +199,7 @@ namespace ChipViewConfig
         double nLeftDelta = 10;
         double nTopDelta = 10;
         double FontSizeLbl = 8;
-        Brush StrokeEn = (Brush)new BrushConverter().ConvertFrom("#FF008066");
+        Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         Brush StrokeDis = Brushes.DarkGray;
         /* GLOBAL VARIABLES */
         int nSlotSel = 0;
@@ -1870,7 +1870,10 @@ namespace ChipViewConfig
                 if ((nPath.Name.Contains("Mux")) || (nPath.Name.Contains("ADC")) ||
                     (nPath.Name.Contains("Demux")))
                 {
-                    nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    //nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    //nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
+
+                    nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                     nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
                 }
             }
@@ -1893,7 +1896,7 @@ namespace ChipViewConfig
 
             if (EnFlag == true)
             {
-                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                 nStrokeSel = StrokeEn;
             }
             else
@@ -2633,7 +2636,7 @@ namespace ChipViewConfig
                 if ((bool)chkbox.IsChecked)
                 {
                     nStrokeSel = StrokeEn;
-                    nFillGrad = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    nFillGrad = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                 }
                 else
                 {
