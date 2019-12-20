@@ -17,7 +17,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Cyan.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Pink.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Teal.xaml" />
 
                 <!--Material Design: MahApps Compatibility-->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Defaults.xaml "/>
@@ -84,6 +84,9 @@
             <SolidColorBrush x:Key="App_Background" Color="#FFFAFAFE" />
             <SolidColorBrush x:Key="card_Background" Color="#FFFFFFFF" />
             <SolidColorBrush x:Key="App_Background1" Color="#FFf3f5f9" />
+            <SolidColorBrush x:Key="SettingsBackground" Color="#25e6ebfe"/>
+            <SolidColorBrush x:Key="SettingsCardBackground" Color="#55D4D8E9"/>
+            <!--<SolidColorBrush x:Key="SettingTextForeground" Color="#FF0097A7"/>-->
         </ResourceDictionary>
 
         <!--<ResourceDictionary>

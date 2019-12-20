@@ -60,7 +60,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <materialDesign:Card Margin="5" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Background="#25e6ebfe" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+        <materialDesign:Card Margin="5" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource SettingsBackground}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                 <ScrollViewer Name="SettingsScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                     <Grid Name="SettingsWin" >
                         <Grid.RowDefinitions>
@@ -72,7 +72,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <Expander Name="RadGlobalSettings" ExpandDirection="Down" Header="Global Settings" Visibility="Visible" 
+                    <Expander Name="RadGlobalSettings" ExpandDirection="Down" Header="Global Settings" Visibility="Visible" 
                                  FontSize="14" Grid.Row="1" FontWeight="Bold" >
                             <Grid Name="GlobalSettings"  Margin="0, 0, 0, 20">
                                 <Grid.ColumnDefinitions>
@@ -82,12 +82,12 @@
                             </Grid>
                         </Expander>
 
-                        <Border Grid.Row="2" Background="{DynamicResource MaterialDesignDivider}"
+                    <Border Grid.Row="2" Background="{DynamicResource MaterialDesignDivider}"
                           Height="1"
                           HorizontalAlignment="Stretch"
                           SnapsToDevicePixels="True" />
 
-                        <Expander Name="RadExpSettings"  Grid.Row="3" ExpandDirection="Down" Header="Slot Configuration" 
+                    <Expander Name="RadExpSettings"  Grid.Row="3" ExpandDirection="Down" Header="Slot Configuration" 
                                  FontSize="14" FontWeight="Bold"
                                  Visibility="Visible" >
                             <Grid Name="SlotGlobalSettings" Margin="0, 0, 0, 20" Height="Auto" Width="Auto">
@@ -97,12 +97,12 @@
                                 </Grid.ColumnDefinitions>
                             </Grid>
                         </Expander>
-                        <Border Grid.Row="4" Background="{DynamicResource MaterialDesignDivider}"
+                    <Border Grid.Row="4" Background="{DynamicResource MaterialDesignDivider}"
                       Height="1"
                       HorizontalAlignment="Stretch"
                       SnapsToDevicePixels="True" />
 
-                        <Expander Name="RadExpTimingSettings" Grid.Row="5" ExpandDirection="Down" Header="Timing Configuration"
+                    <Expander Name="RadExpTimingSettings" Grid.Row="5" ExpandDirection="Down" Header="Timing Configuration"
                                  FontSize="14" FontWeight="Bold"
                                  Visibility="Visible"  >
                             <Grid Name="TimingSettings" Margin="0, 0, 0, 20" Height="Auto" Width="Auto">
