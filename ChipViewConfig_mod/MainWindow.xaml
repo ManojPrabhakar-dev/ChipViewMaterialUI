@@ -153,12 +153,7 @@
 
                 <TabItem Header="Circuit" >
                     <Grid >
-
-                        <!--<Grid Name="TopControls" Grid.Row="0">
-                        <ComboBox x:Name="SlotSel" HorizontalAlignment="Left" Margin="20,5,0,5" VerticalAlignment="Top" FontSize="16" FontWeight="ExtraBold" FontStretch="ExtraExpanded"
-                                  Height ="30" Width="100" Loaded="SlotSelComboBox_Loaded" SelectionChanged="SlotSelComboBox_SelectionChanged" />
-                        <Button Content="Apply" Click="OnApplyConfigClicked" Width="70" Height="30" FontSize="14" FontWeight="DemiBold" Margin="500,5,20,5"/>
-                        </Grid>-->
+                       
                         <ScrollViewer Name="LEDChipGridScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,7,0,12" >
                             <Grid Name="gLayoutGrid">
                                 <Grid.RowDefinitions>

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -471,6 +472,7 @@ namespace ChipViewApp
     /// </summary>
     public partial class ChipDesignView
     {
+        private string chipDesignJsonPath = AppDomain.CurrentDomain.BaseDirectory + "Resources\\ChipDesign_V6.json"; //New
         private const double MAX_TIMING_LIMIT = 30.0;
         private Timing_Parameters timing_param = new Timing_Parameters();
         private List<Timing_Parameters> lst_timingParam = new List<Timing_Parameters>();
@@ -490,10 +492,11 @@ namespace ChipViewApp
 
         System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
         double ChipGridAcWid;
+        double ChipGridAcHeight;
         double nLeftDelta = 6;
         double nTopDelta = 12;
         double FontSizeLbl = 10;
-        Brush StrokeEn = (Brush)new BrushConverter().ConvertFrom("#FF008066");
+        Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         Brush StrokeDis = Brushes.DarkGray;
         /* GLOBAL VARIABLES */
         int nSlotSel = 0;
@@ -532,7 +535,7 @@ namespace ChipViewApp
 
             activeSlotLst = new ObservableCollection<string>();
 
-            clientPipe = CreateClient();
+            // clientPipe = CreateClient();  //TODO 
 
             dict_slotBrushes.Clear();
             dict_slotBrushes.Add(1, Brushes.CadetBlue);
@@ -554,7 +557,27 @@ namespace ChipViewApp
                 lst_timingParam.Add(new Timing_Parameters());
             }
 
-            //this.DataContext = timing_param;
+            //TODO : Need to Remove After integration
+            ParseChipDesignJson();
+            UpdateChipViewParameters();
+
+        }
+
+        //TODO : Need to Remove After integration
+        private void ParseChipDesignJson()
+        {
+            try
+            {
+                using (StreamReader r = new StreamReader(chipDesignJsonPath))
+                {
+                    string json = r.ReadToEnd();
+                    this.adpdControlJObject = JsonConvert.DeserializeObject<NAryDictionary<string, string, aAdpdCtrlRegParams>>(json);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in ParseChipDesignjson API = " + ex);
+            }
         }
 
         private int chipID = 0xC0;  // Set to Default to ADPD4000
@@ -977,6 +1000,8 @@ namespace ChipViewApp
                                         IN4Text,IN5Text,IN6Text, IN7Text, IN8Text};
 
                 ChipGridAcWid = ChipView.Width;
+                ChipGridAcHeight = ChipView.Height;
+
                 aInpLine[0] = IN1Line;
                 aInpLine[1] = IN2Line;
                 aInpLine[2] = IN3Line;
@@ -1323,11 +1348,11 @@ namespace ChipViewApp
 
                         TextBlock nParamName = new TextBlock();
                         nParamName.Text = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"] + ":";
-                        nParamName.FontSize = 12;
+                        nParamName.FontSize = 14;
                         nParamName.FontWeight = FontWeights.Normal;
                         nParamName.TextAlignment = TextAlignment.Left;
                         nParamName.VerticalAlignment = VerticalAlignment.Top;
-                        nParamName.Margin = new Thickness(5);
+                        nParamName.Margin = new Thickness(20, 9, 5, 15);
                         Grid.SetColumn(nParamName, 0);
                         Grid.SetRow(nParamName, (nParamIdx + rowidx));
                         nSettingsGrid.Children.Add(nParamName);
@@ -1342,14 +1367,19 @@ namespace ChipViewApp
                             JArray aArr = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Listval"];
                             List<string> aItems = aArr.ToObject<List<string>>();
                             nEnCtrl.ItemsSource = aItems;
-                            nEnCtrl.Width = 80;
-                            nEnCtrl.Height = 20;
+
+                            nEnCtrl.Width = 90;
+                            nEnCtrl.Height = 30;
+
                             nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                            nEnCtrl.FontSize = 12;
+                            nEnCtrl.FontSize = 14;
                             nEnCtrl.FontWeight = FontWeights.Normal;
+                            nEnCtrl.HorizontalContentAlignment = HorizontalAlignment.Center;
+                            nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                             Grid.SetColumn(nEnCtrl, 1);
                             Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                            nEnCtrl.Margin = new Thickness(5);
+
+
                             nSettingsGrid.Children.Add(nEnCtrl);
 
                             iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"]);
@@ -1398,12 +1428,12 @@ namespace ChipViewApp
 
                             nEnCtrl.Name = nNameKey + "_Param_" + nParamIdx.ToString();
                             nEnCtrl.FontSize = 12;
-                            nEnCtrl.Width = 80;
-                            nEnCtrl.Height = 20;
+                            nEnCtrl.Width = 90;
+                            nEnCtrl.Height = 25;
                             nEnCtrl.FontWeight = FontWeights.Normal;
                             Grid.SetColumn(nEnCtrl, 1);
                             Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                            nEnCtrl.Margin = new Thickness(5);
+                            nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                             nSettingsGrid.Children.Add(nEnCtrl);
                         }
                         else if ((string)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Control"] == "NumericUpDown")
@@ -1420,14 +1450,15 @@ namespace ChipViewApp
                                 nEnCtrl.Minimum = nVals[0];
                                 nEnCtrl.Maximum = nVals[1];
                                 nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                                nEnCtrl.FontSize = 12;
-                                nEnCtrl.Width = 80;
+                                nEnCtrl.Width = 90;
+                                nEnCtrl.Height = 25;
+                                nEnCtrl.FontSize = 16;
                                 nEnCtrl.FontWeight = FontWeights.Normal;
                                 nEnCtrl.PreviewTextInput += IntegerUpDown_PreviewTextInput;
 
                                 Grid.SetColumn(nEnCtrl, 1);
                                 Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                                nEnCtrl.Margin = new Thickness(5);
+                                nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                                 nSettingsGrid.Children.Add(nEnCtrl);
 
                                 if (IsDynamic_ChipSetting)
@@ -1463,14 +1494,15 @@ namespace ChipViewApp
                                 nEnCtrl.Minimum = nVals[0];
                                 nEnCtrl.Maximum = nVals[1];
                                 nEnCtrl.HorizontalAlignment = HorizontalAlignment.Left;
-                                nEnCtrl.FontSize = 12;
-                                nEnCtrl.Width = 80;
+                                nEnCtrl.FontSize = 16;
+                                nEnCtrl.Width = 90;
+                                nEnCtrl.Height = 25;
                                 nEnCtrl.FontWeight = FontWeights.Normal;
                                 nEnCtrl.PreviewTextInput += IntegerUpDown_PreviewTextInput;
 
                                 Grid.SetColumn(nEnCtrl, 1);
                                 Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
-                                nEnCtrl.Margin = new Thickness(5);
+                                nEnCtrl.Margin = new Thickness(5, 0, 5, 5);
                                 nSettingsGrid.Children.Add(nEnCtrl);
 
                                 if (IsDynamic_ChipSetting)
@@ -2642,7 +2674,10 @@ namespace ChipViewApp
                 if ((nPath.Name.Contains("Mux")) || (nPath.Name.Contains("ADC")) ||
                     (nPath.Name.Contains("Demux")))
                 {
-                    nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    //nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    //nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
+
+                    nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                     nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
                 }
             }
@@ -2665,7 +2700,7 @@ namespace ChipViewApp
 
             if (EnFlag == true)
             {
-                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                 nStrokeSel = StrokeEn;
             }
             else
@@ -2791,6 +2826,7 @@ namespace ChipViewApp
         private void RadExpChipSettings_Collapsed(object sender, RoutedEventArgs e)
         {
             ChipView.Width = ChipGridAcWid;
+            ChipView.Height = ChipGridAcHeight;
             RadExpChipSettings.Visibility = Visibility.Hidden;
         }
 
@@ -2977,6 +3013,8 @@ namespace ChipViewApp
                     nParamName.FontWeight = FontWeights.Normal;
                     nParamName.TextAlignment = TextAlignment.Center;
                     nParamName.VerticalAlignment = VerticalAlignment.Top;
+                    nParamName.HorizontalAlignment = HorizontalAlignment.Right;
+                    //nParamName.Margin = new Thickness(relativePoint.X - 50, 10, 0, 0);
                     Grid.SetRow(nParamName, 0);
                     nSettingsGrid.Children.Add(nParamName);
 
@@ -2991,6 +3029,16 @@ namespace ChipViewApp
                     if (nNameKey.Contains("ADC"))
                     {
                         ChipView.Width = ChipView.Width + 100;
+                    }
+
+                    if ((nNameKey.Equals("RinChX") || nNameKey.Equals("RintCh2")) && (relativePoint.Y > 280))
+                    {
+                        ChipView.Height += 32;
+                    }
+
+                    if (nNameKey.Equals("RfCh2") && relativePoint.Y > 280)
+                    {
+                        ChipView.Height += 55;
                     }
                 }
                 else
@@ -3031,7 +3079,7 @@ namespace ChipViewApp
                 if ((bool)chkbox.IsChecked)
                 {
                     nStrokeSel = StrokeEn;
-                    nFillGrad = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
+                    nFillGrad = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
                 }
                 else
                 {

@@ -7,14 +7,14 @@
 		 xmlns:uc="clr-namespace:ChipViewApp"
 		 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 		 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-	     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-	     xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-	     xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"                  
-	     WindowTransitionsEnabled="False"
-	     Background="{StaticResource App_Background}"
-	     GlowBrush="{DynamicResource AccentColorBrush}"					  
-	     FontFamily="{StaticResource DefaultFont}"	
-	     TitleForeground="Black"
+		 xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+		 xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+		 xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"                  
+		 WindowTransitionsEnabled="False"
+		 Background="{StaticResource App_Background}"
+		 GlowBrush="{DynamicResource AccentColorBrush}"					  
+		 FontFamily="{StaticResource DefaultFont}"	
+		 TitleForeground="Black"
 		 MinHeight="650" MinWidth="1180"
 		 MaxHeight="900" MaxWidth="1200"
 		 Name="LayoutWin" Title="ChipView - Experimental" Height="700" Width="1150" Closing="LayoutWin_Closing" WindowStyle="ToolWindow" >
@@ -133,281 +133,297 @@
 		</materialDesign:Card>
 
 
-		<TabControl Grid.Row="1">
-			<TabItem Header="Circuit" >
-				<ScrollViewer Name="LEDChipGridScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,7,0,5" >
-					<Grid Name="gLayoutGrid">
+		<dockablz:Layout Grid.Row="1">
+			<dragablz:TabablzControl BorderThickness="0"
+								 Margin="5,-1,5,2" SelectedIndex="0">
+
+				<dragablz:TabablzControl.InterTabController>
+					<dragablz:InterTabController />
+				</dragablz:TabablzControl.InterTabController>
+
+				<TabItem Header="Circuit" >
+					<Grid >
+
+						<ScrollViewer Name="LEDChipGridScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,7,0,12" >
+							<Grid Name="gLayoutGrid">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+
+
+								<materialDesign:Card Margin="5" Grid.Row="0" >
+									<Grid Name="ChipView" Height="400"  Width="700" >
+
+										<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="layer1" >
+											<Canvas.RenderTransform>
+												<TranslateTransform X="0" Y="0"/>
+											</Canvas.RenderTransform>
+											<Canvas.Resources/>
+											<!--Unknown tag: sodipodi:namedview-->
+											<!--Unknown tag: metadata-->
+
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="InputMux" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 57.590988 43.023006 V 353.03224 L 98.336819 305.33851 V 90.716738 L 57.590988 43.023006"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="OutputDemux" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 499.00419 43.023006 V 353.03224 l 40.74583 -47.69373 V 90.716738 L 499.00419 43.023006"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1365" StrokeThickness="1.24186254" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 539.75002 186.10419 h 33.95486"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1367" StrokeThickness="1.24186254" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 539.75002 218.69492 h 33.95486"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="ADC" StrokeThickness="1.84653068" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 564.97364 202.00206 18.01684 -31.79581 h 45.04217 v 63.59165 h -45.04217 z"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN1Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 74.818877 H 57.590988"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN2Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 110.02139 H 57.590988"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN3Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 145.22387 H 57.590988"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN4Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 180.4264 H 57.590991"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN5Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 215.62892 H 57.590988"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN6Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 250.83141 H 57.590991"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN7Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 286.0339 H 57.590988"/>
+											<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN8Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 321.23644 H 57.590991"/>
+											<Canvas Name="Channel1Ctrls">
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX1" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 98.66567 h 0.6791 l 2.71637 9.01298 4.07459 -18.025972 4.07459 18.025972 4.07457 -18.025972 4.0746 18.025972 4.07457 -18.025972 2.7164 9.012992 h 0.67909"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path915" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 58.920911 h -27.6773"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh11" StrokeThickness="0.94207168" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 425.17894 74.895152 V 51.85064"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint1Ch1Node2" StrokeThickness="0.94207168" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.16969 74.895152 V 51.85064"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX2" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 146.35942 0.6791 -1.06405 2.71637 9.01298 4.07459 -18.02595 4.07459 18.02595 4.07457 -18.02595 4.0746 18.02595 4.07457 -18.02595 2.7164 9.01297 0.67909 1.06405"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh11" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 66.869872 0.88963 -1.064046 2.74354 9.012992 4.11534 -18.025984 4.11532 18.025984 4.11533 -18.025984 4.11533 18.025984 4.11532 -18.025984 2.74354 9.012992 0.21054 1.064046"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaGainCh1" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 166.24653 82.767764 V 162.2573 l 67.90974 -39.74476 z"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1029" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 98.66567 h 47.5368"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1031" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 146.35942 h 47.5368"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1033" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 66.869872 V 98.66567"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1035" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 220.57432 66.869872 V 98.66567"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh12" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 178.15524 1.10016 -3e-5 2.74354 9.013 4.11534 -18.02598 4.11532 18.02598 4.11532 -18.02598 4.11534 18.02598 4.11533 -18.02598 2.74354 9.01298 v 3e-5"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1052" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 146.35942 v 31.79579"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1054" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 220.57432 146.35942 v 31.79579"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="240.94724" Canvas.Top="74.818832" Width="33.954857" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="BPFCh1" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="294.7121" Canvas.Top="73.692947" Width="33.954857" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="SwapCh1" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh11" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 98.66567 1.35822 -1.064002 2.71636 9.012992 4.0746 -18.02597 4.07456 18.02597 4.07459 -18.02597 4.07459 18.02597 4.0746 -18.02597 2.7164 9.012978 -4e-5 1.064002"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1090" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 98.665713 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1092" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 146.35944 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh12" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 146.35942 h 0.67911 l 2.71636 9.01298 4.0746 -18.02597 4.07456 18.02597 4.07459 -18.02597 4.07459 18.02597 4.07461 -18.02597 2.71638 9.01299 h 0.67908"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaVrefCh1" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 397.13957 82.767764 V 162.2573 l 67.90975 -39.74476 z"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1124" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 390.34864 98.665713 V 58.920911 h 6.79096"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1126" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 98.665713 h 74.70073"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1128" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 146.35944 h 74.70073"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1130" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 458.25835 58.920911 h 6.79097 V 98.66567"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9136" StrokeThickness="0.99200004" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 178.15524 h 27.67729"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh12" StrokeThickness="1.01350713" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.22115 194.13666 V 171.1646"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint2Ch1Node2" StrokeThickness="1.01350713" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.1768 194.13666 V 171.1646"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9150" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 178.15524 h -27.6773"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1163" StrokeThickness="0.73471838" Stroke="#FF008066" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 390.34864 146.35944 v 31.7958 h 6.79096"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1165" StrokeThickness="1.03904903" Stroke="#FF008066" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 465.04932 146.35944 v 31.7958 h -13.58194"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13215" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 302.10165 98.062878 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13230" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 315.6836 98.062878 -6.79099 49.147492"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13251" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 308.89261 98.062878 6.79099 49.147492"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13275" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 302.10165 147.21037 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1628" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 98.665713 H 349.6028"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1630" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 98.665713 H 397.1396"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1632" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 146.35944 H 349.6028"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1634" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 146.35944 H 397.1396"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1636" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 178.15524 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1638" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 178.15524 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1640" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 66.869872 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1642" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 66.869872 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1644" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 98.665713 H 118.70974"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1646" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 98.665713 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1648" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 146.35944 H 118.70974"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path913" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 58.920911 h 27.67729"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1650" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 146.35944 h 20.37291"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="117" Canvas.Top="83" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="172" Canvas.Top="50" Width="31" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="349" Canvas.Top="81" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="48.3834" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="164.80008" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="348" Canvas.Top="128" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="170" Canvas.Top="163" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="131" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+											</Canvas>
+											<Canvas Name="Channel2Ctrls">
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX3" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 249.69586 h 0.6791 l 2.71637 9.01297 4.07459 -18.02596 4.07459 18.02596 4.07457 -18.02596 4.0746 18.02596 4.07457 -18.02596 2.7164 9.01299 h 0.67909"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX4" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 297.38956 h 0.6791 l 2.71637 9.01298 4.07459 -18.02598 4.07459 18.02598 4.07459 -18.02598 4.07458 18.02598 4.07457 -18.02598 2.71641 9.013 h 0.67908"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaGainCh2" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 166.24653 233.7979 v 79.4896 l 67.90974 -39.74479 z"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh21" StrokeThickness="1.41181743" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 217.9 h 0.61385 l 2.70799 9.013 4.06193 -18.02597 4.06196 18.02597 4.06193 -18.02597 4.06198 18.02597 4.06192 -18.02597 2.70796 9.01297 h 0.82437"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1182" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 249.69586 V 217.90003"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1184" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 249.69586 h 47.5368"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1186" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 297.38956 h 47.5368"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1219" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 220.57432 217.90003 v 31.79583"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh22" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 337.1343 h 0.88963 l 2.74354 9.01297 4.11533 -18.02595 4.11533 18.02595 4.11533 -18.02595 4.11533 18.02595 4.11532 -18.02595 2.74355 9.01298 h 0.21053"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1236" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 297.38956 V 337.1343"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9137" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 217.9 h 27.67729"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1238" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 220.57432 297.38956 V 337.1343"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9152" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 217.9 h -27.6773"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh21" StrokeThickness="0.98134166" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.66166 233.87816 V 210.87348"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint1Ch21Node2" StrokeThickness="0.98134166" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.17356 233.87816 V 210.87348"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="240.94724" Canvas.Top="225.84903" Width="33.954861" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="BPFCh2" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="295.27502" Canvas.Top="225.84903" Width="33.954861" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="SwapCh2" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh21" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 249.69586 1.35822 -1.06403 2.71636 9.01298 4.0746 -18.02598 4.07456 18.02598 4.07459 -18.02598 4.07459 18.02598 4.0746 -18.02598 2.7164 9.013 -4e-5 1.06403"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path10903" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 249.69589 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path10923" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 297.38956 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh22" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 297.38956 h 0.67911 l 2.71636 9.01298 4.0746 -18.02599 4.07456 18.02599 4.07459 -18.02599 4.07459 18.02599 4.07461 -18.02599 2.71638 9.01301 h 0.67908"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaVrefCh2" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 397.13957 233.7979 v 79.4896 l 67.90975 -39.74479 z"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11247" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 390.34864 249.69589 V 217.9 h 6.79096"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11262" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 249.69589 h 74.70076"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11283" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 297.38956 h 74.70076"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11307" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 451.46738 217.9 h 13.58194 v 31.79586"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh22" StrokeThickness="1.01350784" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.22112 345.16679 V 322.19473"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint2Ch2Node2" StrokeThickness="1.01350784" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.17676 345.16679 V 322.19473"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path91363" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 329.18537 h 27.67729"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path91508" StrokeThickness="0.8616665" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 451.98077 329.18537 H 431.09446"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11632" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 390.34864 297.38956 v 31.79581 h 6.79096"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11651" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 465.04932 297.38956 v 31.79581 h -13.58194"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1321" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 303.75483 250.32018 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1323" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 317.33678 250.32018 -6.79099 46.78378"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1325" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 310.54579 250.32018 6.79099 46.78378"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1327" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 303.75483 297.10396 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1657" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 217.90003 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1659" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 217.90003 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1661" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 249.69586 H 118.70974"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1663" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 249.69586 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1665" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 297.38956 H 118.70974"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1667" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 297.38956 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1669" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 337.1343 h 20.37292"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1671" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 337.1343 h 20.37291"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1673" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 249.69586 H 349.6028"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1675" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 249.69586 H 397.1396"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1677" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 297.38956 H 349.6028"/>
+												<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1679" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 297.38956 H 397.1396"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="233" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect3" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="281" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect4" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="170" Canvas.Top="204" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="171" Canvas.Top="323" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="349" Canvas.Top="233" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="348" Canvas.Top="282" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="207.13341" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+												<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="318.25842" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
+											</Canvas>
+											<Expander Name="RadExpChipSettings" ExpandDirection="Down" Header="Parameter Configuration"
+									 FontSize="14" FontWeight="Bold"
+										 Visibility="Hidden" Width="Auto" Height="Auto" Background="LightGray" Collapsed="RadExpChipSettings_Collapsed">
+
+												<Grid Name="SlotChipSettings" Margin="0, 0, 0, 0" Height="Auto" Width="Auto">
+													<Grid.Background>
+														<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+															<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
+															<GradientStop Color="LightGray" Offset="1"/>
+														</LinearGradientBrush>
+													</Grid.Background>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition Width="0.5*"/>
+														<ColumnDefinition Width="0.5*"/>
+													</Grid.ColumnDefinitions>
+												</Grid>
+											</Expander>
+										</Canvas>
+									</Grid>
+								</materialDesign:Card>
+								<materialDesign:Card Grid.Row="1" Margin="5,10,5,10" >
+									<StackPanel>
+										<Expander Header="InputMux Config" Name="RadExpInputMux" ExpandDirection="Down" IsExpanded="False"
+									 FontSize="14" FontWeight="Bold">
+											<uc:InputMuxConfig_UserControl x:Name="uc_InputMux" Height="75" Width="840" Margin="0,-5,5,5" />
+										</Expander>
+					</StackPanel>
+								</materialDesign:Card>
+
+										<materialDesign:Card Grid.Row="2" Margin="5,5,5,15" >
+											<Expander Name="RadExpLedDiagra" ExpandDirection="Down"
+										 Header="LEDSettings" Visibility="Visible" IsExpanded="False" 
+										 FontSize="14" FontWeight="Bold">
+
+												<Grid Name="LEDSettings" Margin="20,0,0,20" ShowGridLines="True" Height="200" Width="500">
+													<Grid.Background>
+														<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+															<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
+															<GradientStop Color="LightGray" Offset="1"/>
+														</LinearGradientBrush>
+													</Grid.Background>
+													<Grid.RowDefinitions>
+														<RowDefinition Height="0.25*" />
+														<RowDefinition Height="0.25*" />
+														<RowDefinition Height="0.25*"/>
+														<RowDefinition Height="0.25*"/>
+													</Grid.RowDefinitions>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition Width="0.2*"/>
+														<ColumnDefinition Width="0.3*"/>
+														<ColumnDefinition Width="0.3*"/>
+													</Grid.ColumnDefinitions>
+													<Label Name="LED1lbl" Content="LED1" Grid.Row="0" Grid.Column="0" 
+									   FontWeight="Bold" FontSize="16" 
+									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+													<Label Name="LED2lbl" Content="LED2" Grid.Row="1" Grid.Column="0" 
+									   FontWeight="Bold" FontSize="16" 
+									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+													<Label Name="LED3lbl" Content="LED3" Grid.Row="2" Grid.Column="0" 
+									   FontWeight="Bold" FontSize="16" 
+									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+													<Label Name="LED4lbl" Content="LED4" Grid.Row="3" Grid.Column="0" 
+									   FontWeight="Bold" FontSize="16" 
+									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+													<ComboBox x:Name="LEDSelect1" Grid.Row="0" Grid.Column="1"
+									  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" SelectionChanged="LEDSelectX_SelectionChanged" HorizontalContentAlignment="Center">
+														<ComboBoxItem Content="A"/>
+														<ComboBoxItem Content="B"/>
+													</ComboBox>
+													<ComboBox x:Name="LEDSelect2" Grid.Row="1" Grid.Column="1"
+									  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" SelectionChanged="LEDSelectX_SelectionChanged" HorizontalContentAlignment="Center">
+														<ComboBoxItem Content="A"/>
+														<ComboBoxItem Content="B"/>
+													</ComboBox>
+													<ComboBox x:Name="LEDSelect3" Grid.Row="2" Grid.Column="1"
+									  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" SelectionChanged="LEDSelectX_SelectionChanged" HorizontalContentAlignment="Center">
+														<ComboBoxItem Content="A"/>
+														<ComboBoxItem Content="B"/>
+													</ComboBox>
+													<ComboBox x:Name="LEDSelect4" Grid.Row="3" Grid.Column="1"
+									  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="30" SelectionChanged="LEDSelectX_SelectionChanged" HorizontalContentAlignment="Center">
+														<ComboBoxItem Content="A"/>
+														<ComboBoxItem Content="B"/>
+													</ComboBox>
+													<xctk:IntegerUpDown x:Name="LEDCurrent1" Grid.Row="0" Grid.Column="2" Increment="1"
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="25" FontSize="16" Value="1" ValueChanged="LEDCurrentX_ValueChanged">
+													</xctk:IntegerUpDown>
+													<xctk:IntegerUpDown x:Name="LEDCurrent2" Grid.Row="1" Grid.Column="2" Increment="1"
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													</xctk:IntegerUpDown>
+													<xctk:IntegerUpDown x:Name="LEDCurrent3" Grid.Row="2" Grid.Column="2" Increment="1"
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													</xctk:IntegerUpDown>
+													<xctk:IntegerUpDown x:Name="LEDCurrent4" Grid.Row="3" Grid.Column="2" Increment="1"
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													</xctk:IntegerUpDown>
+												</Grid>
+
+											</Expander>
+										</materialDesign:Card>								
+							</Grid>
+						</ScrollViewer>
+					</Grid>
+				</TabItem>
+				<TabItem Header="Timing">
+					<Grid>
 						<Grid.RowDefinitions>
-							<RowDefinition Height="400" />
-							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="20"/>
 							<RowDefinition Height="*"/>
 						</Grid.RowDefinitions>
+						<CheckBox x:Name="cb_isContinuous" Content="Continuous" Margin="2" IsChecked="False" Checked="cb_isContinuous_Checked" Unchecked="cb_isContinuous_Checked" Visibility="Collapsed" ></CheckBox>
 
-				<!--<Grid Name="TopControls" Grid.Row="0">
-					<ComboBox x:Name="SlotSel" HorizontalAlignment="Left" Margin="20,5,0,5" VerticalAlignment="Top" FontSize="16" FontWeight="ExtraBold" FontStretch="ExtraExpanded"
-							  Height ="30" Width="100" Loaded="SlotSelComboBox_Loaded" SelectionChanged="SlotSelComboBox_SelectionChanged" />
-					<Button Content="Apply" Click="OnApplyConfigClicked" Width="70" Height="30" FontSize="14" FontWeight="DemiBold" Margin="500,5,20,5"/>
-				</Grid>-->
-				
-				<Grid Name="ChipView" Grid.Row="0" Width="700">
-					
-					<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="layer1" >
-						<Canvas.RenderTransform>
-							<TranslateTransform X="0" Y="0"/>
-						</Canvas.RenderTransform>
-						<Canvas.Resources/>
-						<!--Unknown tag: sodipodi:namedview-->
-						<!--Unknown tag: metadata-->
-
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="InputMux" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 57.590988 43.023006 V 353.03224 L 98.336819 305.33851 V 90.716738 L 57.590988 43.023006"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="OutputDemux" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 499.00419 43.023006 V 353.03224 l 40.74583 -47.69373 V 90.716738 L 499.00419 43.023006"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1365" StrokeThickness="1.24186254" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 539.75002 186.10419 h 33.95486"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1367" StrokeThickness="1.24186254" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 539.75002 218.69492 h 33.95486"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="ADC" StrokeThickness="1.84653068" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 564.97364 202.00206 18.01684 -31.79581 h 45.04217 v 63.59165 h -45.04217 z"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN1Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 74.818877 H 57.590988"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN2Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 110.02139 H 57.590988"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN3Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 145.22387 H 57.590988"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN4Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 180.4264 H 57.590991"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN5Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 215.62892 H 57.590988"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN6Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 250.83141 H 57.590991"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN7Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 286.0339 H 57.590988"/>
-						<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="IN8Line" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 30.427102 321.23644 H 57.590991"/>
-						<Canvas Name="Channel1Ctrls">
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX1" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 98.66567 h 0.6791 l 2.71637 9.01298 4.07459 -18.025972 4.07459 18.025972 4.07457 -18.025972 4.0746 18.025972 4.07457 -18.025972 2.7164 9.012992 h 0.67909"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path915" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 58.920911 h -27.6773"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh11" StrokeThickness="0.94207168" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 425.17894 74.895152 V 51.85064"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint1Ch1Node2" StrokeThickness="0.94207168" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.16969 74.895152 V 51.85064"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX2" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 146.35942 0.6791 -1.06405 2.71637 9.01298 4.07459 -18.02595 4.07459 18.02595 4.07457 -18.02595 4.0746 18.02595 4.07457 -18.02595 2.7164 9.01297 0.67909 1.06405"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh11" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 66.869872 0.88963 -1.064046 2.74354 9.012992 4.11534 -18.025984 4.11532 18.025984 4.11533 -18.025984 4.11533 18.025984 4.11532 -18.025984 2.74354 9.012992 0.21054 1.064046"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaGainCh1" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 166.24653 82.767764 V 162.2573 l 67.90974 -39.74476 z"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1029" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 98.66567 h 47.5368"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1031" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 146.35942 h 47.5368"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1033" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 66.869872 V 98.66567"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1035" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 220.57432 66.869872 V 98.66567"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh12" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 178.15524 1.10016 -3e-5 2.74354 9.013 4.11534 -18.02598 4.11532 18.02598 4.11532 -18.02598 4.11534 18.02598 4.11533 -18.02598 2.74354 9.01298 v 3e-5"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1052" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 146.35942 v 31.79579"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1054" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 220.57432 146.35942 v 31.79579"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="240.94724" Canvas.Top="74.818832" Width="33.954857" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="BPFCh1" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="294.7121" Canvas.Top="73.692947" Width="33.954857" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="SwapCh1" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh11" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 98.66567 1.35822 -1.064002 2.71636 9.012992 4.0746 -18.02597 4.07456 18.02597 4.07459 -18.02597 4.07459 18.02597 4.0746 -18.02597 2.7164 9.012978 -4e-5 1.064002"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1090" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 98.665713 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1092" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 146.35944 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh12" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 146.35942 h 0.67911 l 2.71636 9.01298 4.0746 -18.02597 4.07456 18.02597 4.07459 -18.02597 4.07459 18.02597 4.07461 -18.02597 2.71638 9.01299 h 0.67908"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaVrefCh1" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 397.13957 82.767764 V 162.2573 l 67.90975 -39.74476 z"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1124" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 390.34864 98.665713 V 58.920911 h 6.79096"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1126" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 98.665713 h 74.70073"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1128" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 146.35944 h 74.70073"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1130" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 458.25835 58.920911 h 6.79097 V 98.66567"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9136" StrokeThickness="0.99200004" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 178.15524 h 27.67729"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh12" StrokeThickness="1.01350713" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.22115 194.13666 V 171.1646"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint2Ch1Node2" StrokeThickness="1.01350713" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.1768 194.13666 V 171.1646"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9150" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 178.15524 h -27.6773"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1163" StrokeThickness="0.73471838" Stroke="#FF008066" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 390.34864 146.35944 v 31.7958 h 6.79096"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1165" StrokeThickness="1.03904903" Stroke="#FF008066" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 465.04932 146.35944 v 31.7958 h -13.58194"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13215" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 302.10165 98.062878 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13230" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 315.6836 98.062878 -6.79099 49.147492"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13251" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 308.89261 98.062878 6.79099 49.147492"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path13275" StrokeThickness="1.0547657" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 302.10165 147.21037 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1628" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 98.665713 H 349.6028"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1630" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 98.665713 H 397.1396"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1632" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 146.35944 H 349.6028"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1634" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 146.35944 H 397.1396"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1636" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 178.15524 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1638" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 178.15524 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1640" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 66.869872 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1642" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 66.869872 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1644" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 98.665713 H 118.70974"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1646" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 98.665713 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1648" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 146.35944 H 118.70974"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path913" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 58.920911 h 27.67729"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1650" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 146.35944 h 20.37291"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="117" Canvas.Top="83" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="172" Canvas.Top="50" Width="31" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="349" Canvas.Top="81" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="48.3834" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh1Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="164.80008" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="348" Canvas.Top="128" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="170" Canvas.Top="163" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh1Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="131" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-						</Canvas>
-						<Canvas Name="Channel2Ctrls">
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX3" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 249.69586 h 0.6791 l 2.71637 9.01297 4.07459 -18.02596 4.07459 18.02596 4.07457 -18.02596 4.0746 18.02596 4.07457 -18.02596 2.7164 9.01299 h 0.67909"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RinChX4" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 118.70974 297.38956 h 0.6791 l 2.71637 9.01298 4.07459 -18.02598 4.07459 18.02598 4.07459 -18.02598 4.07458 18.02598 4.07457 -18.02598 2.71641 9.013 h 0.67908"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaGainCh2" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 166.24653 233.7979 v 79.4896 l 67.90974 -39.74479 z"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh21" StrokeThickness="1.41181743" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 217.9 h 0.61385 l 2.70799 9.013 4.06193 -18.02597 4.06196 18.02597 4.06193 -18.02597 4.06198 18.02597 4.06192 -18.02597 2.70796 9.01297 h 0.82437"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1182" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 249.69586 V 217.90003"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1184" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 249.69586 h 47.5368"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1186" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 193.41042 297.38956 h 47.5368"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1219" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 220.57432 217.90003 v 31.79583"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RfCh22" StrokeThickness="1.42106342" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 173.03752 337.1343 h 0.88963 l 2.74354 9.01297 4.11533 -18.02595 4.11533 18.02595 4.11533 -18.02595 4.11533 18.02595 4.11532 -18.02595 2.74355 9.01298 h 0.21053"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1236" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 152.6646 297.38956 V 337.1343"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9137" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 217.9 h 27.67729"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1238" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 220.57432 297.38956 V 337.1343"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path9152" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 458.77176 217.9 h -27.6773"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh21" StrokeThickness="0.98134166" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.66166 233.87816 V 210.87348"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint1Ch21Node2" StrokeThickness="0.98134166" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.17356 233.87816 V 210.87348"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="240.94724" Canvas.Top="225.84903" Width="33.954861" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="BPFCh2" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="295.27502" Canvas.Top="225.84903" Width="33.954861" Height="95.387459" RadiusY="0.32709309" RadiusX="0.32709309" Name="SwapCh2" StrokeThickness="1.94382191" Stroke="#FF008066" StrokeMiterLimit="4"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh21" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 249.69586 1.35822 -1.06403 2.71636 9.01298 4.0746 -18.02598 4.07456 18.02598 4.07459 -18.02598 4.07459 18.02598 4.0746 -18.02598 2.7164 9.013 -4e-5 1.06403"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path10903" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 249.69589 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path10923" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 274.9021 297.38956 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="RintCh22" StrokeThickness="1.41401076" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 349.6028 297.38956 h 0.67911 l 2.71636 9.01298 4.0746 -18.02599 4.07456 18.02599 4.07459 -18.02599 4.07459 18.02599 4.07461 -18.02599 2.71638 9.01301 h 0.67908"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="TiaVrefCh2" StrokeThickness="1.38844442" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 397.13957 233.7979 v 79.4896 l 67.90975 -39.74479 z"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11247" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 390.34864 249.69589 V 217.9 h 6.79096"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11262" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 249.69589 h 74.70076"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11283" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 424.30346 297.38956 h 74.70076"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11307" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 451.46738 217.9 h 13.58194 v 31.79586"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="CintCh22" StrokeThickness="1.01350784" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 424.22112 345.16679 V 322.19473"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Cint2Ch2Node2" StrokeThickness="1.01350784" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 431.17676 345.16679 V 322.19473"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path91363" StrokeThickness="0.99190503" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="m 397.1396 329.18537 h 27.67729"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path91508" StrokeThickness="0.8616665" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 451.98077 329.18537 H 431.09446"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11632" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 390.34864 297.38956 v 31.79581 h 6.79096"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path11651" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 465.04932 297.38956 v 31.79581 h -13.58194"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1321" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 303.75483 250.32018 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1323" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 317.33678 250.32018 -6.79099 46.78378"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1325" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 310.54579 250.32018 6.79099 46.78378"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1327" StrokeThickness="1.02908945" Stroke="#FF000000" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 303.75483 297.10396 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1657" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 217.90003 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1659" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 217.90003 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1661" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 249.69586 H 118.70974"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1663" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 249.69586 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1665" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 98.336819 297.38956 H 118.70974"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1667" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 145.87362 297.38956 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1669" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 152.6646 337.1343 h 20.37292"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1671" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="m 200.20141 337.1343 h 20.37291"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1673" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 249.69586 H 349.6028"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1675" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 249.69586 H 397.1396"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1677" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 329.22989 297.38956 H 349.6028"/>
-							<Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1679" StrokeThickness="1.11075544" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M 376.76668 297.38956 H 397.1396"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="233" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect3" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="118" Canvas.Top="281" Width="32" Height="32" RadiusY="0.10887393" RadiusX="0.10887393" Name="RinChXRect4" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="170" Canvas.Top="204" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="171" Canvas.Top="323" Width="32" Height="30" RadiusY="0.10887393" RadiusX="0.10887393" Name="RfCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="349" Canvas.Top="233" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="348" Canvas.Top="282" Width="32" Height="34" RadiusY="0.10887393" RadiusX="0.10887393" Name="RintCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="207.13341" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh2Rect1" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-							<Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="Transparent" Canvas.Left="412.75003" Canvas.Top="318.25842" Width="31.75" Height="31.75" RadiusY="0.10887393" RadiusX="0.10887393" Name="CintCh2Rect2" StrokeThickness="0.99200004" StrokeMiterLimit="4"/>
-						</Canvas>
-						<Expander Name="RadExpChipSettings" ExpandDirection="Down" Header="Parameter Configuration"
-									 FontSize="14" FontWeight="Bold"
-									 Visibility="Hidden" Width="200" Height="Auto" Background="LightGray" Collapsed="RadExpChipSettings_Collapsed">
-							<Grid Name="SlotChipSettings" Margin="0, 20, 0, 0" Height="Auto" Width="Auto">
-								<Grid.Background>
-									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-										<GradientStop Color="CadetBlue" Offset="0"/>
-										<GradientStop Color="LightGray" Offset="1"/>
-									</LinearGradientBrush>
-								</Grid.Background>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="0.5*"/>
-									<ColumnDefinition Width="0.5*"/>
-								</Grid.ColumnDefinitions>
-							</Grid>
-						</Expander>
-					</Canvas>
-				</Grid>
-
-				<Expander Header="InputMux Config" Name="RadExpInputMux" ExpandDirection="Down" Grid.Row="1" IsExpanded="False"
-									 FontSize="14" FontWeight="Bold">
-					<uc:InputMuxConfig_UserControl x:Name="uc_InputMux" Height="75" Width="840" Margin="0,10,5,7" />							
-				</Expander>
-
-				<Expander Name="RadExpLedDiagra" ExpandDirection="Down" Grid.Row="2"
-									 Header="LEDSettings" Visibility="Visible" IsExpanded="False" 
-									 FontSize="14" FontWeight="Bold">
-
-					<Grid Name="LEDSettings" Margin="20,20,0,0" ShowGridLines="True" Height="200" Width="500">
-						<Grid.Background>
-							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-								<GradientStop Color="Teal" Offset="0"/>
-								<GradientStop Color="LightGray" Offset="1"/>
-							</LinearGradientBrush>
-						</Grid.Background>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="0.25*" />
-							<RowDefinition Height="0.25*" />
-							<RowDefinition Height="0.25*"/>
-							<RowDefinition Height="0.25*"/>
-						</Grid.RowDefinitions>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="0.2*"/>
-							<ColumnDefinition Width="0.3*"/>
-							<ColumnDefinition Width="0.3*"/>
-						</Grid.ColumnDefinitions>
-						<Label Name="LED1lbl" Content="LED1" Grid.Row="0" Grid.Column="0" 
-									   FontWeight="Bold" FontSize="16" 
-									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-						<Label Name="LED2lbl" Content="LED2" Grid.Row="1" Grid.Column="0" 
-									   FontWeight="Bold" FontSize="16" 
-									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-						<Label Name="LED3lbl" Content="LED3" Grid.Row="2" Grid.Column="0" 
-									   FontWeight="Bold" FontSize="16" 
-									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-						<Label Name="LED4lbl" Content="LED4" Grid.Row="3" Grid.Column="0" 
-									   FontWeight="Bold" FontSize="16" 
-									   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-						<ComboBox x:Name="LEDSelect1" Grid.Row="0" Grid.Column="1"
-								  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" SelectionChanged="LEDSelectX_SelectionChanged">
-							<ComboBoxItem Content="A"/>
-							<ComboBoxItem Content="B"/>
-						</ComboBox>
-						<ComboBox x:Name="LEDSelect2" Grid.Row="1" Grid.Column="1"
-								  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" SelectionChanged="LEDSelectX_SelectionChanged">
-							<ComboBoxItem Content="A"/>
-							<ComboBoxItem Content="B"/>
-						</ComboBox>
-						<ComboBox x:Name="LEDSelect3" Grid.Row="2" Grid.Column="1"
-								  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" SelectionChanged="LEDSelectX_SelectionChanged">
-							<ComboBoxItem Content="A"/>
-							<ComboBoxItem Content="B"/>
-						</ComboBox>
-						<ComboBox x:Name="LEDSelect4" Grid.Row="3" Grid.Column="1"
-								  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" SelectionChanged="LEDSelectX_SelectionChanged">
-							<ComboBoxItem Content="A"/>
-							<ComboBoxItem Content="B"/>
-						</ComboBox>
-								<xctk:IntegerUpDown x:Name="LEDCurrent1" Grid.Row="0" Grid.Column="2" Increment="1"
-												  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" ValueChanged="LEDCurrentX_ValueChanged" Minimum="0" Maximum="127" PreviewTextInput="IntegerUpDown_PreviewTextInput">
-								</xctk:IntegerUpDown>
-								<xctk:IntegerUpDown x:Name="LEDCurrent2" Grid.Row="1" Grid.Column="2" Increment="1"
-												  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" ValueChanged="LEDCurrentX_ValueChanged" Minimum="0" Maximum="127" PreviewTextInput="IntegerUpDown_PreviewTextInput">
-								</xctk:IntegerUpDown>
-								<xctk:IntegerUpDown x:Name="LEDCurrent3" Grid.Row="2" Grid.Column="2" Increment="1"
-												  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" ValueChanged="LEDCurrentX_ValueChanged" Minimum="0" Maximum="127" PreviewTextInput="IntegerUpDown_PreviewTextInput">
-								</xctk:IntegerUpDown>
-								<xctk:IntegerUpDown x:Name="LEDCurrent4" Grid.Row="3" Grid.Column="2" Increment="1"
-												  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" ValueChanged="LEDCurrentX_ValueChanged" Minimum="0" Maximum="127" PreviewTextInput="IntegerUpDown_PreviewTextInput">
-								</xctk:IntegerUpDown>
-
-					</Grid>
-				</Expander>
-
-			</Grid>
-
-				</ScrollViewer>
-			</TabItem>
-			<TabItem Header="Timing">
-				<Grid>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="20"/>
-						<RowDefinition Height="*"/>
-					</Grid.RowDefinitions>
-					<CheckBox x:Name="cb_isContinuous" Content="Continuous" Margin="2" IsChecked="False" Checked="cb_isContinuous_Checked" Unchecked="cb_isContinuous_Checked" Visibility="Collapsed" ></CheckBox>
-					
-					<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Right" Width="884">
-						<StackPanel x:Name="sPanel_timingDiagram" Orientation="Horizontal" >
-							<!--<xctk:IntegerUpDown x:Name="change_ledOffset" Increment="1"
+						<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Right" Width="884">
+							<materialDesign:Card Margin="10,20,10,20" >
+								<StackPanel x:Name="sPanel_timingDiagram" Orientation="Horizontal" >
+									<!--<xctk:IntegerUpDown x:Name="change_ledOffset" Increment="1"
 												  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="10" ValueChanged="change_ledOffset_ValueChanged"/>
 					<TextBlock Name="tb_ledoffset_n" FontSize="16" Background="AliceBlue" Text="{Binding Path=LED_WIDTH,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="10" />-->
 
-							<!--<uc:TimingDiagram_UserControl x:Name="t1"></uc:TimingDiagram_UserControl>
+									<!--<uc:TimingDiagram_UserControl x:Name="t1"></uc:TimingDiagram_UserControl>
 						<uc:TimingDiagram_UserControl x:Name="t2"></uc:TimingDiagram_UserControl>-->
-						</StackPanel>
-					</ScrollViewer>
-				</Grid>
-			</TabItem>
-		</TabControl>	
-		
-		
+								</StackPanel>
+							</materialDesign:Card>
+						</ScrollViewer>
+					</Grid>
+				</TabItem>
+			</dragablz:TabablzControl>
+		</dockablz:Layout>
+
+
+
 	</Grid>
 </controls:MetroWindow>
