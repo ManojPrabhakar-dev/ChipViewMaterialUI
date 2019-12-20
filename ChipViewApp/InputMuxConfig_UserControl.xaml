@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="ChipViewApp.InputMuxConfig_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChipViewApp"
+             xmlns:uc="clr-namespace:ChipViewApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="21.25*" />
+            <ColumnDefinition Width="21.25*" />
+            <ColumnDefinition Width="21.25*" />
+            <ColumnDefinition Width="21.25*" />
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="1" BorderBrush="Black" Grid.ColumnSpan="5" Grid.RowSpan="3"/>       
+
+        <TextBlock Text="Channel Type" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBlock Text="{Binding Path=PAIR12_CONFIG,Mode=TwoWay}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Path=PAIR34_CONFIG,Mode=TwoWay}" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding Path=PAIR56_CONFIG,Mode=TwoWay}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding Path=PAIR78_CONFIG,Mode=TwoWay}" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <TextBlock Text="Channel 1" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+        <TextBlock Text="Channel 2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,5" VerticalAlignment="Bottom"/>
+
+        <uc:PairConfigSelection_UserControl x:Name="uc_pair12" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" PairMode="{Binding Path=PAIR12_CONFIG,Mode=TwoWay}" Left_PairConfigName="IN__1" Right_PairConfigName="IN__2"
+                                 IsTopLeftChecked="{Binding Path=m_pair12.TOP_LEFT,Mode=TwoWay}" IsTopRightChecked="{Binding Path=m_pair12.TOP_RIGHT,Mode=TwoWay}" 
+                                 IsBottomLeftChecked="{Binding Path=m_pair12.BOTTOM_LEFT,Mode=TwoWay}" IsBottomRightChecked="{Binding Path= m_pair12.BOTTOM_RIGHT,Mode=TwoWay}"
+                                 Margin="2,5,2,5" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+        <uc:PairConfigSelection_UserControl x:Name="uc_pair34" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" PairMode="{Binding Path=PAIR34_CONFIG,Mode=TwoWay}" Left_PairConfigName="IN__3" Right_PairConfigName="IN__4"
+                                 IsTopLeftChecked="{Binding Path=m_pair34.TOP_LEFT,Mode=TwoWay}" IsTopRightChecked="{Binding Path=m_pair34.TOP_RIGHT,Mode=TwoWay}" 
+                                 IsBottomLeftChecked="{Binding Path=m_pair34.BOTTOM_LEFT,Mode=TwoWay}" IsBottomRightChecked="{Binding Path=m_pair34.BOTTOM_RIGHT,Mode=TwoWay}"
+                                 Margin="2,5,2,5" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <uc:PairConfigSelection_UserControl x:Name="uc_pair56" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" PairMode="{Binding Path=PAIR56_CONFIG,Mode=TwoWay}" Left_PairConfigName="IN__5" Right_PairConfigName="IN__6"
+                                 IsTopLeftChecked="{Binding Path=m_pair56.TOP_LEFT,Mode=TwoWay}" IsTopRightChecked="{Binding Path=m_pair56.TOP_RIGHT,Mode=TwoWay}" 
+                                 IsBottomLeftChecked="{Binding Path=m_pair56.BOTTOM_LEFT,Mode=TwoWay}" IsBottomRightChecked="{Binding Path= m_pair56.BOTTOM_RIGHT,Mode=TwoWay}"
+                                 IsEnabled="{Binding Path=IS_CH2_ENABLED,Mode=TwoWay}"
+                                 Margin="2,5,2,5" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <uc:PairConfigSelection_UserControl x:Name="uc_pair78" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" PairMode="{Binding Path=PAIR78_CONFIG,Mode=TwoWay}" Left_PairConfigName="IN__7" Right_PairConfigName="IN__8"
+                                 IsTopLeftChecked="{Binding Path=m_pair78.TOP_LEFT,Mode=TwoWay}" IsTopRightChecked="{Binding Path=m_pair78.TOP_RIGHT,Mode=TwoWay}" 
+                                 IsBottomLeftChecked="{Binding Path=m_pair78.BOTTOM_LEFT,Mode=TwoWay}" IsBottomRightChecked="{Binding Path= m_pair78.BOTTOM_RIGHT,Mode=TwoWay}"
+                                 IsEnabled="{Binding Path=IS_CH2_ENABLED, Mode=TwoWay}"
+                                 Margin="2,5,2,5" Width="140" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+    </Grid>
+</UserControl>
