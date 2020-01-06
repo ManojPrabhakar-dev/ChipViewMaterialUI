@@ -5,48 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"             
              mc:Ignorable="d" 
-             Name="uc_timingInfo" d:DesignHeight="63" d:DesignWidth="100">
-    <Grid>
-        <Canvas x:Name="canvas_timingInfo" Width="{Binding ElementName=uc_timingInfo, Path=Width}" >
-            <Grid Name="grid_pulsewidth" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding Width, ElementName=canvas_timingInfo}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="20*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions >
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <Path Data="M69,196 L69,239" Grid.Row="0" Grid.Column="0" Height="50.333" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="Fill" Stroke="#FF1D2627" Width="2"/>
-
-                <ed:LineArrow x:Name="prewidthArrow_left" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="0" Margin="0,0,0,0" Stroke="#FF1D2627" Canvas.Top="25" Width="30" RenderTransformOrigin="0.5,0.5">
-                    <ed:LineArrow.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="180"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ed:LineArrow.RenderTransform>
-                </ed:LineArrow>
-
-                <TextBlock x:Name="tb_Width_value" Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" Margin="0,5,0,0" TextAlignment="Center" Height="19" TextWrapping="Wrap" Text="8 µs" Width="33"/>
+             Name="uc_timingInfo" d:DesignHeight="40" d:DesignWidth="100">
+    <Grid Name="grid_pulsewidth" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding Width, ElementName=canvas_timingInfo}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="30*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
 
 
-                <TextBlock x:Name="tb_widthName" Grid.Row="1" Grid.ColumnSpan="5" FontSize="10" TextAlignment="Center" Height="14" Canvas.Left="12" TextWrapping="Wrap" Text="WIDTH_NAME" Canvas.Top="47" Width="79" />
+        <ed:LineArrow x:Name="prewidthArrow_left" Grid.Row="0" Grid.Column="2" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="1,20,0,8" Stroke="#FF1D2627" Canvas.Top="25" RenderTransformOrigin="0.5,0.5" Height="0">
+            <ed:LineArrow.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ed:LineArrow.RenderTransform>
+        </ed:LineArrow>
 
-                <ed:LineArrow Height="0" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Stroke="#FF1D2627" Width="30" RenderTransformOrigin="0.5,0.5">
+        <ed:LineArrow Height="0" Grid.Row="0" Grid.Column="4" StrokeThickness="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Stroke="#FF1D2627"  RenderTransformOrigin="0.5,0.5" Margin="0,20,1,8"/>
 
-                </ed:LineArrow>
+        <TextBlock x:Name="tb_Width_value" Grid.Row="0" Grid.Column="3" VerticalAlignment="Top" FontWeight="SemiBold" FontFamily="Calibri" HorizontalAlignment="Stretch" Margin="1,0" TextAlignment="Center" Height="16" TextWrapping="Wrap"/>
 
-                <Path Data="M69,196 L69,239" Grid.Row="0" Grid.Column="4" Height="50.333" HorizontalAlignment="Right" Stretch="Fill" Stroke="#FF1D2627" Canvas.Top="1" Width="2"/>
-            </Grid>
+        <TextBlock x:Name="tb_widthName" Grid.Row="1" Grid.ColumnSpan="3" FontSize="10" FontWeight="SemiBold" FontFamily="Calibri" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="Wrap" Text="WIDTH_NAME" Grid.Column="2" Height="12" />
 
-        </Canvas>
+        <Path Data="M69,196 L69,239" Grid.RowSpan="2" StrokeThickness="3" HorizontalAlignment="Left" VerticalAlignment="Center" Stretch="Fill" Stroke="#FF1D2627" Grid.Column="1" Height="40" Width="2" />
+        <Path Data="M69,196 L69,239" Grid.RowSpan="2" Grid.Column="5" StrokeThickness="3" HorizontalAlignment="Right" VerticalAlignment="Center" Stretch="Fill" Stroke="#FF1D2627" Height="40" Width="2" />
+
     </Grid>
 </UserControl>
 

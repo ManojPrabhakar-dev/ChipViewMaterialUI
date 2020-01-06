@@ -533,6 +533,8 @@ namespace ChipViewApp
         {
             InitializeComponent();
 
+            //Kill_ChipViewProcess();
+
             activeSlotLst = new ObservableCollection<string>();
 
             // clientPipe = CreateClient();  //TODO 
@@ -1167,11 +1169,11 @@ namespace ChipViewApp
         {
             try
             {
-                var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
+                var timingParam = m_PathData_inst.GetPathData2(lst_timingParam[slotSel]);
 
                 lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
                 lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
-                lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;
+                lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;  // Geometry.Parse("M1,100 L 100,100");
                 lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
             }
             catch (Exception ex)

@@ -166,6 +166,22 @@
         }
       ]
     },
+    "ChopMode_Enable": {
+       "Parameters": [
+        {
+          "Name": "ChopMode Config",
+          "Control": "No Control",
+          "Listval": [],
+          "Value": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
+          "RegisterName": "PATTERN",
+          "SlotName": "A",
+          "RegisterFieldName": "NA", 
+          "StartBit": 0,
+          "EndBit": 7,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
     "InputMux": {
       "Parameters": [
         {
@@ -261,7 +277,7 @@
         {
           "Name": "Rint",
           "Control": "ComboBox",
-          "Listval": [ "400K", "200K", "100K", "100K" ],
+          "Listval": [ "400K", "200K", "100K"],
           "Value": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
           "RegisterName": "AFE_TRIM",
           "SlotName": "A",
@@ -277,7 +293,7 @@
         {
           "Name": "Rint", //Only for 4100
           "Control": "ComboBox",
-          "Listval": [ "400K", "200K", "100K", "100K" ],
+          "Listval": [ "400K", "200K", "100K" ],
           "Value": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
           "RegisterName": "AFE_TRIM",
           "SlotName": "A",
@@ -318,14 +334,30 @@
       ]
     }
   },
-  "TimingSettings": {    
+  "TimingSettings": {
+    "PreconditionWidth": {
+      "Parameters": [
+        {
+          "Name": "Precondition Width (us)",
+          "Control": "NoControl",
+          "Listval": ["0","15"],
+          "Value": [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+          "RegisterName": "TS_PATH",
+          "SlotName": "A",
+          "RegisterFieldName": "PRE_WIDTH",
+          "StartBit": 12,
+          "EndBit": 15,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]
+        }
+      ]
+    },
     "AFEWidth": {
       "Parameters": [
         {
           "Name": "AFE Width (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 31 ],
-          "Value": [ 10, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
+          "Value": [ 3, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
           "RegisterName": "INTEG_WIDTH", // 4000 - INTEG_SETUP   4100 - INTEG_WIDTH
           "SlotName": "A",
           "RegisterFieldName": "INTEG_WIDTH",
@@ -341,7 +373,7 @@
           "Name": "LED Width (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 255 ],
-          "Value": [ 8, 9, 10, 11, 12, 13, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "Value": [ 24, 9, 10, 11, 12, 13, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
           "RegisterName": "LED_PULSE",
           "SlotName": "A",
           "RegisterFieldName": "LED_WIDTH",

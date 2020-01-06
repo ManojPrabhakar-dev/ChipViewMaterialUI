@@ -17,6 +17,25 @@ namespace ChipViewConfig
 {
     public class Timing_Parameters : INotifyPropertyChanged
     {
+        private int nSlotSel;
+        public int SLOTNUM
+        {
+            get { return nSlotSel; }
+            set { nSlotSel = value; }
+        }
+
+        private string pre_width;
+        public string PRE_WIDTH
+        {
+            get { return pre_width; }
+
+            set
+            {
+                pre_width = value;
+                OnPropertyChanged(nameof(PRE_WIDTH));
+            }
+        }
+
         private string led_width;
         public string LED_WIDTH
         {
@@ -65,6 +84,30 @@ namespace ChipViewConfig
             }
         }
 
+        private string mod_offset;
+        public string MOD_OFFSET
+        {
+            get { return mod_offset; }
+
+            set
+            {
+                mod_offset = value;
+                OnPropertyChanged(nameof(MOD_OFFSET));
+            }
+        }
+
+        private string mod_width;
+        public string MOD_WIDTH
+        {
+            get { return mod_width; }
+
+            set
+            {
+                mod_width = value;
+                OnPropertyChanged(nameof(MOD_WIDTH));
+            }
+        }
+
         private Geometry precondition_Data;
         public Geometry PRECONDITION_DATA
         {
@@ -101,6 +144,18 @@ namespace ChipViewConfig
             }
         }
 
+        private Geometry modulateStimulus_Data;
+        public Geometry MODULATESTIMULUS_DATA
+        {
+            get { return modulateStimulus_Data; }
+
+            set
+            {
+                modulateStimulus_Data = value;
+                OnPropertyChanged(nameof(MODULATESTIMULUS_DATA));
+            }
+        }
+
         private double precondition_leftMargin;
         public double PRECONDITION_LEFT_MARGIN
         {
@@ -110,6 +165,78 @@ namespace ChipViewConfig
             {
                 precondition_leftMargin = value;
                 OnPropertyChanged(nameof(PRECONDITION_LEFT_MARGIN));
+            }
+        }
+
+        private double ledOffset_leftMargin;
+        public double LEDOFFSET_LEFT_MARGIN
+        {
+            get { return ledOffset_leftMargin; }
+
+            set
+            {
+                ledOffset_leftMargin = value;
+                OnPropertyChanged(nameof(LEDOFFSET_LEFT_MARGIN));
+            }
+        }
+
+        private double ledwidth_leftMargin;
+        public double LEDWIDTH_LEFT_MARGIN
+        {
+            get { return ledwidth_leftMargin; }
+
+            set
+            {
+                ledwidth_leftMargin = value;
+                OnPropertyChanged(nameof(LEDWIDTH_LEFT_MARGIN));
+            }
+        }
+
+        private double integOffset_leftMargin;
+        public double INTEGOFFSET_LEFT_MARGIN
+        {
+            get { return integOffset_leftMargin; }
+
+            set
+            {
+                integOffset_leftMargin = value;
+                OnPropertyChanged(nameof(INTEGOFFSET_LEFT_MARGIN));
+            }
+        }
+
+        private double integwidth_leftMargin;
+        public double INTEGWIDTH_LEFT_MARGIN
+        {
+            get { return integwidth_leftMargin; }
+
+            set
+            {
+                integwidth_leftMargin = value;
+                OnPropertyChanged(nameof(INTEGWIDTH_LEFT_MARGIN));
+            }
+        }
+
+        private double modOffset_leftMargin;
+        public double MODOFFSET_LEFT_MARGIN
+        {
+            get { return modOffset_leftMargin; }
+
+            set
+            {
+                modOffset_leftMargin = value;
+                OnPropertyChanged(nameof(MODOFFSET_LEFT_MARGIN));
+            }
+        }
+
+        private double modwidth_leftMargin;
+        public double MODWIDTH_LEFT_MARGIN
+        {
+            get { return modwidth_leftMargin; }
+
+            set
+            {
+                modwidth_leftMargin = value;
+                OnPropertyChanged(nameof(MODWIDTH_LEFT_MARGIN));
             }
         }
 
@@ -125,15 +252,75 @@ namespace ChipViewConfig
             }
         }
 
-        private double integOffset_leftMargin;
-        public double INTEGOFFSET_LEFT_MARGIN
+        private double ledoffset_width;
+        public double LED_OFFSET_WIDTH
         {
-            get { return integOffset_leftMargin; }
+            get { return ledoffset_width; }
 
             set
             {
-                integOffset_leftMargin = value;
-                OnPropertyChanged(nameof(INTEGOFFSET_LEFT_MARGIN));
+                ledoffset_width = value;
+                OnPropertyChanged(nameof(LED_OFFSET_WIDTH));
+            }
+        }
+
+        private double led_width_val;
+        public double LED_WIDTH_VAL
+        {
+            get { return led_width_val; }
+
+            set
+            {
+                led_width_val = value;
+                OnPropertyChanged(nameof(LED_WIDTH_VAL));
+            }
+        }
+
+        private double integoffset_width;
+        public double INTEGOFFSET_WIDTH
+        {
+            get { return integoffset_width; }
+
+            set
+            {
+                integoffset_width = value;
+                OnPropertyChanged(nameof(INTEGOFFSET_WIDTH));
+            }
+        }
+
+        private double integrated_width;
+        public double INTEGRATED_WIDTH
+        {
+            get { return integrated_width; }
+
+            set
+            {
+                integrated_width = value;
+                OnPropertyChanged(nameof(INTEGRATED_WIDTH));
+            }
+        }
+
+        private double modoffset_width;
+        public double MODOFFSET_WIDTH
+        {
+            get { return modoffset_width; }
+
+            set
+            {
+                modoffset_width = value;
+                OnPropertyChanged(nameof(MODOFFSET_WIDTH));
+            }
+        }
+
+        private double modulated_width;
+        public double MODULATED_WIDTH
+        {
+            get { return modulated_width; }
+
+            set
+            {
+                modulated_width = value;
+                OnPropertyChanged(nameof(MODULATED_WIDTH));
             }
         }
 
@@ -161,6 +348,114 @@ namespace ChipViewConfig
             }
         }
 
+        private string is_preconditionPath_enable;
+        public string IS_PRECONDITIONPATH_ENABLE
+        {
+            get { return is_preconditionPath_enable; }
+
+            set
+            {
+                is_preconditionPath_enable = value;
+                OnPropertyChanged(nameof(IS_PRECONDITIONPATH_ENABLE));
+            }
+        }
+
+        private string is_ledpath_enable;
+        public string IS_LEDPATH_ENABLE
+        {
+            get { return is_ledpath_enable; }
+
+            set
+            {
+                is_ledpath_enable = value;
+                OnPropertyChanged(nameof(IS_LEDPATH_ENABLE));
+            }
+        }
+
+        private string is_modpath_enable;
+        public string IS_MODPATH_ENABLE
+        {
+            get { return is_modpath_enable; }
+
+            set
+            {
+                is_modpath_enable = value;
+                OnPropertyChanged(nameof(IS_MODPATH_ENABLE));
+            }
+        }
+
+        private string is_integpath_enable;
+        public string IS_INTEGPATH_ENABLE
+        {
+            get { return is_integpath_enable; }
+
+            set
+            {
+                is_integpath_enable = value;
+                OnPropertyChanged(nameof(IS_INTEGPATH_ENABLE));
+            }
+        }
+
+        private Brush slot_default_brush;
+        public Brush SLOT_DEFAULT_BRUSH
+        {
+            get { return slot_default_brush; }
+
+            set
+            {
+                slot_default_brush = value;
+                OnPropertyChanged(nameof(SLOT_DEFAULT_BRUSH));
+            }
+        }
+
+        private Brush precondition_brush;
+        public Brush PRECONDITION_BRUSH
+        {
+            get { return precondition_brush; }
+
+            set
+            {
+                precondition_brush = value;
+                OnPropertyChanged(nameof(PRECONDITION_BRUSH));
+            }
+        }
+
+        private Brush led_brush;
+        public Brush LED_BRUSH
+        {
+            get { return led_brush; }
+
+            set
+            {
+                led_brush = value;
+                OnPropertyChanged(nameof(LED_BRUSH));
+            }
+        }
+
+        private Brush mod_brush;
+        public Brush MOD_BRUSH
+        {
+            get { return mod_brush; }
+
+            set
+            {
+                mod_brush = value;
+                OnPropertyChanged(nameof(MOD_BRUSH));
+            }
+        }
+
+        private Brush integ_brush;
+        public Brush INTEG_BRUSH
+        {
+            get { return integ_brush; }
+
+            set
+            {
+                integ_brush = value;
+                OnPropertyChanged(nameof(INTEG_BRUSH));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string property)
         {
@@ -175,6 +470,7 @@ namespace ChipViewConfig
     {
         private string chipDesignJsonPath = AppDomain.CurrentDomain.BaseDirectory + "Resources\\ChipDesign_V6.json";
 
+        private const double MAX_TIMING_LIMIT = 30.0;
         private Timing_Parameters timing_param = new Timing_Parameters();
         private List<Timing_Parameters> lst_timingParam = new List<Timing_Parameters>();
         private Dictionary<int, Brush> dict_slotBrushes = new Dictionary<int, Brush>();
@@ -196,13 +492,14 @@ namespace ChipViewConfig
         System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
         double ChipGridAcWid;
         double ChipGridAcHeight;
-        double nLeftDelta = 10;
-        double nTopDelta = 10;
-        double FontSizeLbl = 8;
+        double nLeftDelta = 6;
+        double nTopDelta = 12;
+        double FontSizeLbl = 10;
         Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         Brush StrokeDis = Brushes.DarkGray;
         /* GLOBAL VARIABLES */
         int nSlotSel = 0;
+        static int nActiveSlots = 0;
         int[] aCh1Inp = new int[2];
         int[] aCh2Inp = new int[2];
         List<string> aSingleInp = new List<string>();
@@ -264,14 +561,14 @@ namespace ChipViewConfig
 
             dict_slotBrushes.Clear();
             dict_slotBrushes.Add(1, Brushes.CadetBlue);
-            dict_slotBrushes.Add(2, Brushes.LightSalmon);
-            dict_slotBrushes.Add(3, Brushes.LightSkyBlue);
+            dict_slotBrushes.Add(2, Brushes.DarkSalmon);
+            dict_slotBrushes.Add(3, Brushes.Plum);
             dict_slotBrushes.Add(4, Brushes.MediumPurple);
             dict_slotBrushes.Add(5, Brushes.MediumSeaGreen);
             dict_slotBrushes.Add(6, Brushes.MediumVioletRed);
             dict_slotBrushes.Add(7, Brushes.MediumSlateBlue);
-            dict_slotBrushes.Add(8, Brushes.LightSlateGray);
-            dict_slotBrushes.Add(9, Brushes.MintCream);
+            dict_slotBrushes.Add(8, Brushes.YellowGreen);
+            dict_slotBrushes.Add(9, Brushes.Brown);
             dict_slotBrushes.Add(10, Brushes.Indigo);
             dict_slotBrushes.Add(11, Brushes.IndianRed);
             dict_slotBrushes.Add(12, Brushes.DodgerBlue);
@@ -513,6 +810,23 @@ namespace ChipViewConfig
             }
         }
 
+        private void AssignPathData_timingParam(int slotSel)
+        {
+            try
+            {
+                var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
+
+                lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
+                lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
+                lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;
+                lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in AssignPathData_timingParam API = " + ex);
+            }
+        }
+
         private void UpdateTimingDiagram_Params(string nNameKey)
         {
             var nSettingsKey = "TimingSettings";
@@ -530,23 +844,6 @@ namespace ChipViewConfig
                         {
                             AssignValue_timingParam(i, nNameKey, lst_slotValue[i]);
                         }
-
-                        //if (nNameKey.Contains("LEDWidth"))
-                        //{
-                        //    timing_param.LED_WIDTH = dValue.ToString() + " µs";
-                        //}
-                        //else if (nNameKey.Contains("LEDOffset"))
-                        //{
-                        //    timing_param.LED_OFFSET = dValue.ToString() + " µs";
-                        //}
-                        //else if (nNameKey.Contains("AFEWidth"))
-                        //{
-                        //    timing_param.INTEG_WIDTH = dValue.ToString() + " µs";
-                        //}
-                        //else if (nNameKey.Contains("IntegratorOffset"))
-                        //{
-                        //    timing_param.INTEG_OFFSET = dValue.ToString() + " ns";
-                        //}
                     }
                 }
             }
@@ -560,7 +857,11 @@ namespace ChipViewConfig
         {
             try
             {
-                if (nNameKey.Contains("LEDWidth"))
+                if (nNameKey.Contains("PreconditionWidth"))
+                {
+                    lst_timingParam[slotSel].PRE_WIDTH = (dValue * 2).ToString() + " µs";
+                }
+                else if (nNameKey.Contains("LEDWidth"))
                 {
                     lst_timingParam[slotSel].LED_WIDTH = dValue.ToString() + " µs";
                 }
@@ -576,6 +877,14 @@ namespace ChipViewConfig
                 {
                     lst_timingParam[slotSel].INTEG_OFFSET = dValue.ToString() + " ns";
                 }
+                else if (nNameKey.Contains("MODWidth"))
+                {
+                    lst_timingParam[slotSel].MOD_WIDTH = dValue.ToString() + " µs";
+                }
+                else if (nNameKey.Contains("MODOffset"))
+                {
+                    lst_timingParam[slotSel].MOD_OFFSET = dValue.ToString() + " µs";
+                }
             }
             catch (Exception ex)
             {
@@ -583,21 +892,7 @@ namespace ChipViewConfig
             }
         }
 
-        private void AssignPathData_timingParam(int slotSel)
-        {
-            try
-            {
-                var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
 
-                lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
-                lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
-                lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception in AssignPathData_timingParam API = " + ex);
-            }
-        }
 
         private void update_ledOffset_check(string value)
         {
@@ -720,7 +1015,7 @@ namespace ChipViewConfig
                     for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
                     {
                         var control_name = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString();
-                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config"))
+                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config"))
                         {
                             continue;
                         }
@@ -2738,6 +3033,14 @@ namespace ChipViewConfig
             //   // UpdateTimingDiagram_Params(nNameKey);
             //}
         }
+
+
+        //private void LEDCurrent1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        //{
+        //    MahApps.Metro.Controls.NumericUpDown numCtrl = sender as MahApps.Metro.Controls.NumericUpDown;
+
+        //    Console.WriteLine("Numeric control value changed = " + numCtrl.Value + " on Control = " + numCtrl.Name);
+        //}
     }
 
     public enum PAIR_CONFIG

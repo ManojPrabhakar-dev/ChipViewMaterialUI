@@ -16,71 +16,55 @@
 
         <Canvas x:Name="timingDiagram_perSlot"  Margin="0" Width="{Binding ElementName=uc_timingControls,Path=Width}">
 
-
-            <Path x:Name="path_precondition" Stroke="CadetBlue" StrokeThickness="2"
+            <Path x:Name="path_precondition" Stroke="{Binding Path=PRECONDITION_BRUSH, Mode=TwoWay}" StrokeThickness="2"
                 Data="{Binding Path= PRECONDITION_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+
             <!--<Path x:Name="path_precondition" Stroke="CadetBlue" StrokeThickness="2"
-                Data="M 1,100 L 90,100 90,50 171,50 171,100 900,100" Height="38.668" Canvas.Left="70" Margin="0,0,0,0" Stretch="Fill" Canvas.Top="12.166" Width="900" />-->
-            <!--M 1,200 L 21,200 21,150 71,150 71,200 451,200-->
+                Data="M1,100 L 300,100" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />-->
+
             <!--"M1,100 L 100,100"-->
 
-            <!--<Path Data="M69,196 L69,239" Height="24.668" Canvas.Left="109" Stretch="Fill" Stroke="#FF1F2525" Canvas.Top="59.166" Width="2"/>
-            <Path Data="M69,196 L69,239" Height="28.667" Canvas.Left="188" Stretch="Fill" Stroke="#FF1D2627" Canvas.Top="59.333" Width="2"/>-->
-
-            <!--<ed:LineArrow x:Name="prewidthArrow_left" Height="0" Margin="0,0,0,0" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Stroke="#FF1D2627" Canvas.Top="71" Width="33" RenderTransformOrigin="0.5,0.5">
-                <ed:LineArrow.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="180"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ed:LineArrow.RenderTransform>
-            </ed:LineArrow>-->
-
-            <!--<Path x:Name="path_LED" Stroke="CadetBlue" StrokeThickness="2"
-                Data="{Binding Path = LED_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="74.25" Stretch="Fill" Canvas.Top="109.166" Width="769.5" />-->
-            <Path x:Name="path_LED" Stroke="CadetBlue" StrokeThickness="2"
-                Data="{Binding Path = LED_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="109.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
-            <!--"M 32,100 L 70,100 71,50 80,50 81,100 112,100 113,50 123,50 124,100 150,100"-->
-
-            <ed:LineArrow x:Name="integOffsetArrow_left" Height="0" Canvas.Left="{Binding Path=INTEGOFFSET_LEFT_MARGIN, Mode=TwoWay}" Stroke="#FF1D2627" Canvas.Top="166" Width="31" RenderTransformOrigin="0.5,0.5">
-                <ed:LineArrow.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="180"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ed:LineArrow.RenderTransform>
-            </ed:LineArrow>
-
-            <Path x:Name="path_integratorSequence" Stroke="CadetBlue" StrokeThickness="2"
-                Data="{Binding Path = INTEGSEQUENCE_DATA, Mode=TwoWay}" Height="52.667" Canvas.Left="70" Stretch="Fill" Canvas.Top="208.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
-            <!--"M 26,100 L 79,100 79,50 94,50 94,150 109,150 109,100 135,100 135,50 150,50 150,150 165,150 165,100 180,100"-->
+            <Path x:Name="path_LED" Stroke="Black" StrokeThickness="2"
+                Data="M 1,100 L 395,100 396,50 615,50 616,100 1205,100 1206,50 1425,50 1426,100 1777.5,100" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="109.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+            <!--"{Binding Path = LED_DATA, Mode=TwoWay}"-->
 
 
-            <!--<ed:LineArrow Height="0" Canvas.Left="163.1" Stroke="#FF1D2627" Canvas.Top="71.404" Width="24.755" RenderTransformOrigin="0.5,0.5">
-            </ed:LineArrow>-->
+            <Path x:Name="path_integratorSequence" Stroke="Black" StrokeThickness="2"
+                Data="M 1,100 L 307.5,100 307.5,50 587.5,50 587.5,150 867.5,150 867.5,100 1117.5,100 1117.5,50 1397.5,50 1397.5,150 1677.5,150 1677.5,100 1777.5,100" Height="52.667" Canvas.Left="70" Stretch="Fill" Canvas.Top="208.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+            <!--"{Binding Path = INTEGSEQUENCE_DATA, Mode=TwoWay}"-->
+            
+            <Path x:Name="path_MODULATE" Stroke="{Binding Path=MOD_BRUSH, Mode=TwoWay}" StrokeThickness="2" IsEnabled="False"
+                Data="{Binding Path = MODULATESTIMULUS_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="310.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
 
-            <uc:TimingParam_Info_UserControl Canvas.Top="46" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Width="{Binding Path=PRECONDITION_WIDTH, Mode=TwoWay}">
+            <uc:TimingParam_Info_UserControl Canvas.Top="46" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_PRECONDITIONPATH_ENABLE,Mode=TwoWay}" TimingWidthName="PRE_WIDTH" TimingValue="{Binding Path=PRE_WIDTH, Mode=TwoWay}" Width="{Binding Path=PRECONDITION_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
 
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_ENABLE,Mode=TwoWay}" TimingWidthName="LED OFFSET" TimingValue="{Binding Path=LED_OFFSET,Mode=TwoWay}" Width="{Binding Path=LED_OFFSET_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_ENABLE,Mode=TwoWay}" TimingWidthName="LED WIDTH" TimingValue="{Binding Path=LED_WIDTH,Mode=TwoWay}" Width="{Binding Path=LED_WIDTH_VAL, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="168" Canvas.Left="{Binding Path=INTEGOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_INTEGPATH_ENABLE,Mode=TwoWay}" TimingWidthName="INTEG_OFFSET" TimingValue="{Binding Path=INTEG_OFFSET,Mode=TwoWay}" Width="{Binding Path=INTEGOFFSET_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="168" Canvas.Left="{Binding Path=INTEGWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_INTEGPATH_ENABLE,Mode=TwoWay}" TimingWidthName="INTEG_WIDTH" TimingValue="{Binding Path=INTEG_WIDTH,Mode=TwoWay}" Width="{Binding Path=INTEGRATED_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="270" Canvas.Left="{Binding Path=MODOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_ENABLE,Mode=TwoWay}" TimingWidthName="MOD_OFFSET" TimingValue="{Binding Path=MOD_OFFSET,Mode=TwoWay}" Width="{Binding Path=MODOFFSET_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="270" Canvas.Left="{Binding Path=MODWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_ENABLE,Mode=TwoWay}" TimingWidthName="MOD_WIDTH" TimingValue="{Binding Path=MOD_WIDTH,Mode=TwoWay}" Width="{Binding Path=MODULATED_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
             <TextBlock x:Name="textBlock2" Height="23" Canvas.Left="10" TextWrapping="Wrap" Text="Precondition" Canvas.Top="22" Width="74"/>
 
             <TextBlock x:Name="textBlock3" Height="26.333" Canvas.Left="15" TextWrapping="Wrap" Text="LED" Canvas.Top="134.383" Width="63" TextAlignment="Center"/>
 
-
-            <TextBlock x:Name="tb_led_offset_x" Text="{Binding Path = LED_OFFSET,Mode=TwoWay}" TextAlignment="Center" Height="19" Canvas.Left="239" TextWrapping="Wrap" Canvas.Top="63.044" Width="33"/>
-
-            <TextBlock x:Name="tb_ledWidth_X" TextAlignment="Center" Height="19" Canvas.Left="618" TextWrapping="Wrap" Text="{Binding Path = LED_WIDTH,Mode=TwoWay}" Canvas.Top="57.333" Width="33"/>
-
             <TextBlock x:Name="textBlock5" Height="38.333" Canvas.Left="10" TextWrapping="Wrap" Text="Integrator Sequence" Canvas.Top="216" Width="68"/>
 
-            <TextBlock x:Name="tb_integOffset_fineoffset_X" TextAlignment="Center" Height="18.043" Canvas.Left="236" TextWrapping="Wrap" Text="{Binding Path = INTEG_OFFSET,Mode=TwoWay}" Canvas.Top="155.833" Width="56" />
+            <TextBlock x:Name="textBlock6" Height="38.333" Canvas.Left="10" TextWrapping="Wrap" Text="Modulate Stimulus" Canvas.Top="330" Width="68"/>
 
-            <TextBlock x:Name="tb_integ_Width_X" TextAlignment="Center" Height="18.043" Canvas.Left="352" TextWrapping="Wrap" Text="{Binding Path = INTEG_WIDTH,Mode=TwoWay}" Canvas.Top="147.883" Width="56" />
 
         </Canvas>
 
