@@ -1207,7 +1207,7 @@ namespace ChipViewApp
         {
             try
             {
-                var timingParam = m_PathData_inst.GetPathData2(lst_timingParam[slotSel]);
+                var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
 
                 lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
                 lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
