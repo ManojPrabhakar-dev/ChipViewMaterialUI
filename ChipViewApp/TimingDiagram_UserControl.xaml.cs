@@ -626,6 +626,7 @@ namespace ChipViewApp
                         timingParam.PRECONDITION_BRUSH = timingParam.SLOT_DEFAULT_BRUSH;
                     }
 
+
                     timingParam.PRECONDITION_DATA = Geometry.Parse(timingData);
 
                     // Console.WriteLine("Pre Condition Timing data = " + timingData);
@@ -717,6 +718,7 @@ namespace ChipViewApp
                     if (led_width == 0)
                     {
                         timingParam.IS_LEDPATH_ENABLE = "Hidden";
+                        timingParam.IS_LEDPATH_OFFSET_ENABLE = "Hidden";
                         timingData = DEFAULT_PATHDATA;
 
                         timingParam.LED_BRUSH = Brushes.Gray;
@@ -724,9 +726,20 @@ namespace ChipViewApp
                     }
                     else
                     {
+
                         timingParam.IS_LEDPATH_ENABLE = "Visible";
+                        if (led_offset != 0)
+                        {
+                            timingParam.IS_LEDPATH_OFFSET_ENABLE = "Visible";
+                        }
+                        else
+                        {
+                            timingParam.IS_LEDPATH_OFFSET_ENABLE = "Hidden";
+                        }
                         timingParam.LED_BRUSH = timingParam.SLOT_DEFAULT_BRUSH;
                     }
+
+
 
 
                     timingParam.LED_DATA = Geometry.Parse(timingData);
@@ -817,15 +830,25 @@ namespace ChipViewApp
 
                     timingParam.MODULATED_WIDTH = (X4 - X3);
 
+
                     if (mod_width == 0)
                     {
                         timingParam.IS_MODPATH_ENABLE = "Hidden";
+                        timingParam.IS_MODPATH_OFFSET_ENABLE = "Hidden";
                         timingData = DEFAULT_PATHDATA;
                         timingParam.MOD_BRUSH = Brushes.Gray;
                     }
                     else
                     {
                         timingParam.IS_MODPATH_ENABLE = "Visible";
+                        if (mod_offset != 0)
+                        {
+                            timingParam.IS_MODPATH_OFFSET_ENABLE = "Visible";
+                        }
+                        else
+                        {
+                            timingParam.IS_MODPATH_OFFSET_ENABLE = "Hidden";
+                        }
                         timingParam.MOD_BRUSH = timingParam.SLOT_DEFAULT_BRUSH;
                     }
 
@@ -917,14 +940,25 @@ namespace ChipViewApp
                     if (integ_width == 0)
                     {
                         timingParam.IS_INTEGPATH_ENABLE = "Hidden";
+                        timingParam.IS_INTEGPATH_OFFSET_ENABLE = "Hidden";
                         timingData = DEFAULT_PATHDATA;
                         timingParam.INTEG_BRUSH = Brushes.Gray;
                     }
                     else
                     {
                         timingParam.IS_INTEGPATH_ENABLE = "Visible";
+                        if (integ_offset != 0)
+                        {
+                            timingParam.IS_INTEGPATH_OFFSET_ENABLE = "Visible";
+                        }
+                        else
+                        {
+                            timingParam.IS_INTEGPATH_OFFSET_ENABLE = "Hidden";
+                        }
                         timingParam.INTEG_BRUSH = timingParam.SLOT_DEFAULT_BRUSH;
                     }
+
+
 
                     timingParam.INTEGSEQUENCE_DATA = Geometry.Parse(timingData);
 

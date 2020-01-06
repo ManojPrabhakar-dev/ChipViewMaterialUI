@@ -376,6 +376,19 @@ namespace ChipViewApp
             }
         }
 
+        private string is_ledpath_offset_enable;
+        public string IS_LEDPATH_OFFSET_ENABLE
+        {
+            get { return is_ledpath_offset_enable; }
+
+            set
+            {
+                is_ledpath_offset_enable = value;
+                OnPropertyChanged(nameof(IS_LEDPATH_OFFSET_ENABLE));
+            }
+        }
+
+
         private string is_modpath_enable;
         public string IS_MODPATH_ENABLE
         {
@@ -388,6 +401,19 @@ namespace ChipViewApp
             }
         }
 
+        private string is_modpath_offset_enable;
+        public string IS_MODPATH_OFFSET_ENABLE
+        {
+            get { return is_modpath_offset_enable; }
+
+            set
+            {
+                is_modpath_offset_enable = value;
+                OnPropertyChanged(nameof(IS_MODPATH_OFFSET_ENABLE));
+            }
+        }
+
+
         private string is_integpath_enable;
         public string IS_INTEGPATH_ENABLE
         {
@@ -397,6 +423,18 @@ namespace ChipViewApp
             {
                 is_integpath_enable = value;
                 OnPropertyChanged(nameof(IS_INTEGPATH_ENABLE));
+            }
+        }
+
+        private string is_integpath_offset_enable;
+        public string IS_INTEGPATH_OFFSET_ENABLE
+        {
+            get { return is_integpath_offset_enable; }
+
+            set
+            {
+                is_integpath_offset_enable = value;
+                OnPropertyChanged(nameof(IS_INTEGPATH_OFFSET_ENABLE));
             }
         }
 

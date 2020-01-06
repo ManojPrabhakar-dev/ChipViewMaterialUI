@@ -39,25 +39,25 @@
             <uc:TimingParam_Info_UserControl Canvas.Top="46" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_PRECONDITIONPATH_ENABLE,Mode=TwoWay}" TimingWidthName="PRE_WIDTH" TimingValue="{Binding Path=PRE_WIDTH, Mode=TwoWay}" Width="{Binding Path=PRECONDITION_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
-            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_ENABLE,Mode=TwoWay}" TimingWidthName="LED OFFSET" TimingValue="{Binding Path=LED_OFFSET,Mode=TwoWay}" Width="{Binding Path=LED_OFFSET_WIDTH, Mode=TwoWay}">
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="LED OFFSET" TimingValue="{Binding Path=LED_OFFSET,Mode=TwoWay}" Width="{Binding Path=LED_OFFSET_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
             <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_ENABLE,Mode=TwoWay}" TimingWidthName="LED WIDTH" TimingValue="{Binding Path=LED_WIDTH,Mode=TwoWay}" Width="{Binding Path=LED_WIDTH_VAL, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
-            <uc:TimingParam_Info_UserControl Canvas.Top="168" Canvas.Left="{Binding Path=INTEGOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_INTEGPATH_ENABLE,Mode=TwoWay}" TimingWidthName="INTEG_OFFSET" TimingValue="{Binding Path=INTEG_OFFSET,Mode=TwoWay}" Width="{Binding Path=INTEGOFFSET_WIDTH, Mode=TwoWay}">
+            <uc:TimingParam_Info_UserControl Canvas.Top="168" Canvas.Left="{Binding Path=INTEGOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_INTEGPATH_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="INTEG_OFFSET" TimingValue="{Binding Path=INTEG_OFFSET,Mode=TwoWay}" Width="{Binding Path=INTEGOFFSET_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
             <uc:TimingParam_Info_UserControl Canvas.Top="168" Canvas.Left="{Binding Path=INTEGWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_INTEGPATH_ENABLE,Mode=TwoWay}" TimingWidthName="INTEG_WIDTH" TimingValue="{Binding Path=INTEG_WIDTH,Mode=TwoWay}" Width="{Binding Path=INTEGRATED_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
-            <uc:TimingParam_Info_UserControl Canvas.Top="270" Canvas.Left="{Binding Path=MODOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_ENABLE,Mode=TwoWay}" TimingWidthName="MOD_OFFSET" TimingValue="{Binding Path=MOD_OFFSET,Mode=TwoWay}" Width="{Binding Path=MODOFFSET_WIDTH, Mode=TwoWay}">
+            <uc:TimingParam_Info_UserControl Canvas.Top="270" Canvas.Left="{Binding Path=MODOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="MOD_OFFSET" TimingValue="{Binding Path=MOD_OFFSET,Mode=TwoWay}" Width="{Binding Path=MODOFFSET_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
             <uc:TimingParam_Info_UserControl Canvas.Top="270" Canvas.Left="{Binding Path=MODWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_ENABLE,Mode=TwoWay}" TimingWidthName="MOD_WIDTH" TimingValue="{Binding Path=MOD_WIDTH,Mode=TwoWay}" Width="{Binding Path=MODULATED_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
-            <TextBlock x:Name="textBlock2" Height="23" Canvas.Left="10" TextWrapping="Wrap" Text="Precondition" Canvas.Top="22" Width="74"/>
+            <TextBlock x:Name="textBlock2" Height="23" Canvas.Left="7" TextWrapping="Wrap" Text="Precondition" Canvas.Top="29" Width="74"/>
 
             <TextBlock x:Name="textBlock3" Height="26.333" Canvas.Left="15" TextWrapping="Wrap" Text="LED" Canvas.Top="134.383" Width="63" TextAlignment="Center"/>
 
