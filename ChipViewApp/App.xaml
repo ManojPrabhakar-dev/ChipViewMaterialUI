@@ -5,6 +5,7 @@
 			 xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
 			 StartupUri="ChipDesignView.xaml">
 	<Application.Resources>
+			   
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				 <!--MahApps--> 
@@ -55,10 +56,6 @@
 			
 			<SolidColorBrush x:Key="AccentSelectedColorBrush" Color="{DynamicResource Primary500Foreground}"/>
 			
-			<LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
-				<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
-				<GradientStop Color="{DynamicResource Primary300}" Offset="1"/>
-			</LinearGradientBrush>
 			<SolidColorBrush x:Key="CheckmarkFill" Color="{DynamicResource Primary500}"/>
 			<SolidColorBrush x:Key="RightArrowFill" Color="{DynamicResource Primary500}"/>
 			<SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}"/>
@@ -87,6 +84,35 @@
 			<SolidColorBrush x:Key="SettingsBackground" Color="#25e6ebfe"/>
 			<SolidColorBrush x:Key="SettingsCardBackground" Color="#55D4D8E9"/>
 			<!--<SolidColorBrush x:Key="SettingTextForeground" Color="#FF0097A7"/>-->
+
+			<LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
+				<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
+				<GradientStop Color="{DynamicResource Primary300}" Offset="1"/>
+			</LinearGradientBrush>
+
+			<LinearGradientBrush x:Key="SettingsBrush" StartPoint="0,0" EndPoint="1,1">
+				<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
+				<GradientStop Color="#0000FFFF" Offset="1"/>
+			</LinearGradientBrush>
+
+			<LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="linearGradient8961" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
+				<LinearGradientBrush.GradientStops>
+					<GradientStopCollection>
+						<GradientStop Color="#FF00D4AA" Offset="0"/>
+						<GradientStop Color="#0000D4AA" Offset="1"/>
+					</GradientStopCollection>
+				</LinearGradientBrush.GradientStops>
+			</LinearGradientBrush>
+
+			<LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="disablegradient" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
+				<LinearGradientBrush.GradientStops>
+					<GradientStopCollection>
+						<GradientStop Color="Gray"  Offset="0"/>
+						<GradientStop Color="White"  Offset="1"/>
+					</GradientStopCollection>
+				</LinearGradientBrush.GradientStops>
+			</LinearGradientBrush>
+			
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

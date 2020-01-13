@@ -25,31 +25,8 @@
 		</ContextMenu>
 		<ContextMenu x:Key="SwapMenu">
 			<MenuItem Header="Enable ChopMode" Click="Swap_MenuItem_Click" />
-		</ContextMenu>
-		<LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
-			<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
-			<GradientStop Color="{DynamicResource Primary100}" Offset="1"/>
-		</LinearGradientBrush>
-		<LinearGradientBrush x:Key="SettingsBrush" StartPoint="0,0" EndPoint="1,1">
-			<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
-			<GradientStop Color="#0000FFFF" Offset="1"/>
-		</LinearGradientBrush>
-		<LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="linearGradient8961" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
-			<LinearGradientBrush.GradientStops>
-				<GradientStopCollection>
-					<GradientStop Color="#FF00D4AA" Offset="0"/>
-					<GradientStop Color="#0000D4AA" Offset="1"/>
-				</GradientStopCollection>
-			</LinearGradientBrush.GradientStops>
-		</LinearGradientBrush>
-		<LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="disablegradient" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
-			<LinearGradientBrush.GradientStops>
-				<GradientStopCollection>
-					<GradientStop Color="Gray"  Offset="0"/>
-					<GradientStop Color="White"  Offset="1"/>
-				</GradientStopCollection>
-			</LinearGradientBrush.GradientStops>
-		</LinearGradientBrush>
+		</ContextMenu>		
+		
 	</Window.Resources>
 
 	<Grid Name="MainGrid">
@@ -131,7 +108,6 @@
 				</Grid>
 			</StackPanel>
 		</materialDesign:Card>
-
 
 		<dockablz:Layout Grid.Row="1">
 			<dragablz:TabablzControl BorderThickness="0"
@@ -320,15 +296,17 @@
 									 FontSize="14" FontWeight="Bold">
 											<uc:InputMuxConfig_UserControl x:Name="uc_InputMux" Height="75" Width="840" Margin="0,-5,5,5" />
 										</Expander>
-					</StackPanel>
+									</StackPanel>
 								</materialDesign:Card>
 
-										<materialDesign:Card Grid.Row="2" Margin="5,5,5,15" >
-											<Expander Name="RadExpLedDiagra" ExpandDirection="Down"
+								<materialDesign:Card Grid.Row="2" Margin="5,5,5,15" >
+									<Expander Name="RadExpLedDiagra" ExpandDirection="Down"
 										 Header="LEDSettings" Visibility="Visible" IsExpanded="False" 
 										 FontSize="14" FontWeight="Bold">
 
-												<Grid Name="LEDSettings" Margin="20,0,0,20" ShowGridLines="True" Height="200" Width="500">
+										<uc:LEDSetting_UserControl x:Name="uc_ledSetting" Margin="0,0,0,20" Width="600" />
+												
+										<!--<Grid Name="LEDSettings" Margin="20,0,0,20" ShowGridLines="True" Height="200" Width="500">
 													<Grid.Background>
 														<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 															<GradientStop Color="{DynamicResource Primary700}" Offset="0"/>
@@ -379,21 +357,21 @@
 														<ComboBoxItem Content="B"/>
 													</ComboBox>
 													<xctk:IntegerUpDown x:Name="LEDCurrent1" Grid.Row="0" Grid.Column="2" Increment="1"
-													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="25" FontSize="16" Value="1" ValueChanged="LEDCurrentX_ValueChanged">
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Height="25" FontSize="16" Value="1" ValueChanged="LEDCurrentX_ValueChanged" PreviewTextInput="IntegerUpDown_PreviewTextInput">
 													</xctk:IntegerUpDown>
 													<xctk:IntegerUpDown x:Name="LEDCurrent2" Grid.Row="1" Grid.Column="2" Increment="1"
-													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged" PreviewTextInput="IntegerUpDown_PreviewTextInput">
 													</xctk:IntegerUpDown>
 													<xctk:IntegerUpDown x:Name="LEDCurrent3" Grid.Row="2" Grid.Column="2" Increment="1"
-													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged" PreviewTextInput="IntegerUpDown_PreviewTextInput">
 													</xctk:IntegerUpDown>
 													<xctk:IntegerUpDown x:Name="LEDCurrent4" Grid.Row="3" Grid.Column="2" Increment="1"
-													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged">
+													  HorizontalAlignment="Center" VerticalAlignment="Center" Width="80" Value="1" Height="25" FontSize="16" ValueChanged="LEDCurrentX_ValueChanged" PreviewTextInput="IntegerUpDown_PreviewTextInput">
 													</xctk:IntegerUpDown>
-												</Grid>
+												</Grid>-->
 
-											</Expander>
-										</materialDesign:Card>								
+									</Expander>
+								</materialDesign:Card>								
 							</Grid>
 						</ScrollViewer>
 					</Grid>
@@ -422,8 +400,6 @@
 				</TabItem>
 			</dragablz:TabablzControl>
 		</dockablz:Layout>
-
-
 
 	</Grid>
 </controls:MetroWindow>

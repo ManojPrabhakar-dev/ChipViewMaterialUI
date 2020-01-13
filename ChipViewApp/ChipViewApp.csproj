@@ -98,6 +98,9 @@
     <Compile Include="InputMuxConfig_UserControl.xaml.cs">
       <DependentUpon>InputMuxConfig_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LEDSetting_UserControl.xaml.cs">
+      <DependentUpon>LEDSetting_UserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PairConfigSelection_UserControl.xaml.cs">
       <DependentUpon>PairConfigSelection_UserControl.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="InputMuxConfig_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LEDSetting_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

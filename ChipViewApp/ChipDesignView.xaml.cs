@@ -505,6 +505,52 @@ namespace ChipViewApp
         }
     }
 
+    public class LedSetting_parameters : INotifyPropertyChanged
+    {
+        private double ledcurrent1;
+        public double LEDCURRENT1
+        {
+            get { return ledcurrent1; }
+
+            set
+            {
+                ledcurrent1 = value;
+                OnPropertyChanged(nameof(LEDCURRENT1));
+            }
+        }
+
+        private double ledcurrent2;
+        public double LEDCURRENT2
+        {
+            get { return ledcurrent2; }
+
+            set
+            {
+                ledcurrent2 = value;
+                OnPropertyChanged(nameof(LEDCURRENT2));
+            }
+        }
+
+        private double ledcurrentx;
+        public double LEDCURRENT_X
+        {
+            get { return ledcurrentx; }
+
+            set
+            {
+                ledcurrentx = value;
+                OnPropertyChanged(nameof(LEDCURRENT_X));
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+    }
+
     /// <summary>
     /// Interaction logic for ChipDesignView.xaml
     /// </summary>
@@ -512,8 +558,11 @@ namespace ChipViewApp
     {
         private string chipDesignJsonPath = AppDomain.CurrentDomain.BaseDirectory + "Resources\\ChipDesign_V6.json"; //New
         private const double MAX_TIMING_LIMIT = 30.0;
-        private Timing_Parameters timing_param = new Timing_Parameters();
+        // private Timing_Parameters timing_param = new Timing_Parameters();
+
         private List<Timing_Parameters> lst_timingParam = new List<Timing_Parameters>();
+        private List<LedSetting_parameters> lst_ledsettingParams = new List<LedSetting_parameters>();
+
         private Dictionary<int,Brush> dict_slotBrushes = new Dictionary<int, Brush>();
 
         private DynamicTimingDiagram m_PathData_inst = new DynamicTimingDiagram();
@@ -571,7 +620,7 @@ namespace ChipViewApp
         {
             InitializeComponent();
 
-            //Kill_ChipViewProcess();
+            Kill_ChipViewProcess();
 
             activeSlotLst = new ObservableCollection<string>();
 
@@ -595,6 +644,12 @@ namespace ChipViewApp
             for (int i = 0; i < 12; i++)
             {
                 lst_timingParam.Add(new Timing_Parameters());
+            }
+
+            lst_ledsettingParams.Clear();
+            for (int i = 0; i < 12; i++)
+            {
+                lst_ledsettingParams.Add(new LedSetting_parameters());
             }
 
             //TODO : Need to Remove After integration
@@ -671,7 +726,7 @@ namespace ChipViewApp
 
             var TimingSetting_EntryError = IsSettingFieldEmpty(TimingSettings);
 
-            var LedSetting_EntryError = IsSettingFieldEmpty(LEDSettings);
+            var LedSetting_EntryError = false;  // IsSettingFieldEmpty(LEDSettings);
 
             if ((GlobalSetting_EntryError == false) && (TimingSetting_EntryError == false) && (LedSetting_EntryError == false))
             {
@@ -1157,6 +1212,10 @@ namespace ChipViewApp
                     AssignPathData_timingParam(i);
                 }
 
+                UpdateLedParam_ActiveSlots();
+
+                uc_ledSetting.DataContext = lst_ledsettingParams[nSlotSel];
+
             }
             catch (Exception ex)
             {
@@ -1171,6 +1230,15 @@ namespace ChipViewApp
                 UpdateTimingDiagram_Params(nNameKey);
             }
         }
+
+        private void UpdateLedParam_ActiveSlots()
+        {
+            foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
+            {
+                UpdateLedSetting_Params(nNameKey);
+            }
+        }
+
 
         private void Add_TimingDiagram()
         {
@@ -1243,6 +1311,52 @@ namespace ChipViewApp
             catch (Exception ex)
             {
                 Console.WriteLine("Exception in UpdateTimingDiagram_Params API = " + ex);
+            }
+        }
+
+        private void UpdateLedSetting_Params(string nNameKey)
+        {
+            var nSettingsKey = "LEDSettings";
+            try
+            {
+                if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters != null)
+                {
+                    for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
+                    {
+                        dValue = get_SelectedSlot_RegValue(aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"]);
+
+                        var lst_slotValue = get_SelectedSlot_RegValue_lst(aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"]);
+
+                        for (int i = 0; i < nActiveSlots; i++)
+                        {
+                            AssignValue_LedParam(i, nNameKey, lst_slotValue[i]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in UpdateTimingDiagram_Params API = " + ex);
+            }
+        }
+
+        private void AssignValue_LedParam(int slotSel, string nNameKey, double dValue)
+        {
+            try
+            {
+                if (nNameKey.Contains("LEDCurrent1"))
+                {
+                    lst_ledsettingParams[slotSel].LEDCURRENT1 = dValue;
+                }
+                else if (nNameKey.Contains("LEDCurrent2"))
+                {
+                    lst_ledsettingParams[slotSel].LEDCURRENT2 = dValue;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in AssignValue_timingParam API = " + ex);
             }
         }
 
@@ -1329,7 +1443,8 @@ namespace ChipViewApp
 
                 foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
                 {
-                    UpdateLEDSettings(LEDSettings, nNameKey, "LEDSettings");
+                    //UpdateLEDSettings(TimingSettings, nNameKey, "LEDSettings");
+                    // UpdateLEDSettings(LEDSettings, nNameKey, "LEDSettings");
                 }
 
                 foreach (string nNameKey in aRegAdpdCtrlItems["SlotChipSettings"].Keys)
@@ -1494,7 +1609,7 @@ namespace ChipViewApp
                                 nEnCtrl.Height = 25;
                                 nEnCtrl.FontSize = 16;
                                 nEnCtrl.FontWeight = FontWeights.Normal;
-                                nEnCtrl.PreviewTextInput += IntegerUpDown_PreviewTextInput;
+                                nEnCtrl.PreviewTextInput += IntegerUpDown_ADC_PreviewTextInput;
 
                                 Grid.SetColumn(nEnCtrl, 1);
                                 Grid.SetRow(nEnCtrl, (nParamIdx + rowidx));
@@ -2157,6 +2272,11 @@ namespace ChipViewApp
                 JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"];
                 List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
 
+                if ((nUpDwn.Value > 9999) && (nNameKey == "SamplingRate"))
+                {
+                    nUpDwn.Value = 9999;
+                }
+
                 if (regVal_Lst.Count > nSlotSel)
                 {
                     regVal_Lst[nSlotSel] = nUpDwn.Value.ToString();
@@ -2715,9 +2835,9 @@ namespace ChipViewApp
                     (nPath.Name.Contains("Demux")))
                 {
                     //nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["linearGradient8961"];
-                    //nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
+                    //nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");  
 
-                    nPath.Fill = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
+                    nPath.Fill = (LinearGradientBrush)App.Current.Resources["ProgressBrush"];  //App.Current.Resources["AppName"]
                     nPath.Stroke = (Brush)new BrushConverter().ConvertFrom("#FF008066");
                 }
             }
@@ -2740,13 +2860,13 @@ namespace ChipViewApp
 
             if (EnFlag == true)
             {
-                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["ProgressBrush"];
+                nFillGrad = (LinearGradientBrush)App.Current.Resources["ProgressBrush"];
                 nStrokeSel = StrokeEn;
             }
             else
             {
                 nStrokeSel = StrokeDis;
-                nFillGrad = (LinearGradientBrush)LayoutWin.Resources["disablegradient"];
+                nFillGrad = (LinearGradientBrush)App.Current.Resources["disablegradient"];
             }
 
             #region PATH CONTROLS
@@ -3224,6 +3344,18 @@ namespace ChipViewApp
             bool result = int.TryParse(e.Text.ToString(), out i);
 
             if (!result && (e.Text[0] < '0' || e.Text[0] > '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void IntegerUpDown_ADC_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int i = 0;
+
+            bool result = int.TryParse(e.Text.ToString(), out i);
+
+            if (!result && (e.Text[0] < '0' || e.Text[0] > '9') && (e.Text[0] < 'A' || e.Text[0] > 'F') && (e.Text[0] < 'a' || e.Text[0] > 'f'))
             {
                 e.Handled = true;
             }

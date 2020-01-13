@@ -8,34 +8,20 @@
              xmlns:local="clr-namespace:ChipViewApp"
              Name="uc_timingControls" mc:Ignorable="d" Width="{Binding Path=USERCONTROL_WIDTH,Mode=TwoWay}" Height="350">
     <Grid Margin="0">
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <CheckBox x:Name="cb_isContinuous" Content="Continuous" Margin="2" IsChecked="False" Checked="cb_isContinuous_Checked" Unchecked="cb_isContinuous_Checked" ></CheckBox>-->
-
+       
         <Canvas x:Name="timingDiagram_perSlot"  Margin="0" Width="{Binding ElementName=uc_timingControls,Path=Width}">
-
             <Path x:Name="path_precondition" Stroke="{Binding Path=PRECONDITION_BRUSH, Mode=TwoWay}" StrokeThickness="2"
-                Data="{Binding Path= PRECONDITION_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
-
-            <!--<Path x:Name="path_precondition" Stroke="CadetBlue" StrokeThickness="2"
-                Data="M1,100 L 300,100" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />-->
-
-            <!--"M1,100 L 100,100"-->
+                Data="{Binding Path= PRECONDITION_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />         
 
             <Path x:Name="path_LED" Stroke="{Binding Path=LED_BRUSH, Mode=TwoWay}" StrokeThickness="2"
                 Data="{Binding Path = LED_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="109.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
-            <!--"M 32,100 L 70,100 71,50 80,50 81,100 112,100 113,50 123,50 124,100 150,100"-->
-
-
+           
             <Path x:Name="path_integratorSequence" Stroke="{Binding Path=INTEG_BRUSH, Mode=TwoWay}" StrokeThickness="2"
                 Data="{Binding Path = INTEGSEQUENCE_DATA, Mode=TwoWay}" Height="52.667" Canvas.Left="70" Stretch="Fill" Canvas.Top="208.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
 
             <Path x:Name="path_MODULATE" Stroke="{Binding Path=MOD_BRUSH, Mode=TwoWay}" StrokeThickness="2" IsEnabled="False"
                 Data="{Binding Path = MODULATESTIMULUS_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="310.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
-            <!--"{Binding Path = MODULATESTIMULUS_DATA, Mode=TwoWay}"-->
-            
+                       
             <uc:TimingParam_Info_UserControl Canvas.Top="46" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_PRECONDITIONPATH_ENABLE,Mode=TwoWay}" TimingWidthName="PRE_WIDTH" TimingValue="{Binding Path=PRE_WIDTH, Mode=TwoWay}" Width="{Binding Path=PRECONDITION_WIDTH, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 

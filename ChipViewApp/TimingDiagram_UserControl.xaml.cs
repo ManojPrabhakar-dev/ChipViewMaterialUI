@@ -10,8 +10,6 @@ namespace ChipViewApp
     /// </summary>
     public partial class TimingDiagram_UserControl : UserControl
     {
-        private Timing_Parameters timing_param = new Timing_Parameters();
-
         public TimingDiagram_UserControl()
         {
             InitializeComponent();
@@ -75,11 +73,8 @@ namespace ChipViewApp
     {
         private const string DEFAULT_PATHDATA = "M1,100 L 100,100";
         private const int MAX_TIMING_LIMIT = 20;
-
         TimeCoord m_LedCoord { get; set; }
 
-        static double integ_checkpoint = 0.0;
-        static double END_WIDTH = 0.0;
         static double integSeq_LedOffset_diff = 0.0;
         static double integSeq_ModOffset_diff = 0.0;
         public DynamicTimingDiagram()
@@ -160,6 +155,23 @@ namespace ChipViewApp
             int integ_width = Convert.ToInt32(str_integ_width.Substring(0,str_integ_width.Length-3)); //3
             int mod_offset = Convert.ToInt32(str_mod_offset.Substring(0,str_mod_offset.Length-3));  //16
             int mod_width = Convert.ToInt32(str_mod_width.Substring(0,str_mod_width.Length-3)); //3
+
+            if ((led_width > 100) || (integ_width > 100) || (led_offset > 100) || (integ_offset > 100))
+            {
+                TimeCoord.Per_ms = 4;
+            }
+            else if ((led_width > 60) || (integ_width > 60) || (led_offset > 60) || (integ_offset > 60))
+            {
+                TimeCoord.Per_ms = 5;
+            }
+            else if ((led_width > 30) || (integ_width > 30) || (led_offset > 30) || (integ_offset > 30))
+            {
+                TimeCoord.Per_ms = 7;
+            }
+            else
+            {
+                TimeCoord.Per_ms = 10;
+            }
 
             var default_Y = 100.0; var peak_height = 50.0;
             var x1 = 0.0; var X2 = 0.0; var X3 = 0.0; var X4 = 0.0; var X5 = 0.0; var x6 = 0.0; var X7 = 0.0;
@@ -493,10 +505,8 @@ namespace ChipViewApp
             try
             {
                 string timingData = string.Empty;
-
                 int automatic_period = 250;
                 int initial_width = 15;
-
 
                 var str_pre_width = timingParam.PRE_WIDTH;
                 var str_led_offset = timingParam.LED_OFFSET;
@@ -515,14 +525,9 @@ namespace ChipViewApp
                 int mod_width = Convert.ToInt32(str_mod_width.Substring(0,str_mod_width.Length-3)); //3
 
                 var default_Y = 100.0; var peak_height = 50.0;
-
                 var x1 = 0.0; var X2 = 0.0; var X3 = 0.0; var X4 = 0.0; var X5 = 0.0; var x6 = 0.0; var X7 = 0.0;
-
                 var Y1 = 0.0; var Y2 = 0.0;
-
                 var extra_width = 100.0;
-
-
 
                 if (eTimingType == TIMING_TYPE.LED)
                 {
@@ -531,21 +536,11 @@ namespace ChipViewApp
                     x1 = initial_width + (pre_width * TimeCoord.Per_ms) + ((led_offset * 1) * TimeCoord.Per_ms);
                     Y1 = default_Y - peak_height;
                     X2 = x1 + (led_width * TimeCoord.Per_ms);
-
-                    //X3 = (integ_checkpoint + (integSeq_LedOffset_diff * TimeCoord.Per_ms));
-
-                    // X3 = X2 + ((led_offset + led_width) * 10);      // automatic_period; //automatically calculated period
-
                     X3 = X2 + automatic_period;
-
                     timeCoord.timingCheckpoint = X3;
-
                     X4 = X3 + (led_width * TimeCoord.Per_ms);
-
                     X5 = X4 + extra_width;
-
                     timeCoord.TotalTimingLength = X5;
-
                     #endregion
                 }
                 else if (eTimingType == TIMING_TYPE.MODULATED_STIMULUS)
@@ -555,118 +550,43 @@ namespace ChipViewApp
                     x1 = initial_width + (pre_width * TimeCoord.Per_ms) + ((mod_offset * 1) * TimeCoord.Per_ms);
                     Y1 = default_Y - peak_height;
                     X2 = x1 + (mod_width * TimeCoord.Per_ms);
-
-                    // X3 = (integ_checkpoint + (integSeq_ModOffset_diff * TimeCoord.Per_ms));
-                    // X3 = X2 + ((mod_offset + mod_width) * 10);  // automatic_period; //automatically calculated period
                     X3 = X2 + automatic_period;
                     timeCoord.timingCheckpoint = X3;
-
                     X4 = X3 + (mod_width * TimeCoord.Per_ms);
-
                     X5 = X4 + extra_width;
-
                     timeCoord.TotalTimingLength = X5;
-
-                    //if (X4 > END_WIDTH)
-                    //{
-                    //    end_width_diff = X4 - END_WIDTH;
-                    //    X5 = X4 - end_width_diff;
-
-                    //    X5 = X4 + 100;
-                    //    END_WIDTH = X5;
-
-                    //    // var timingCoord_local = new TimeCoord(TIMING_TYPE.MODULATED_STIMULUS);
-
-                    //    GenerateTimingData(TIMING_TYPE.MODULATED_STIMULUS, timingParam, true);
-                    //}
-                    //else
-                    //{
-                    //    end_width_diff = END_WIDTH - X4;
-                    //    X5 = X4 + end_width_diff;
-                    //}
-
-                    //X5 = X4 + end_width_diff;
-
-                    //timingData = "M " + TimeCoord.START_POINT + "," + default_Y + " ";
-                    //timingData += "L ";
-                    //timingData += x1 + "," + default_Y + " ";
-                    //timingData += (x1 + 1) + "," + Y1 + " ";
-                    //timingData += X2 + "," + Y1 + " ";
-                    //timingData += (X2 + 1) + "," + default_Y + " ";
-                    //timingData += X3 + "," + default_Y + " ";
-                    //timingData += (X3 + 1) + "," + Y1 + " ";
-                    //timingData += X4 + "," + Y1 + " ";
-                    //timingData += (X4 + 1) + "," + default_Y + " ";
-                    //timingData += X5 + "," + default_Y;
-
-                    ////timingParam.INTEGOFFSET_LEFT_MARGIN = x1 + 70;
-                    //timingParam.MODOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
-
-                    //timingParam.MODOFFSET_WIDTH = (x1 - (timingParam.MODOFFSET_LEFT_MARGIN - 70));
-
-                    //timingParam.MODWIDTH_LEFT_MARGIN = X3 + 70;
-
-                    //timingParam.MODULATED_WIDTH = (X4 - X3);
-
-                    //if (mod_width == 0)
-                    //{
-                    //    timingParam.IS_MODPATH_ENABLE = "Hidden";
-                    //    timingData = DEFAULT_PATHDATA;
-                    //    timingParam.MOD_BRUSH = Brushes.Gray;
-                    //}
-                    //else
-                    //{
-                    //    timingParam.IS_MODPATH_ENABLE = "Visible";
-                    //    timingParam.MOD_BRUSH = timingParam.SLOT_DEFAULT_BRUSH;
-                    //}
-
-                    //timingParam.MODULATESTIMULUS_DATA = Geometry.Parse(timingData);
-
-                    //Console.WriteLine("MOD Timing data = " + timingData);
                     #endregion
                 }
                 else if (eTimingType == TIMING_TYPE.INTEG_SEQUENCE)
                 {
                     #region INTEG
-
                     x1 = initial_width + (pre_width * TimeCoord.Per_ms) + ((integ_offset * 1) * TimeCoord.Per_ms);
-                    //Y1 = default_Y - peak_height;
-                    //Y2 = default_Y + peak_height;
                     X2 = x1 + (integ_width * TimeCoord.Per_ms);
                     X3 = X2 + (integ_width * TimeCoord.Per_ms);
-                    //X4 = X3 + automatic_period;
-
-                    // X4 = X3 + ((integ_offset + integ_width) * 10);
                     X4 = X3 + automatic_period;
                     integSeq_LedOffset_diff = led_offset - integ_offset;
                     integSeq_ModOffset_diff = mod_offset - integ_offset;
-
                     //integ_checkpoint = X4;
                     timeCoord.timingCheckpoint = X4;
-
                     X5 = X4 + (integ_width * TimeCoord.Per_ms);
                     x6 = X5 + (integ_width * TimeCoord.Per_ms);
-
                     X7 = x6 + extra_width;
-
                     timeCoord.TotalTimingLength = X7;
-
                     //Console.WriteLine("INTEG Sequence timing data = " + timingData);
                     #endregion
-
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception in GetTimingTotalength API = " + ex);
             }
-
             return timeCoord;
         }
 
         public class TimeCoord
         {
-            public const int Per_ms = 10;  //6;
+            public static int Per_ms = 10;  //6;
+
             public const int START_POINT = 1;
             public int initial_width { get; set; }
             public double TotalTimingLength { get; set; }
