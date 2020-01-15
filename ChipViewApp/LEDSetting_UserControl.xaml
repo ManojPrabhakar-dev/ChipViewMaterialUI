@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:ChipViewApp"
-             mc:Ignorable="d" Height="350" Width="601.333">
+             mc:Ignorable="d" Height="350" Width="620">
     <Grid>
         <Canvas >
-            <Path x:Name="InputMux1" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M1,1 L1,181.81168 1,360 50,300 50,65 1,5" Stretch="Fill" HorizontalAlignment="Left" Width="40.572" Canvas.Left="259" Canvas.Top="104" Height="132.153" RenderTransformOrigin="0.502,0.506" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}" >
+            <Path x:Name="InputMux1" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Data="M1,1 L1,181.81168 1,360 50,300 50,65 1,5" Stretch="Fill" HorizontalAlignment="Left" Width="44.113" Canvas.Left="301.165" Canvas.Top="104" Height="132.153" RenderTransformOrigin="0.502,0.506" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}" >
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -19,19 +20,19 @@
                 </Path.RenderTransform>
             </Path>
 
-            <Viewbox Width="33" Height="86" Canvas.Left="262" Canvas.Top="128">
+            <Viewbox Width="36" Height="86" Canvas.Left="304" Canvas.Top="128">
                 <StackPanel Orientation="Vertical" Width="31" Height="70">
                     <Viewbox Height="12" Width="30" Margin="0,0,0,7">
-                        <RadioButton x:Name="rb_led1" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED1" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsetting1_Checked" />
+                        <RadioButton x:Name="rb_led1" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED1" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsettingX_Checked" />
                     </Viewbox>
                     <Viewbox Height="12" Width="30" Margin="0,0,0,7">
-                        <RadioButton x:Name="rb_led2" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED2" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsetting1_Checked"/>
+                        <RadioButton x:Name="rb_led2" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED2" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsettingX_Checked"/>
                     </Viewbox>
                     <Viewbox Height="12" Width="30" Margin="0,0,0,7">
-                        <RadioButton x:Name="rb_led3" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED3" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB"/>
+                        <RadioButton x:Name="rb_led3" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED3" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsettingX_Checked"/>
                     </Viewbox>
                     <Viewbox Height="12" Width="30" Margin="0,0,0,0">
-                        <RadioButton x:Name="rb_led4" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED4" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB"/>
+                        <RadioButton x:Name="rb_led4" Style="{StaticResource MaterialDesignRadioButton}" Tag="True" Content="LED4" GroupName="grp_LED_Selection" FontWeight="DemiBold" Background="#FFF2F9FB" Checked="rb_ledsettingX_Checked"/>
                     </Viewbox>
                     <!--<RadioButton x:Name="led3" Content="LED3" GroupName="grp_LED_Selection" Margin="3,3,10,3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <RadioButton x:Name="led4" Content="LED4" GroupName="grp_LED_Selection" Margin="3,3,10,3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -39,14 +40,20 @@
                 </StackPanel>
             </Viewbox>
 
-            <Path Data="M119.5,145 L83.5,145.5 83.5,159" Height="35" Canvas.Left="227" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="168" Width="33.335" StrokeThickness="1.5"/>
-            <Ellipse Height="34" Canvas.Left="209" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="202" Width="38" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}"/>
-            <Ellipse Height="34" Canvas.Left="209" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="228" Width="38" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}"/>
-            <ed:LineArrow Height="0" Canvas.Left="169" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="232" Width="46" StrokeThickness="1.5"/>
-            <ed:RegularPolygon Height="43" InnerRadius="1" Canvas.Left="118" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="211" Width="64" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}">
+            <xctk:IntegerUpDown Name="LedCurrent_X" Value="{Binding Path=LEDCURRENT_X, Mode=TwoWay}" Width="80"  Canvas.Left="13" Canvas.Top="222" Minimum="0" Maximum="127" />
+            <ComboBox Name="LedDriveside_X" Width="80" Canvas.Left="13" Canvas.Top="307" SelectedIndex="0" HorizontalContentAlignment="Center">
+                <ComboBoxItem>A</ComboBoxItem>
+                <ComboBoxItem>B</ComboBoxItem>
+            </ComboBox>
+
+            <Path Data="M119.5,145 L83.5,145.5 83.5,159" Height="35" Canvas.Left="266.335" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="168" Width="36.244" StrokeThickness="1.5"/>
+            <Ellipse Height="34" Canvas.Left="247" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="202" Width="41" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}"/>
+            <Ellipse Height="34" Canvas.Left="247" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="228" Width="41" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}"/>
+            <ed:LineArrow Height="0" Canvas.Left="203" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="232" Width="50" StrokeThickness="1.5"/>
+            <ed:RegularPolygon Height="43" InnerRadius="1" Canvas.Left="148" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="211" Width="69" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
+                        <ScaleTransform ScaleY="1.087" ScaleX="0.92"/>
                         <SkewTransform/>
                         <RotateTransform Angle="90"/>
                         <TranslateTransform/>
@@ -54,7 +61,7 @@
                 </ed:RegularPolygon.RenderTransform>
 
             </ed:RegularPolygon>
-            <Path Data="M83.5,183 L84,194.5" Height="23.499" Canvas.Left="228" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="261.333" Width="1" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5">
+            <Path Data="M83.5,183 L84,194.5" Height="23.499" Canvas.Left="267.509" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="261" Width="1.087" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5">
                 <Path.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleX="-1"/>
@@ -64,7 +71,7 @@
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
-            <ed:RegularPolygon Height="24" InnerRadius="1" Canvas.Left="211" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="283" Width="37" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}">
+            <ed:RegularPolygon Height="24" InnerRadius="1" Canvas.Left="249" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="283" Width="40" RenderTransformOrigin="0.5,0.5" StrokeThickness="1.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -75,20 +82,20 @@
                 </ed:RegularPolygon.RenderTransform>
             </ed:RegularPolygon>
 
-            <Path Data="M37,170.5 L19,170.5" Height="1.5" Canvas.Left="70" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="231.25" Width="59.416" StrokeThickness="1.5"/>
-            <Path Data="M130,176 L130,225 64,225" Height="98.499" Canvas.Left="70" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="227" Width="216" StrokeThickness="1.5"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="299.062" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="138.333" Width="21.876"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="300.125" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="201" Width="21.813"/>
-            <ed:Arc ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="360" Height="4" Canvas.Left="320" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="137" Width="4" StrokeThickness="0.5"/>
-            <ed:Arc ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="360" Height="4" Canvas.Left="321" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="200" Width="4" StrokeThickness="0.5"/>
-            <Path Data="M160,132.5 L160,1325" Height="61" Canvas.Left="322" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="140" Width="1.25"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="56.5" Canvas.Left="321" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82.333" Width="2.5"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="49.167" Canvas.Left="322" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="203" Width="2.5"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="323.02" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="138" Width="76.98"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="324.094" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="201" Width="201.906"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="58" Canvas.Left="398" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="2"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="388" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82.333" Width="20"/>
-            <ed:RegularPolygon Height="25" InnerRadius="1" Canvas.Left="378" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="58" Width="40" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
+            <Path Data="M37,170.5 L19,170.5" Height="1.5" Canvas.Left="95.633" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="231.25" Width="64.601" StrokeThickness="1.5"/>
+            <Path Data="M130,176 L130,225 64,225" Height="98.499" Canvas.Left="95.633" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="227" Width="234.851" StrokeThickness="1.5"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="344.68" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="138" Width="23.785"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="345.799" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="201" Width="23.716"/>
+            <ed:Arc ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="360" Height="4" Canvas.Left="367" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="137" Width="5" StrokeThickness="0.5"/>
+            <ed:Arc ArcThickness="20" ArcThicknessUnit="Pixel" EndAngle="360" Height="4" Canvas.Left="369" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="200" Width="4" StrokeThickness="0.5"/>
+            <Path Data="M160,132.5 L160,1325" Height="61" Canvas.Left="369.625" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="140" Width="1.36"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="56.5" Canvas.Left="368.495" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="2.718"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="49.167" Canvas.Left="369.669" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="203" Width="2.718"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="370.723" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="138" Width="83.698"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="371.847" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="201" Width="219.527"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="58" Canvas.Left="452.302" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="2.174"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="441.385" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="21.746"/>
+            <ed:RegularPolygon Height="25" InnerRadius="1" Canvas.Left="431" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="58" Width="43" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -98,14 +105,14 @@
                     </TransformGroup>
                 </ed:RegularPolygon.RenderTransform>
             </ed:RegularPolygon>
-            <Path Data="M159.5,129 L159.5,95.5" Height="47.916" Canvas.Left="397" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="11" Width="2"/>
-            <ed:Arc ArcThickness="35" ArcThicknessUnit="Pixel" EndAngle="360" Height="3" Canvas.Left="397" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="8" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="39" Width="3"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="360.052" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="38.948"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="27" Canvas.Left="361.333" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="1"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="352.166" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="66.333" Width="17.667"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="352.146" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="74.333" Width="17.709"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="27" Canvas.Left="361" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="74" Width="1"/>
-            <ed:RegularPolygon Height="13" InnerRadius="1" Canvas.Left="351" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="101" Width="22" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
+            <Path Data="M159.5,129 L159.5,95.5" Height="47.916" Canvas.Left="451.127" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="11.042" Width="2.175"/>
+            <ed:Arc ArcThickness="35" ArcThicknessUnit="Pixel" EndAngle="360" Height="3" Canvas.Left="451" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="8" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="39" Width="3"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="410.968" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="42.347"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="27" Canvas.Left="412.029" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="1.087"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="402.41" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="66" Width="19.209"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="402.389" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="74" Width="19.255"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="27" Canvas.Left="412.029" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="74" Width="1.087"/>
+            <ed:RegularPolygon Height="13" InnerRadius="1" Canvas.Left="401" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="101" Width="24" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -115,9 +122,9 @@
                     </TransformGroup>
                 </ed:RegularPolygon.RenderTransform>
             </ed:RegularPolygon>
-            <Path Data="M159.5,129 L159.5,95.5" Height="120" Canvas.Left="524" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="83" Width="2"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="49.958" Canvas.Left="520.667" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="9.021" Width="2"/>
-            <ed:RegularPolygon Height="25" InnerRadius="1" Canvas.Left="504" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="58" Width="40" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
+            <Path Data="M159.5,129 L159.5,95.5" Height="120" Canvas.Left="589.298" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="83" Width="2.175"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="49.958" Canvas.Left="585.949" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="9.021" Width="2.175"/>
+            <ed:RegularPolygon Height="25" InnerRadius="1" Canvas.Left="568" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="58" Width="43" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -127,13 +134,13 @@
                     </TransformGroup>
                 </ed:RegularPolygon.RenderTransform>
             </ed:RegularPolygon>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="513.167" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="23.667"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="485.333" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="36.667"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="24.958" Canvas.Left="485" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40.042" Width="1"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="477" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="63" Width="16"/>
-            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="478" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="70.667" Width="15"/>
-            <Path Data="M159.5,129 L159.5,95.5" Height="27.962" Canvas.Left="485" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="73" Width="1"/>
-            <ed:RegularPolygon Height="14" InnerRadius="1" Canvas.Left="475" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="100" Width="20" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="577.461" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="82" Width="25.733"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="547.017" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40" Width="39.868"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="24.958" Canvas.Left="546.851" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="40.021" Width="1.087"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="538.153" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="63" Width="17.396"/>
+            <Path Data="M141.5,131 L181.5,131" Height="2" Canvas.Left="539.24" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="71" Width="16.309"/>
+            <Path Data="M159.5,129 L159.5,95.5" Height="27.962" Canvas.Left="546.851" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="73.019" Width="1.087"/>
+            <ed:RegularPolygon Height="14" InnerRadius="1" Canvas.Left="536" PointCount="3" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="4" StrokeLineJoin="Miter" Canvas.Top="100" Width="22" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource ProgressBrush}">
                 <ed:RegularPolygon.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -143,22 +150,23 @@
                     </TransformGroup>
                 </ed:RegularPolygon.RenderTransform>
             </ed:RegularPolygon>
-            <ed:Arc ArcThickness="35" ArcThicknessUnit="Pixel" EndAngle="360" Height="3" Canvas.Left="521" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="8" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="39" Width="3"/>
-            <TextBlock x:Name="textBlock3" FontSize="8" Height="13" Canvas.Left="329" TextWrapping="Wrap" Text="LEDxA
-                       " Canvas.Top="122" Width="25" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy" FontSize="8" Height="12" Canvas.Left="329" TextWrapping="Wrap" Text="LEDxB 
-                       " Canvas.Top="187" Width="25" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy1" FontSize="8" Height="13" Canvas.Left="14" TextWrapping="Wrap" Text="LED_CURRENTx" Canvas.Top="209" Width="55" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <ed:Arc ArcThickness="35" ArcThicknessUnit="Pixel" EndAngle="360" Height="3" Canvas.Left="586" StrokeStartLineCap="Flat" Stretch="None" StrokeEndLineCap="Flat" Stroke="#FF008066" StrokeMiterLimit="8" StrokeLineJoin="Miter" StartAngle="0" Canvas.Top="39" Width="3"/>
+            <TextBlock x:Name="textBlock3" FontSize="8" Height="13" Canvas.Left="377" TextWrapping="Wrap" Text="LEDxA
+                       " Canvas.Top="122" Width="27" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy" FontSize="8" Height="12" Canvas.Left="377" TextWrapping="Wrap" Text="LEDxB 
+                       " Canvas.Top="187" Width="27" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy1" FontSize="8" Height="13" Canvas.Left="25" TextWrapping="Wrap" Text="LED_CURRENTx" Canvas.Top="207" Width="60" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
             </TextBlock>
-            <TextBlock x:Name="textBlock3_Copy2" FontSize="8" Height="13" Canvas.Left="10" TextWrapping="Wrap" Text="LED_DRIVESIDEx" Canvas.Top="304" Width="64" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy3" FontSize="8" Height="12" Canvas.Left="367" TextWrapping="Wrap" Text="LED1" Canvas.Top="11" Width="23" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy4" FontSize="8" Height="12" Canvas.Left="493" TextWrapping="Wrap" Text="LED2" Canvas.Top="11" Width="23" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy5" FontSize="10" Height="12" Canvas.Left="489" TextWrapping="Wrap" Text="V" Canvas.Top="9" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
-            <TextBlock x:Name="textBlock3_Copy6" FontSize="10" Height="12" Canvas.Left="363" TextWrapping="Wrap" Text="V" Canvas.Top="8" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
-            <TextBlock x:Name="textBlock3_Copy7" FontSize="7" Height="10" Canvas.Left="339" TextWrapping="Wrap" Text="VLED" Canvas.Top="55" Width="20" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy8" FontSize="9" Height="12" Canvas.Left="334" TextWrapping="Wrap" Text="C" Canvas.Top="52" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
-            <TextBlock x:Name="textBlock3_Copy9" FontSize="7" Height="10" Canvas.Left="467" TextWrapping="Wrap" Text="VLED" Canvas.Top="54" Width="17" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy10" FontSize="9" Height="12" Canvas.Left="460" TextWrapping="Wrap" Text="C" Canvas.Top="52" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
+            <TextBlock x:Name="textBlock3_Copy2" FontSize="8" Height="13" Canvas.Left="20" TextWrapping="Wrap" Text="LED_DRIVESIDEx" Canvas.Top="298" Width="69" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy3" FontSize="8" Height="12" Canvas.Left="419" TextWrapping="Wrap" Text="LED1" Canvas.Top="11" Width="25" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy4" FontSize="8" Height="12" Canvas.Left="556" TextWrapping="Wrap" Text="LED2" Canvas.Top="11" Width="25" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy5" FontSize="10" Height="12" Canvas.Left="551" TextWrapping="Wrap" Text="V" Canvas.Top="9" Width="9" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
+            <TextBlock x:Name="textBlock3_Copy6" FontSize="10" Height="12" Canvas.Left="414" TextWrapping="Wrap" Text="V" Canvas.Top="8" Width="9" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
+            <TextBlock x:Name="textBlock3_Copy7" FontSize="7" Height="10" Canvas.Left="388" TextWrapping="Wrap" Text="VLED" Canvas.Top="55" Width="22" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy8" FontSize="9" Height="12" Canvas.Left="383" TextWrapping="Wrap" Text="C" Canvas.Top="52" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
+            <TextBlock x:Name="textBlock3_Copy9" FontSize="7" Height="10" Canvas.Left="527" TextWrapping="Wrap" Text="VLED" Canvas.Top="54" Width="19" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock3_Copy10" FontSize="9" Height="12" Canvas.Left="520" TextWrapping="Wrap" Text="C" Canvas.Top="52" Width="8" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>
         </Canvas>
     </Grid>
+
 </UserControl>

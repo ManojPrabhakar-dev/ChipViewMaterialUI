@@ -304,7 +304,7 @@
 										 Header="LEDSettings" Visibility="Visible" IsExpanded="False" 
 										 FontSize="14" FontWeight="Bold">
 
-										<uc:LEDSetting_UserControl x:Name="uc_ledSetting" Margin="0,0,0,20" Width="600" />
+										<uc:LEDSetting_UserControl x:Name="uc_ledSetting" SelectedLED="{Binding Path= LED_SELECTED_INDEX, Mode=TwoWay}" Margin="0,0,0,20" Width="600" />
 												
 										<!--<Grid Name="LEDSettings" Margin="20,0,0,20" ShowGridLines="True" Height="200" Width="500">
 													<Grid.Background>

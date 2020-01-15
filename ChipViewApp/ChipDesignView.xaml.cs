@@ -507,6 +507,67 @@ namespace ChipViewApp
 
     public class LedSetting_parameters : INotifyPropertyChanged
     {
+        private List<LedSetting_parameters> _lst_ledsettingParams;
+        public List<LedSetting_parameters> lst_ledsettingParams
+        {
+            get
+            {
+                return _lst_ledsettingParams;
+            }
+
+            set
+            {
+                _lst_ledsettingParams = value;
+            }
+        }
+
+        public LedSetting_parameters()
+        {
+
+        }
+
+        private int nSlotSel;
+
+        public int NSlotSelCopy
+        {
+            get { return nSlotSel; }
+            set { nSlotSel = value; }
+        }
+
+
+        private SELECTED_LED ledSelectedIndex;
+
+        public SELECTED_LED LED_SELECTED_INDEX
+        {
+            get
+            {
+                return ledSelectedIndex;
+            }
+            set
+            {
+                ledSelectedIndex = value;
+
+                if (ledSelectedIndex == SELECTED_LED.LED1)
+                {
+                    LEDCURRENT_X = LEDCURRENT1;
+                }
+                else if (ledSelectedIndex == SELECTED_LED.LED2)
+                {
+                    LEDCURRENT_X = LEDCURRENT2;
+                }
+                else if (ledSelectedIndex == SELECTED_LED.LED3)
+                {
+                    LEDCURRENT_X = LEDCURRENT3;
+                }
+                else if (ledSelectedIndex == SELECTED_LED.LED4)
+                {
+                    LEDCURRENT_X = LEDCURRENT4;
+                }
+
+                OnPropertyChanged(nameof(LED_SELECTED_INDEX));
+            }
+        }
+
         private double ledcurrent1;
         public double LEDCURRENT1
         {
@@ -528,6 +589,30 @@ namespace ChipViewApp
             {
                 ledcurrent2 = value;
                 OnPropertyChanged(nameof(LEDCURRENT2));
+            }
+        }
+
+        private double ledcurrent3;
+        public double LEDCURRENT3
+        {
+            get { return ledcurrent3; }
+
+            set
+            {
+                ledcurrent3 = value;
+                OnPropertyChanged(nameof(LEDCURRENT3));
+            }
+        }
+
+        private double ledcurrent4;
+        public double LEDCURRENT4
+        {
+            get { return ledcurrent4; }
+
+            set
+            {
+                ledcurrent4 = value;
+                OnPropertyChanged(nameof(LEDCURRENT4));
             }
         }
 
@@ -561,11 +646,12 @@ namespace ChipViewApp
         // private Timing_Parameters timing_param = new Timing_Parameters();
 
         private List<Timing_Parameters> lst_timingParam = new List<Timing_Parameters>();
-        private List<LedSetting_parameters> lst_ledsettingParams = new List<LedSetting_parameters>();
 
         private Dictionary<int,Brush> dict_slotBrushes = new Dictionary<int, Brush>();
 
         private DynamicTimingDiagram m_PathData_inst = new DynamicTimingDiagram();
+
+        private LedSetting_parameters ledsettingParam = new LedSetting_parameters();
 
         TextBlock IN1Text;
         TextBlock IN2Text;
@@ -586,7 +672,27 @@ namespace ChipViewApp
         Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         Brush StrokeDis = Brushes.DarkGray;
         /* GLOBAL VARIABLES */
-        int nSlotSel = 0;
+
+
+        // int nSlotSel = 0;
+
+        private int nSlotSel = 0;
+
+        public int NSlotSel
+        {
+            get
+            {
+                return nSlotSel;
+            }
+            set
+            {
+                nSlotSel = value;
+
+                ledsettingParam.NSlotSelCopy = nSlotSel;
+            }
+        }
+
+
         static int nActiveSlots = 0;
         int[] aCh1Inp = new int[2];
         int[] aCh2Inp = new int[2];
@@ -615,6 +721,7 @@ namespace ChipViewApp
         private static ClientNPipe clientPipe { get; set; }
 
         private int[] CHOPMODE_ENABLE = new int[] {0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55};
+
 
         public ChipDesignView()
         {
@@ -646,15 +753,20 @@ namespace ChipViewApp
                 lst_timingParam.Add(new Timing_Parameters());
             }
 
-            lst_ledsettingParams.Clear();
+            ledsettingParam.lst_ledsettingParams = new List<LedSetting_parameters>();
+
+            ledsettingParam.lst_ledsettingParams.Clear();
             for (int i = 0; i < 12; i++)
             {
-                lst_ledsettingParams.Add(new LedSetting_parameters());
+                ledsettingParam.lst_ledsettingParams.Add(new LedSetting_parameters());
             }
+
 
             //TODO : Need to Remove After integration
             ParseChipDesignJson();
             UpdateChipViewParameters();
+
+            //ledSelectedIndex = SELECTED_LED.LED1;
 
         }
 
@@ -1214,7 +1326,7 @@ namespace ChipViewApp
 
                 UpdateLedParam_ActiveSlots();
 
-                uc_ledSetting.DataContext = lst_ledsettingParams[nSlotSel];
+                uc_ledSetting.DataContext = ledsettingParam.lst_ledsettingParams[nSlotSel];
 
             }
             catch (Exception ex)
@@ -1346,13 +1458,22 @@ namespace ChipViewApp
             {
                 if (nNameKey.Contains("LEDCurrent1"))
                 {
-                    lst_ledsettingParams[slotSel].LEDCURRENT1 = dValue;
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT1 = dValue;
                 }
                 else if (nNameKey.Contains("LEDCurrent2"))
                 {
-                    lst_ledsettingParams[slotSel].LEDCURRENT2 = dValue;
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT2 = dValue;
+                }
+                else if (nNameKey.Contains("LEDCurrent3"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT3 = dValue;
+                }
+                else if (nNameKey.Contains("LEDCurrent4"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT4 = dValue;
                 }
 
+                //ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT_X = dValue;
             }
             catch (Exception ex)
             {
@@ -1441,11 +1562,11 @@ namespace ChipViewApp
                     UpdateConfigSettings(TimingSettings, nNameKey, "TimingSettings");
                 }
 
-                foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
-                {
-                    //UpdateLEDSettings(TimingSettings, nNameKey, "LEDSettings");
-                    // UpdateLEDSettings(LEDSettings, nNameKey, "LEDSettings");
-                }
+                //foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
+                //{
+                //    UpdateLEDSettings(TimingSettings, nNameKey, "LEDSettings");
+                //    UpdateLEDSettings(LEDSettings, nNameKey, "LEDSettings");
+                //}
 
                 foreach (string nNameKey in aRegAdpdCtrlItems["SlotChipSettings"].Keys)
                 {
@@ -2450,6 +2571,10 @@ namespace ChipViewApp
                     {
                         AssignPathData_timingParam(i);
                     }
+
+                    UpdateLedParam_ActiveSlots();
+
+                    uc_ledSetting.DataContext = ledsettingParam.lst_ledsettingParams[nSlotSel];
                 }
 
 
@@ -2916,7 +3041,11 @@ namespace ChipViewApp
         {
             var comboBox = sender as ComboBox;
 
+            uc_ledSetting.SelectedLED = SELECTED_LED.LED1;
+
             comboBox.SelectedIndex = 0;
+
+
         }
 
         private void SlotSelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2930,6 +3059,16 @@ namespace ChipViewApp
                 nSlotSel = comboBox.SelectedIndex;
                 Add_TimingDiagram();
                 UpdateControlValues(true);
+                UpdateLedParam_ActiveSlots();
+
+
+
+                if (ledsettingParam != null)
+                {
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX = uc_ledSetting.SelectedLED;
+                }
+
+                uc_ledSetting.DataContext = ledsettingParam.lst_ledsettingParams[nSlotSel];
             }
         }
         #endregion

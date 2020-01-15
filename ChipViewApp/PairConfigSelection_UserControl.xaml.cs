@@ -86,7 +86,7 @@ namespace ChipViewApp
 
         // Using a DependencyProperty as the backing store for IsTopLeftChecked.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsTopLeftCheckedProperty =
-    DependencyProperty.Register("IsTopLeftChecked", typeof(bool), typeof(PairConfigSelection_UserControl), new PropertyMetadata(OnTopLeftCheckedChanged));
+        DependencyProperty.Register("IsTopLeftChecked", typeof(bool), typeof(PairConfigSelection_UserControl), new PropertyMetadata(OnTopLeftCheckedChanged));
         private static void OnTopLeftCheckedChanged(DependencyObject d,
          DependencyPropertyChangedEventArgs e)
         {
