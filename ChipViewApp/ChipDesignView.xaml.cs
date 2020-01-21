@@ -550,21 +550,57 @@ namespace ChipViewApp
                 if (ledSelectedIndex == SELECTED_LED.LED1)
                 {
                     LEDCURRENT_X = LEDCURRENT1;
+                    LEDSELECT_X = LEDSELECT1;
+                    LBL_LEDCURRENTX = "LED_CURRENT1";
+                    LBL_LEDDRIVESIDEX = "LED_DRIVESIDE1";
                 }
                 else if (ledSelectedIndex == SELECTED_LED.LED2)
                 {
                     LEDCURRENT_X = LEDCURRENT2;
+                    LEDSELECT_X = LEDSELECT2;
+                    LBL_LEDCURRENTX = "LED_CURRENT2";
+                    LBL_LEDDRIVESIDEX = "LED_DRIVESIDE2";
                 }
                 else if (ledSelectedIndex == SELECTED_LED.LED3)
                 {
                     LEDCURRENT_X = LEDCURRENT3;
+                    LEDSELECT_X = LEDSELECT3;
+                    LBL_LEDCURRENTX = "LED_CURRENT3";
+                    LBL_LEDDRIVESIDEX = "LED_DRIVESIDE3";
                 }
                 else if (ledSelectedIndex == SELECTED_LED.LED4)
                 {
                     LEDCURRENT_X = LEDCURRENT4;
+                    LEDSELECT_X = LEDSELECT4;
+                    LBL_LEDCURRENTX = "LED_CURRENT4";
+                    LBL_LEDDRIVESIDEX = "LED_DRIVESIDE4";
                 }
 
                 OnPropertyChanged(nameof(LED_SELECTED_INDEX));
+            }
+        }
+
+        private string lbl_ledcurrentX;
+        public string LBL_LEDCURRENTX
+        {
+            get { return lbl_ledcurrentX; }
+
+            set
+            {
+                lbl_ledcurrentX = value;
+                OnPropertyChanged(nameof(LBL_LEDCURRENTX));
+            }
+        }
+
+        private string lbl_leddrivesideX;
+        public string LBL_LEDDRIVESIDEX
+        {
+            get { return lbl_leddrivesideX; }
+
+            set
+            {
+                lbl_leddrivesideX = value;
+                OnPropertyChanged(nameof(LBL_LEDDRIVESIDEX));
             }
         }
 
@@ -625,6 +661,68 @@ namespace ChipViewApp
             {
                 ledcurrentx = value;
                 OnPropertyChanged(nameof(LEDCURRENT_X));
+
+
+            }
+        }
+
+        private int ledselect1;
+        public int LEDSELECT1
+        {
+            get { return ledselect1; }
+
+            set
+            {
+                ledselect1 = value;
+                OnPropertyChanged(nameof(LEDSELECT1));
+            }
+        }
+
+        private int ledselect2;
+        public int LEDSELECT2
+        {
+            get { return ledselect2; }
+
+            set
+            {
+                ledselect2 = value;
+                OnPropertyChanged(nameof(LEDSELECT2));
+            }
+        }
+
+        private int ledselect3;
+        public int LEDSELECT3
+        {
+            get { return ledselect3; }
+
+            set
+            {
+                ledselect3 = value;
+                OnPropertyChanged(nameof(LEDSELECT3));
+            }
+        }
+
+        private int ledselect4;
+        public int LEDSELECT4
+        {
+            get { return ledselect4; }
+
+            set
+            {
+                ledselect4 = value;
+                OnPropertyChanged(nameof(LEDSELECT4));
+            }
+        }
+
+        private int ledselectx;
+        public int LEDSELECT_X
+        {
+            get { return ledselectx; }
+
+            set
+            {
+                ledselectx = value;
+                OnPropertyChanged(nameof(LEDSELECT_X));
             }
         }
 
@@ -1343,15 +1441,6 @@ namespace ChipViewApp
             }
         }
 
-        private void UpdateLedParam_ActiveSlots()
-        {
-            foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
-            {
-                UpdateLedSetting_Params(nNameKey);
-            }
-        }
-
-
         private void Add_TimingDiagram()
         {
             try
@@ -1426,6 +1515,14 @@ namespace ChipViewApp
             }
         }
 
+        private void UpdateLedParam_ActiveSlots()
+        {
+            foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
+            {
+                UpdateLedSetting_Params(nNameKey);
+            }
+        }
+
         private void UpdateLedSetting_Params(string nNameKey)
         {
             var nSettingsKey = "LEDSettings";
@@ -1471,6 +1568,24 @@ namespace ChipViewApp
                 else if (nNameKey.Contains("LEDCurrent4"))
                 {
                     ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT4 = dValue;
+                }
+
+
+                if (nNameKey.Contains("LEDSelect1"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDSELECT1 = (int)dValue;
+                }
+                else if (nNameKey.Contains("LEDSelect2"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDSELECT2 = (int)dValue;
+                }
+                else if (nNameKey.Contains("LEDSelect3"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDSELECT3 = (int)dValue;
+                }
+                if (nNameKey.Contains("LEDSelect4"))
+                {
+                    ledsettingParam.lst_ledsettingParams[slotSel].LEDSELECT4 = (int)dValue;
                 }
 
                 //ledsettingParam.lst_ledsettingParams[slotSel].LEDCURRENT_X = dValue;
@@ -1562,11 +1677,11 @@ namespace ChipViewApp
                     UpdateConfigSettings(TimingSettings, nNameKey, "TimingSettings");
                 }
 
-                //foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
-                //{
-                //    UpdateLEDSettings(TimingSettings, nNameKey, "LEDSettings");
-                //    UpdateLEDSettings(LEDSettings, nNameKey, "LEDSettings");
-                //}
+                foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
+                {
+                    // UpdateLEDSettings(TimingSettings, nNameKey, "LEDSettings");
+                    UpdateLEDSettings(uc_ledSetting, nNameKey, "LEDSettings");
+                }
 
                 foreach (string nNameKey in aRegAdpdCtrlItems["SlotChipSettings"].Keys)
                 {
@@ -1815,7 +1930,7 @@ namespace ChipViewApp
             }
         }
 
-        private void UpdateLEDSettings(Grid nLEDSettingsGrid, string nNameKey, string nSettingsKey)
+        private void UpdateLEDSettings(UserControl nLEDSettingsUserControl, string nNameKey, string nSettingsKey)
         {
             try
             {
@@ -1827,7 +1942,7 @@ namespace ChipViewApp
                         {
                             ComboBox nParamComboBox;
 
-                            nParamComboBox = FindChild<ComboBox>(nLEDSettingsGrid, nNameKey);
+                            nParamComboBox = FindChild<ComboBox>(nLEDSettingsUserControl, nNameKey);
 
                             if (nParamComboBox != null)
                             {
@@ -1850,7 +1965,7 @@ namespace ChipViewApp
                         {
                             IntegerUpDown nParamNumUpDown;
 
-                            nParamNumUpDown = FindChild<IntegerUpDown>(nLEDSettingsGrid, nNameKey);
+                            nParamNumUpDown = FindChild<IntegerUpDown>(nLEDSettingsUserControl, nNameKey);
 
                             if (nParamNumUpDown != null)
                             {
@@ -2184,7 +2299,7 @@ namespace ChipViewApp
             }
         }
 
-        private void LEDSelectX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LEDSelectX_SelectionChanged1(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -2217,7 +2332,63 @@ namespace ChipViewApp
             }
         }
 
-        private void LEDCurrentX_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void LEDSelectX_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ComboBox comboBox = (ComboBox)sender;
+                string nNameKey =  ""; // comboBox.Name;
+                int nParamIdx = 0;
+                //string nSettingsKey = ((Grid)(comboBox.Parent)).Name;
+
+                string nSettingsKey = "LEDSettings";// ((Grid)(radNumUpDown.Parent)).Name;
+
+                if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED1)
+                {
+                    nNameKey = "LEDSelect1";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDSELECT1 = comboBox.SelectedIndex;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED2)
+                {
+                    nNameKey = "LEDSelect2";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDSELECT2 = comboBox.SelectedIndex;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED3)
+                {
+                    nNameKey = "LEDSelect3";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDSELECT3 = comboBox.SelectedIndex;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED4)
+                {
+                    nNameKey = "LEDSelect4";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDSELECT4 = comboBox.SelectedIndex;
+                }
+
+
+                if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count > 0)
+                {
+                    JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"];
+                    List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
+                    regVal_Lst[nSlotSel] = comboBox.SelectedIndex.ToString();
+
+                    JArray aArr_IsValChanged = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"];
+                    List<string> IsVal_Changed_Lst = aArr_IsValChanged.ToObject<List<string>>();
+                    IsVal_Changed_Lst[nSlotSel] = "True";
+
+                    var jarr_Val_mod = JArray.FromObject(regVal_Lst);
+                    var jarr_IsValChanged_mod = JArray.FromObject(IsVal_Changed_Lst);
+
+                    aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"] = jarr_Val_mod;
+                    aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"] = jarr_IsValChanged_mod;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EXception in LEDSelectX_SelectionChanged API = " + ex);
+            }
+        }
+
+        private void LEDCurrentX_ValueChanged1(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             try
             {
@@ -2252,6 +2423,65 @@ namespace ChipViewApp
                 Console.WriteLine("Exception in LEDCurrentX_ValueChanged API = " + ex);
             }
         }
+
+        private void LEDCurrentX_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            try
+            {
+                IntegerUpDown radNumUpDown = (IntegerUpDown)sender;
+
+                string nNameKey = ""; // radNumUpDown.Name;
+                int nParamIdx = 0;
+                string nSettingsKey = "LEDSettings";// ((Grid)(radNumUpDown.Parent)).Name;
+
+                if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED1)
+                {
+                    nNameKey = "LEDCurrent1";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDCURRENT1 = (double)radNumUpDown.Value;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED2)
+                {
+                    nNameKey = "LEDCurrent2";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDCURRENT2 = (double)radNumUpDown.Value;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED3)
+                {
+                    nNameKey = "LEDCurrent3";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDCURRENT3 = (double)radNumUpDown.Value;
+                }
+                else if (ledsettingParam.lst_ledsettingParams[nSlotSel].LED_SELECTED_INDEX == SELECTED_LED.LED4)
+                {
+                    nNameKey = "LEDCurrent4";
+                    ledsettingParam.lst_ledsettingParams[nSlotSel].LEDCURRENT4 = (double)radNumUpDown.Value;
+                }
+
+
+                if (aRegAdpdCtrlItems.Count != 0)
+                {
+                    if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count > 0)
+                    {
+                        JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"];
+                        List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
+                        regVal_Lst[nSlotSel] = radNumUpDown.Value.ToString();
+
+                        JArray aArr_IsValChanged = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"];
+                        List<string> IsVal_Changed_Lst = aArr_IsValChanged.ToObject<List<string>>();
+                        IsVal_Changed_Lst[nSlotSel] = "True";
+
+                        var jarr_Val_mod = JArray.FromObject(regVal_Lst);
+                        var jarr_IsValChanged_mod = JArray.FromObject(IsVal_Changed_Lst);
+
+                        aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"] = jarr_Val_mod;
+                        aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"] = jarr_IsValChanged_mod;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in LEDCurrentX_ValueChanged API = " + ex);
+            }
+        }
+
 
         #region CONTROL EVENT HANDLERS
 
@@ -3040,12 +3270,8 @@ namespace ChipViewApp
         private void SlotSelComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             var comboBox = sender as ComboBox;
-
             uc_ledSetting.SelectedLED = SELECTED_LED.LED1;
-
             comboBox.SelectedIndex = 0;
-
-
         }
 
         private void SlotSelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -3060,8 +3286,6 @@ namespace ChipViewApp
                 Add_TimingDiagram();
                 UpdateControlValues(true);
                 UpdateLedParam_ActiveSlots();
-
-
 
                 if (ledsettingParam != null)
                 {
@@ -3107,7 +3331,6 @@ namespace ChipViewApp
                 }
             }
         }
-
 
         private void EnDisCH2MuxCtrls(bool IsEnabled)
         {

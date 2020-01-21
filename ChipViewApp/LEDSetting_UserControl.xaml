@@ -40,8 +40,8 @@
                 </StackPanel>
             </Viewbox>
 
-            <xctk:IntegerUpDown Name="LedCurrent_X" Value="{Binding Path=LEDCURRENT_X, Mode=TwoWay}" Width="80"  Canvas.Left="13" Canvas.Top="222" Minimum="0" Maximum="127" />
-            <ComboBox Name="LedDriveside_X" Width="80" Canvas.Left="13" Canvas.Top="307" SelectedIndex="0" HorizontalContentAlignment="Center">
+            <xctk:IntegerUpDown Name="LedCurrent_X" Value="{Binding Path=LEDCURRENT_X, Mode=TwoWay}" Width="80"  Canvas.Left="13" Canvas.Top="222" Minimum="0" Maximum="127" ValueChanged="LedCurrent_X_ValueChanged"/>
+            <ComboBox Name="LedDriveside_X" Width="80" Canvas.Left="13" Canvas.Top="307" SelectedIndex="{Binding Path=LEDSELECT_X, Mode=TwoWay}" HorizontalContentAlignment="Center" SelectionChanged="LedDriveside_X_SelectionChanged">
                 <ComboBoxItem>A</ComboBoxItem>
                 <ComboBoxItem>B</ComboBoxItem>
             </ComboBox>
@@ -155,9 +155,12 @@
                        " Canvas.Top="122" Width="27" TextAlignment="Center"/>
             <TextBlock x:Name="textBlock3_Copy" FontSize="8" Height="12" Canvas.Left="377" TextWrapping="Wrap" Text="LEDxB 
                        " Canvas.Top="187" Width="27" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock3_Copy1" FontSize="8" Height="13" Canvas.Left="25" TextWrapping="Wrap" Text="LED_CURRENTx" Canvas.Top="207" Width="60" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+
+            <TextBlock x:Name="lbl_LEDCurrent_X" FontSize="10" FontWeight="DemiBold" Height="13" Canvas.Left="15" TextWrapping="Wrap" Text="{Binding Path=LBL_LEDCURRENTX, Mode=TwoWay}" Canvas.Top="207" Width="80" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
             </TextBlock>
-            <TextBlock x:Name="textBlock3_Copy2" FontSize="8" Height="13" Canvas.Left="20" TextWrapping="Wrap" Text="LED_DRIVESIDEx" Canvas.Top="298" Width="69" TextAlignment="Center"/>
+
+            <TextBlock x:Name="lbl_LEDDriveSide_X" FontSize="10" FontWeight="DemiBold" Height="13" Canvas.Left="13" TextWrapping="Wrap" Text="{Binding Path=LBL_LEDDRIVESIDEX, Mode=TwoWay}" Canvas.Top="298" Width="80" TextAlignment="Center"/>
+
             <TextBlock x:Name="textBlock3_Copy3" FontSize="8" Height="12" Canvas.Left="419" TextWrapping="Wrap" Text="LED1" Canvas.Top="11" Width="25" TextAlignment="Center"/>
             <TextBlock x:Name="textBlock3_Copy4" FontSize="8" Height="12" Canvas.Left="556" TextWrapping="Wrap" Text="LED2" Canvas.Top="11" Width="25" TextAlignment="Center"/>
             <TextBlock x:Name="textBlock3_Copy5" FontSize="10" Height="12" Canvas.Left="551" TextWrapping="Wrap" Text="V" Canvas.Top="9" Width="9" TextAlignment="Center" RenderTransformOrigin="2.059,0.6"/>

@@ -53,39 +53,20 @@ namespace ChipViewApp
 
         // Using a DependencyProperty as the backing store for IsTopLeftChecked.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty selectedLedProperty =
-        DependencyProperty.Register("SelectedLED", typeof(SELECTED_LED), typeof(LEDSetting_UserControl), new PropertyMetadata(OnSelectedLEDchanged));
-        private static void OnSelectedLEDchanged(DependencyObject d,
-         DependencyPropertyChangedEventArgs e)
-        {
-            LEDSetting_UserControl UserControl1Control = d as LEDSetting_UserControl;
-            UserControl1Control.OnSelectedLEDchanged(e);
-        }
+        DependencyProperty.Register("SelectedLED", typeof(SELECTED_LED), typeof(LEDSetting_UserControl), new PropertyMetadata(SELECTED_LED.LED1));
 
-        public void OnSelectedLEDchanged(DependencyPropertyChangedEventArgs e)
-        {
-            //  cb_topLeft.IsChecked = (bool)e.NewValue;
-            var e_selectedLED = (SELECTED_LED)e.NewValue;
 
-            //if (e_selectedLED == SELECTED_LED.LED1)
-            //{
-            //    SelectedLED = SELECTED_LED.LED1;
-            //    rb_led1.IsChecked = true;
-            //}
-            //else if (e_selectedLED == SELECTED_LED.LED2)
-            //{
-            //    SelectedLED = SELECTED_LED.LED2;
-            //    rb_led2.IsChecked = true;
-            //}
-            //else if (e_selectedLED == SELECTED_LED.LED3)
-            //{
-            //    rb_led3.IsChecked = true;
-            //}
-            //else if (e_selectedLED == SELECTED_LED.LED4)
-            //{
-            //    rb_led4.IsChecked = true;
-            //}
+        //private static void OnSelectedLEDchanged(DependencyObject d,
+        // DependencyPropertyChangedEventArgs e)
+        //{
+        //    LEDSetting_UserControl UserControl1Control = d as LEDSetting_UserControl;
+        //    UserControl1Control.OnSelectedLEDchanged(e);
+        //}
 
-        }
+        //public void OnSelectedLEDchanged(DependencyPropertyChangedEventArgs e)
+        //{
+
+        //}
         #endregion
 
         private void rb_ledsettingX_Checked(object sender, RoutedEventArgs e)
@@ -98,7 +79,6 @@ namespace ChipViewApp
 
                 if (rb_name == "rb_led1")
                 {
-
                     //rb_led1.Foreground = Brushes.WhiteSmoke;
                     //rb_led2.Foreground = Brushes.Black;
                     SelectedLED = SELECTED_LED.LED1;
@@ -122,7 +102,6 @@ namespace ChipViewApp
                     //rb_led1.Foreground = Brushes.Black;
                     SelectedLED = SELECTED_LED.LED4;
                 }
-
             }
             catch (Exception ex)
             {
@@ -130,9 +109,18 @@ namespace ChipViewApp
             }
         }
 
+
+        public event RoutedPropertyChangedEventHandler<object> ledCurrentValueChanged;
         private void LedCurrent_X_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            ledCurrentValueChanged?.Invoke(sender, e);
+        }
 
+
+        public event SelectionChangedEventHandler ledDrivesideSelectionChanged;
+        private void LedDriveside_X_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ledDrivesideSelectionChanged?.Invoke(sender, e);
         }
     }
 }
