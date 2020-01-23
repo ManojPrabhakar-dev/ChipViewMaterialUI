@@ -70,6 +70,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -95,6 +97,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GenerateTimingDiagramData.cs" />
     <Compile Include="InputMuxConfig_UserControl.xaml.cs">
       <DependentUpon>InputMuxConfig_UserControl.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="PairConfigSelection_UserControl.xaml.cs">
       <DependentUpon>PairConfigSelection_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TimingDiagram_Float_UserControl.xaml.cs">
+      <DependentUpon>TimingDiagram_Float_UserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TimingDiagram_UserControl.xaml.cs">
       <DependentUpon>TimingDiagram_UserControl.xaml</DependentUpon>
@@ -134,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PairConfigSelection_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TimingDiagram_Float_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

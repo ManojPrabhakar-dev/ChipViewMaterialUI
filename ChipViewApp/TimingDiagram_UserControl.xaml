@@ -10,6 +10,7 @@
     <Grid Margin="0">
        
         <Canvas x:Name="timingDiagram_perSlot"  Margin="0" Width="{Binding ElementName=uc_timingControls,Path=Width}">
+            
             <Path x:Name="path_precondition" Stroke="{Binding Path=PRECONDITION_BRUSH, Mode=TwoWay}" StrokeThickness="2"
                 Data="{Binding Path= PRECONDITION_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="70" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />         
 

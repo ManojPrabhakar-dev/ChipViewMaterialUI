@@ -187,7 +187,7 @@
         {
           "Name": "InputMux Config",
           "Control": "ComboBox",
-          "Listval": ["IN1","IN2","IN3","IN4","IN5","IN6","IN7","IN8"],
+          "Listval": [ "IN1", "IN2", "IN3", "IN4", "IN5", "IN6", "IN7", "IN8" ],
           "Value": [ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 ], //Values Per Slot,
           "RegisterName": "INPUTS",
           "SlotName": "A",
@@ -195,6 +195,22 @@
           "StartBit": 0,
           "EndBit": 15,
           "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+     "OperatingMode": {
+      "Parameters": [
+        {
+          "Name": "Operating Mode",
+          "Control": "ComboBox",
+          "Listval": ["NORMAL", "FLOAT", "DI_INT" ],
+          "Value": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+          "RegisterName": "OPERATING_MODE",
+          "SlotName": "A",
+          "RegisterFieldName": "NA",
+          "StartBit": 0,
+          "EndBit": 0,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]
         }
       ]
     }
@@ -357,7 +373,7 @@
           "Name": "AFE Width (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 31 ],
-          "Value": [ 3, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
+          "Value": [ 5, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
           "RegisterName": "INTEG_WIDTH", // 4000 - INTEG_SETUP   4100 - INTEG_WIDTH
           "SlotName": "A",
           "RegisterFieldName": "INTEG_WIDTH",
@@ -421,7 +437,7 @@
           "Name": "MOD Width (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 255 ],
-          "Value": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "Value": [ 8, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
           "RegisterName": "MOD_PULSE",
           "SlotName": "A",
           "RegisterFieldName": "MOD_WIDTH",
@@ -437,12 +453,28 @@
           "Name": "MOD Offset (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 255 ],
-          "Value": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "Value": [ 14, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
           "RegisterName": "MOD_PULSE",
           "SlotName": "A",
           "RegisterFieldName": "MOD_OFFSET",
           "StartBit": 0,
           "EndBit": 7,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "MinPeriod": {
+      "Parameters": [
+        {
+          "Name": "Min Period (us)",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 1023 ],
+          "Value": [ 30, 35, 40, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "PERIOD",
+          "SlotName": "A",
+          "RegisterFieldName": "MIN_PERIOD",
+          "StartBit": 0,
+          "EndBit": 9,
           "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
         }
       ]

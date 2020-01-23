@@ -6,16 +6,16 @@ using System.Windows.Media;
 namespace ChipViewApp
 {
     /// <summary>
-    /// Interaction logic for TimingDiagram_UserControl.xaml
+    /// Interaction logic for TimingDiagram_Float_UserControl.xaml
     /// </summary>
-    public partial class TimingDiagram_UserControl : UserControl
+    public partial class TimingDiagram_Float_UserControl : UserControl
     {
-        public TimingDiagram_UserControl()
+        public TimingDiagram_Float_UserControl()
         {
             InitializeComponent();
         }
 
-        public TimingDiagram_UserControl(Timing_Parameters timingParam, Brush path_brush, int slotNum)
+        public TimingDiagram_Float_UserControl(Timing_Parameters timingParam, Brush path_brush, int slotNum)
         {
             InitializeComponent();
 
@@ -26,14 +26,14 @@ namespace ChipViewApp
             timingParam.INTEG_BRUSH = path_brush;
             Append_SlotName(slotNum);
         }
-        public TimingDiagram_UserControl(Brush path_brush, int SlotNum)
+        public TimingDiagram_Float_UserControl(Brush path_brush, int SlotNum)
         {
             InitializeComponent();
 
             path_precondition.Stroke = path_brush;
-            path_LED.Stroke = path_brush;
+            path_Connect_Float.Stroke = path_brush;
             path_integratorSequence.Stroke = path_brush;
-            path_MODULATE.Stroke = path_brush;
+            path_LEDPulses.Stroke = path_brush;
             Append_SlotName(SlotNum);
         }
 
@@ -68,6 +68,4 @@ namespace ChipViewApp
             }
         }
     }
-
-
 }

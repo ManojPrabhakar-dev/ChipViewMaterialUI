@@ -61,7 +61,7 @@
 									<ColumnDefinition Width="0.5*"/>
 								</Grid.ColumnDefinitions>
 							</Grid>
-						</Expander>
+					</Expander>
 
 					<Border Grid.Row="2" Background="{DynamicResource MaterialDesignDivider}"
 						  Height="1"
@@ -69,15 +69,17 @@
 						  SnapsToDevicePixels="True" />
 
 					<Expander Name="RadExpSettings"  Grid.Row="3" ExpandDirection="Down" Header="Slot Configuration" 
-								 FontSize="14" FontWeight="Bold"
-								 Visibility="Visible" >
-							<Grid Name="SlotGlobalSettings" Margin="0, 0, 0, 20" Height="Auto" Width="Auto">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="0.5*"/>
-									<ColumnDefinition Width="0.5*"/>
-								</Grid.ColumnDefinitions>
-							</Grid>
-						</Expander>
+								FontSize="14" FontWeight="Bold"
+								Visibility="Visible" >
+						<Grid Name="SlotGlobalSettings" Margin="0, 0, 0, 20" Height="Auto" Width="Auto">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="0.5*"/>
+								<ColumnDefinition Width="0.5*"/>
+							</Grid.ColumnDefinitions>
+						</Grid>
+					</Expander>
+						
+						
 					<Border Grid.Row="4" Background="{DynamicResource MaterialDesignDivider}"
 					  Height="1"
 					  HorizontalAlignment="Stretch"

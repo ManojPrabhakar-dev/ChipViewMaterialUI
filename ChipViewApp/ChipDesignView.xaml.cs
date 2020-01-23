@@ -112,6 +112,18 @@ namespace ChipViewApp
             }
         }
 
+        private string min_period;
+        public string MIN_PERIOD
+        {
+            get { return min_period; }
+
+            set
+            {
+                min_period = value;
+                OnPropertyChanged(nameof(MIN_PERIOD));
+            }
+        }
+
         private Geometry precondition_Data;
         public Geometry PRECONDITION_DATA
         {
@@ -244,6 +256,18 @@ namespace ChipViewApp
             }
         }
 
+        private double minperiod_leftMargin;
+        public double MINPERIOD_LEFT_MARGIN
+        {
+            get { return minperiod_leftMargin; }
+
+            set
+            {
+                minperiod_leftMargin = value;
+                OnPropertyChanged(nameof(MINPERIOD_LEFT_MARGIN));
+            }
+        }
+
         private double precondition_width;
         public double PRECONDITION_WIDTH
         {
@@ -325,6 +349,18 @@ namespace ChipViewApp
             {
                 modulated_width = value;
                 OnPropertyChanged(nameof(MODULATED_WIDTH));
+            }
+        }
+
+        private double min_period_width_info;
+        public double MIN_PERIOD_WIDTH_INFO
+        {
+            get { return min_period_width_info; }
+
+            set
+            {
+                min_period_width_info = value;
+                OnPropertyChanged(nameof(MIN_PERIOD_WIDTH_INFO));
             }
         }
 
@@ -734,6 +770,14 @@ namespace ChipViewApp
         }
     }
 
+    public enum OPERATING_MODE
+    {
+        NORMAL = 0,
+        FLOAT,
+        DI_INT,
+        NONE
+    }
+
     /// <summary>
     /// Interaction logic for ChipDesignView.xaml
     /// </summary>
@@ -770,6 +814,14 @@ namespace ChipViewApp
         Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         Brush StrokeDis = Brushes.DarkGray;
         /* GLOBAL VARIABLES */
+
+        private OPERATING_MODE operatingMode;
+
+        public OPERATING_MODE OperatingMode
+        {
+            get { return operatingMode; }
+            set { operatingMode = value; }
+        }
 
 
         // int nSlotSel = 0;
@@ -1328,6 +1380,8 @@ namespace ChipViewApp
 
                 SwapCh2.ContextMenu = (ContextMenu)LayoutWin.Resources["SwapMenu"];
 
+                GetOperatingMode();
+
                 #region ADDING CONTROLS AND SETTING VALUES
 
                 int nRowidx = 0;
@@ -1433,6 +1487,20 @@ namespace ChipViewApp
             }
         }
 
+        private void GetOperatingMode()
+        {
+            try
+            {
+                iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems["SlotGlobalSettings"]["OperatingMode"].Parameters[0]["Value"]);
+
+                OperatingMode = (OPERATING_MODE)iValue;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in GetOpeartingMode API = " + ex);
+            }
+        }
+
         private void UpdateTimingParam_ActiveSlots()
         {
             foreach (string nNameKey in aRegAdpdCtrlItems["TimingSettings"].Keys)
@@ -1445,26 +1513,39 @@ namespace ChipViewApp
         {
             try
             {
-
+                TimingDiagram_UserControl uc_timingdiagram_normal;
+                TimingDiagram_Float_UserControl uc_timingdiagram_float;
                 sPanel_timingDiagram.Children.Clear();
 
-                if (isContinuous == false)
+                //if (isContinuous == false)
+                //{
+
+                if (OperatingMode == OPERATING_MODE.NORMAL)
                 {
-                    var timing_UserControl = new TimingDiagram_UserControl(lst_timingParam[nSlotSel],dict_slotBrushes[nSlotSel+1],nSlotSel+1);
+                    uc_timingdiagram_normal = new TimingDiagram_UserControl(lst_timingParam[nSlotSel], dict_slotBrushes[nSlotSel + 1], nSlotSel + 1);
                     lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
-                    timing_UserControl.DataContext = lst_timingParam[nSlotSel];
-                    sPanel_timingDiagram.Children.Add(timing_UserControl);
+                    uc_timingdiagram_normal.DataContext = lst_timingParam[nSlotSel];
+                    sPanel_timingDiagram.Children.Add(uc_timingdiagram_normal);
                 }
                 else
                 {
-                    for (int i = 1; i <= nActiveSlots; i++)
-                    {
-                        var timing_UserControl = new TimingDiagram_UserControl(lst_timingParam[nSlotSel],dict_slotBrushes[i],i);
-                        lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
-                        timing_UserControl.DataContext = lst_timingParam[i - 1];
-                        sPanel_timingDiagram.Children.Add(timing_UserControl);
-                    }
+                    uc_timingdiagram_float = new TimingDiagram_Float_UserControl(lst_timingParam[nSlotSel], dict_slotBrushes[nSlotSel + 1], nSlotSel + 1);
+                    lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
+                    uc_timingdiagram_float.DataContext = lst_timingParam[nSlotSel];
+                    sPanel_timingDiagram.Children.Add(uc_timingdiagram_float);
                 }
+
+                //}
+                //else
+                //{
+                //    for (int i = 1; i <= nActiveSlots; i++)
+                //    {
+                //        var timing_UserControl = new TimingDiagram_UserControl(lst_timingParam[nSlotSel],dict_slotBrushes[i],i);
+                //        lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
+                //        timing_UserControl.DataContext = lst_timingParam[i - 1];
+                //        sPanel_timingDiagram.Children.Add(timing_UserControl);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -1476,12 +1557,23 @@ namespace ChipViewApp
         {
             try
             {
-                var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
+                if (OperatingMode == OPERATING_MODE.FLOAT)
+                {
+                    var timingParam = m_PathData_inst.GetPathData_Float(lst_timingParam[slotSel]);
+                    lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
+                    lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
+                    lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;  // Geometry.Parse("M1,100 L 100,100");
+                    lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
+                }
+                else
+                {
+                    var timingParam = m_PathData_inst.GetPathData(lst_timingParam[slotSel]);
+                    lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
+                    lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
+                    lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;  // Geometry.Parse("M1,100 L 100,100");
+                    lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
+                }
 
-                lst_timingParam[slotSel].PRECONDITION_DATA = timingParam.PRECONDITION_DATA;
-                lst_timingParam[slotSel].LED_DATA = timingParam.LED_DATA;
-                lst_timingParam[slotSel].MODULATESTIMULUS_DATA = timingParam.MODULATESTIMULUS_DATA;  // Geometry.Parse("M1,100 L 100,100");
-                lst_timingParam[slotSel].INTEGSEQUENCE_DATA = timingParam.INTEGSEQUENCE_DATA;
             }
             catch (Exception ex)
             {
@@ -1651,6 +1743,10 @@ namespace ChipViewApp
                 {
                     lst_timingParam[slotSel].MOD_OFFSET = dValue.ToString() + " µs";
                 }
+                else if (nNameKey.Contains("MinPeriod"))
+                {
+                    lst_timingParam[slotSel].MIN_PERIOD = dValue.ToString() + " µs";
+                }
             }
             catch (Exception ex)
             {
@@ -1728,7 +1824,12 @@ namespace ChipViewApp
                     for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
                     {
                         var control_name = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString();
-                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config"))
+                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config") || (control_name == "Operating Mode"))
+                        {
+                            continue;
+                        }
+
+                        if ((control_name == "Min Period (us)") && (OperatingMode == OPERATING_MODE.NORMAL))
                         {
                             continue;
                         }
@@ -2065,8 +2166,8 @@ namespace ChipViewApp
 
                         if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString() == "InputMux Config")
                         {
-                            JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey]["InputMux"].Parameters[0]["Value"];
-                            List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
+                            //JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey]["InputMux"].Parameters[0]["Value"];
+                            //List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
 
                             iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems[nSettingsKey]["InputMux"].Parameters[0]["Value"]);
                             Update_InputMuxSelection_UI(iValue);
@@ -2299,39 +2400,6 @@ namespace ChipViewApp
             }
         }
 
-        private void LEDSelectX_SelectionChanged1(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                ComboBox comboBox = (ComboBox)sender;
-                string nNameKey =  comboBox.Name;
-                int nParamIdx = 0;
-                string nSettingsKey = ((Grid)(comboBox.Parent)).Name;
-
-                if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count > 0)
-                {
-                    JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"];
-                    List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
-                    regVal_Lst[nSlotSel] = comboBox.SelectedIndex.ToString();
-
-                    JArray aArr_IsValChanged = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"];
-                    List<string> IsVal_Changed_Lst = aArr_IsValChanged.ToObject<List<string>>();
-                    IsVal_Changed_Lst[nSlotSel] = "True";
-
-                    var jarr_Val_mod = JArray.FromObject(regVal_Lst);
-                    var jarr_IsValChanged_mod = JArray.FromObject(IsVal_Changed_Lst);
-
-                    aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"] = jarr_Val_mod;
-                    aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"] = jarr_IsValChanged_mod;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("EXception in LEDSelectX_SelectionChanged API = " + ex);
-            }
-        }
-
         private void LEDSelectX_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -2385,42 +2453,6 @@ namespace ChipViewApp
             catch (Exception ex)
             {
                 Console.WriteLine("EXception in LEDSelectX_SelectionChanged API = " + ex);
-            }
-        }
-
-        private void LEDCurrentX_ValueChanged1(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            try
-            {
-                IntegerUpDown radNumUpDown = (IntegerUpDown)sender;
-
-                string nNameKey =  radNumUpDown.Name;
-                int nParamIdx = 0;
-                string nSettingsKey = ((Grid)(radNumUpDown.Parent)).Name;
-
-                if (aRegAdpdCtrlItems.Count != 0)
-                {
-                    if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count > 0)
-                    {
-                        JArray aArr_value = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"];
-                        List<string> regVal_Lst = aArr_value.ToObject<List<string>>();
-                        regVal_Lst[nSlotSel] = radNumUpDown.Value.ToString();
-
-                        JArray aArr_IsValChanged = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"];
-                        List<string> IsVal_Changed_Lst = aArr_IsValChanged.ToObject<List<string>>();
-                        IsVal_Changed_Lst[nSlotSel] = "True";
-
-                        var jarr_Val_mod = JArray.FromObject(regVal_Lst);
-                        var jarr_IsValChanged_mod = JArray.FromObject(IsVal_Changed_Lst);
-
-                        aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Value"] = jarr_Val_mod;
-                        aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"] = jarr_IsValChanged_mod;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception in LEDCurrentX_ValueChanged API = " + ex);
             }
         }
 
