@@ -28,6 +28,7 @@ namespace ChipViewApp
             set { nSlotSel = value; }
         }
 
+        #region Timing_Register_Values
         private string pre_width;
         public string PRE_WIDTH
         {
@@ -124,6 +125,9 @@ namespace ChipViewApp
             }
         }
 
+        #endregion
+
+        #region Timing_Path_Data
         private Geometry precondition_Data;
         public Geometry PRECONDITION_DATA
         {
@@ -172,6 +176,11 @@ namespace ChipViewApp
             }
         }
 
+        #endregion
+
+        #region Timing_Diagram_Info
+
+        #region Param_Leftmargin_Info
         private double precondition_leftMargin;
         public double PRECONDITION_LEFT_MARGIN
         {
@@ -268,6 +277,108 @@ namespace ChipViewApp
             }
         }
 
+        #endregion Param_Leftmargin_Info
+
+        #region FLOAT_LEDPULSES_INFO
+        private double ledpulse1_leftMargin;
+        public double LEDPULSE1_LEFT_MARGIN
+        {
+            get { return ledpulse1_leftMargin; }
+
+            set
+            {
+                ledpulse1_leftMargin = value;
+                OnPropertyChanged(nameof(LEDPULSE1_LEFT_MARGIN));
+            }
+        }
+
+        private double ledpulse2_leftMargin;
+        public double LEDPULSE2_LEFT_MARGIN
+        {
+            get { return ledpulse2_leftMargin; }
+
+            set
+            {
+                ledpulse2_leftMargin = value;
+                OnPropertyChanged(nameof(LEDPULSE2_LEFT_MARGIN));
+            }
+        }
+
+        private double ledpulse3_leftMargin;
+        public double LEDPULSE3_LEFT_MARGIN
+        {
+            get { return ledpulse3_leftMargin; }
+
+            set
+            {
+                ledpulse3_leftMargin = value;
+                OnPropertyChanged(nameof(LEDPULSE3_LEFT_MARGIN));
+            }
+        }
+
+        private double ledpulse4_leftMargin;
+        public double LEDPULSE4_LEFT_MARGIN
+        {
+            get { return ledpulse4_leftMargin; }
+
+            set
+            {
+                ledpulse4_leftMargin = value;
+                OnPropertyChanged(nameof(LEDPULSE4_LEFT_MARGIN));
+            }
+        }
+
+        private string ledpulse1_status;
+        public string LEDPULSE1_STATUS
+        {
+            get { return ledpulse1_status; }
+
+            set
+            {
+                ledpulse1_status = value;
+                OnPropertyChanged(nameof(LEDPULSE1_STATUS));
+            }
+        }
+
+        private string ledpulse2_status;
+        public string LEDPULSE2_STATUS
+        {
+            get { return ledpulse2_status; }
+
+            set
+            {
+                ledpulse2_status = value;
+                OnPropertyChanged(nameof(LEDPULSE2_STATUS));
+            }
+        }
+
+        private string ledpulse3_status;
+        public string LEDPULSE3_STATUS
+        {
+            get { return ledpulse3_status; }
+
+            set
+            {
+                ledpulse3_status = value;
+                OnPropertyChanged(nameof(LEDPULSE3_STATUS));
+            }
+        }
+
+        private string ledpulse4_status;
+        public string LEDPULSE4_STATUS
+        {
+            get { return ledpulse4_status; }
+
+            set
+            {
+                ledpulse4_status = value;
+                OnPropertyChanged(nameof(LEDPULSE4_STATUS));
+            }
+        }
+
+        #endregion FLOAT_LEDPULSES_INFO
+
+        #region Param_Width_Info
         private double precondition_width;
         public double PRECONDITION_WIDTH
         {
@@ -364,6 +475,8 @@ namespace ChipViewApp
             }
         }
 
+        #endregion Param_Width_info
+
         private double path_width;
         public double PATH_WIDTH
         {
@@ -387,6 +500,9 @@ namespace ChipViewApp
                 OnPropertyChanged(nameof(USERCONTROL_WIDTH));
             }
         }
+        #endregion Timing_Diagram_Info
+
+        #region Timing_Param_Info_Visibility
 
         private string is_preconditionPath_enable;
         public string IS_PRECONDITIONPATH_ENABLE
@@ -449,7 +565,6 @@ namespace ChipViewApp
             }
         }
 
-
         private string is_integpath_enable;
         public string IS_INTEGPATH_ENABLE
         {
@@ -474,6 +589,9 @@ namespace ChipViewApp
             }
         }
 
+        #endregion Timing_Param_Info_Visibility
+
+        #region Timing_path_Brushes
         private Brush slot_default_brush;
         public Brush SLOT_DEFAULT_BRUSH
         {
@@ -534,6 +652,8 @@ namespace ChipViewApp
             }
         }
 
+        #endregion Timing_path_Brushes
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string property)
         {
@@ -563,13 +683,11 @@ namespace ChipViewApp
         }
 
         private int nSlotSel;
-
         public int NSlotSelCopy
         {
             get { return nSlotSel; }
             set { nSlotSel = value; }
         }
-
 
         private SELECTED_LED ledSelectedIndex;
 
@@ -616,6 +734,8 @@ namespace ChipViewApp
             }
         }
 
+        #region LED_CURRENT
+
         private string lbl_ledcurrentX;
         public string LBL_LEDCURRENTX
         {
@@ -625,18 +745,6 @@ namespace ChipViewApp
             {
                 lbl_ledcurrentX = value;
                 OnPropertyChanged(nameof(LBL_LEDCURRENTX));
-            }
-        }
-
-        private string lbl_leddrivesideX;
-        public string LBL_LEDDRIVESIDEX
-        {
-            get { return lbl_leddrivesideX; }
-
-            set
-            {
-                lbl_leddrivesideX = value;
-                OnPropertyChanged(nameof(LBL_LEDDRIVESIDEX));
             }
         }
 
@@ -702,6 +810,23 @@ namespace ChipViewApp
             }
         }
 
+        #endregion LED_CURRENT
+
+        #region LED_SELECT
+
+        private string lbl_leddrivesideX;
+        public string LBL_LEDDRIVESIDEX
+        {
+            get { return lbl_leddrivesideX; }
+
+            set
+            {
+                lbl_leddrivesideX = value;
+                OnPropertyChanged(nameof(LBL_LEDDRIVESIDEX));
+            }
+        }
+
+
         private int ledselect1;
         public int LEDSELECT1
         {
@@ -762,6 +887,7 @@ namespace ChipViewApp
             }
         }
 
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string property)
@@ -864,6 +990,9 @@ namespace ChipViewApp
         public const string IN6 = "IN6";
         public const string IN7 = "IN7";
         public const string IN8 = "IN8";
+
+        public const string LEDPULSE_MASKED = "MASKED";
+        public const string LEDPULSE_FLASHED = "FLASHED";
 
         public ushort CHIP400x = 0xc0;
         public ushort CHIP410x = 0xc2;
@@ -1468,6 +1597,9 @@ namespace ChipViewApp
                 UpdateControlValues();
                 EnCommonCtrls();
                 EnDisCHCtrls(1, true);
+
+                EnDisBPF();
+
                 UpdateTimingParam_ActiveSlots();
                 Add_TimingDiagram();
 
@@ -1500,6 +1632,7 @@ namespace ChipViewApp
                 Console.WriteLine("Exception in GetOpeartingMode API = " + ex);
             }
         }
+
 
         private void UpdateTimingParam_ActiveSlots()
         {
@@ -1746,6 +1879,49 @@ namespace ChipViewApp
                 else if (nNameKey.Contains("MinPeriod"))
                 {
                     lst_timingParam[slotSel].MIN_PERIOD = dValue.ToString() + " µs";
+                }
+                else if (nNameKey.Contains("LEDPulseStatus"))
+                {
+                    var ledpulse1_stats = getBitValues((int)dValue, 0, 0);
+                    var ledpulse2_stats = getBitValues((int)dValue, 1, 1);
+                    var ledpulse3_stats = getBitValues((int)dValue, 2, 2);
+                    var ledpulse4_stats = getBitValues((int)dValue, 3, 3);
+
+                    if (ledpulse1_stats == 1)
+                    {
+                        lst_timingParam[slotSel].LEDPULSE1_STATUS = LEDPULSE_MASKED;
+                    }
+                    else
+                    {
+                        lst_timingParam[slotSel].LEDPULSE1_STATUS = LEDPULSE_FLASHED;
+                    }
+
+                    if (ledpulse2_stats == 1)
+                    {
+                        lst_timingParam[slotSel].LEDPULSE2_STATUS = LEDPULSE_MASKED;
+                    }
+                    else
+                    {
+                        lst_timingParam[slotSel].LEDPULSE2_STATUS = LEDPULSE_FLASHED;
+                    }
+
+                    if (ledpulse3_stats == 1)
+                    {
+                        lst_timingParam[slotSel].LEDPULSE3_STATUS = LEDPULSE_MASKED;
+                    }
+                    else
+                    {
+                        lst_timingParam[slotSel].LEDPULSE3_STATUS = LEDPULSE_FLASHED;
+                    }
+
+                    if (ledpulse4_stats == 1)
+                    {
+                        lst_timingParam[slotSel].LEDPULSE4_STATUS = LEDPULSE_MASKED;
+                    }
+                    else
+                    {
+                        lst_timingParam[slotSel].LEDPULSE4_STATUS = LEDPULSE_FLASHED;
+                    }
                 }
             }
             catch (Exception ex)
@@ -2116,6 +2292,8 @@ namespace ChipViewApp
                                 MenuItem channel2Menu = InputMux.ContextMenu.Items[0] as MenuItem;
                                 channel2Menu.Header = "Disable CH2";
                             }
+
+
 
                             if (!skip_IsValueChangesSet)
                             {
@@ -3296,6 +3474,38 @@ namespace ChipViewApp
 
         }
 
+        private void EnDisBPF()
+        {
+            try
+            {
+                Brush nStrokeSel;
+                LinearGradientBrush nFillGrad;
+
+                if ((OperatingMode == OPERATING_MODE.FLOAT) || (OperatingMode == OPERATING_MODE.DI_INT))
+                {
+                    nStrokeSel = StrokeDis;
+                    nFillGrad = (LinearGradientBrush)App.Current.Resources["disablegradient"];
+                }
+                else
+                {
+                    nFillGrad = (LinearGradientBrush)App.Current.Resources["ProgressBrush"];
+                    nStrokeSel = StrokeEn;
+                }
+
+
+                BPFCh1.Stroke = nStrokeSel;
+                BPFCh1.Fill = nFillGrad;
+
+                BPFCh2.Stroke = nStrokeSel;
+                BPFCh2.Fill = nFillGrad;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in EnDisBPF Api = " + ex);
+            }
+        }
+
         #endregion
 
         #region SLOTSEL COMBOBOX
@@ -3384,29 +3594,6 @@ namespace ChipViewApp
             RadExpChipSettings.Visibility = Visibility.Hidden;
         }
 
-        public int setBitValues(int OriginalRegVal, int Bitfieldval, int startBit, int endBit)
-        {
-
-            ushort mask = 0xFFFF;
-            var OriginalRegValtemp = (ushort) OriginalRegVal;
-            mask <<= 15 - endBit;
-            mask >>= 15 - endBit;
-            mask >>= startBit;
-            mask <<= startBit;
-            mask = (ushort)~mask;
-            OriginalRegValtemp &= mask;
-            OriginalRegValtemp |= (ushort)(Bitfieldval << startBit);
-            return OriginalRegValtemp;
-        }
-
-        public int getBitValues(int x, int startBit, int endBit)
-        {
-            var XTemp = (ushort) x;
-            XTemp <<= 15 - endBit;
-            XTemp >>= 15 - endBit + startBit;
-            return XTemp;
-        }
-
         #endregion
 
         #region CHIPVIEW EVENTS
@@ -3432,6 +3619,8 @@ namespace ChipViewApp
 
                     UpdateChannel2_Status(false);
                 }
+
+                EnDisBPF();
             }
             catch (Exception ex)
             {
@@ -3719,6 +3908,29 @@ namespace ChipViewApp
             }
 
             return foundChild;
+        }
+
+        public int setBitValues(int OriginalRegVal, int Bitfieldval, int startBit, int endBit)
+        {
+
+            ushort mask = 0xFFFF;
+            var OriginalRegValtemp = (ushort) OriginalRegVal;
+            mask <<= 15 - endBit;
+            mask >>= 15 - endBit;
+            mask >>= startBit;
+            mask <<= startBit;
+            mask = (ushort)~mask;
+            OriginalRegValtemp &= mask;
+            OriginalRegValtemp |= (ushort)(Bitfieldval << startBit);
+            return OriginalRegValtemp;
+        }
+
+        public int getBitValues(int x, int startBit, int endBit)
+        {
+            var XTemp = (ushort) x;
+            XTemp <<= 15 - endBit;
+            XTemp >>= 15 - endBit + startBit;
+            return XTemp;
         }
 
 

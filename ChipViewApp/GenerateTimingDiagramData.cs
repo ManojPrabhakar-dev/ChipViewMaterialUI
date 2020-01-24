@@ -132,7 +132,7 @@ namespace ChipViewApp
                     timingData += X2 + "," + default_Y + " ";
                     timingData += X3 + "," + default_Y;
 
-                    timingParam.PRECONDITION_LEFT_MARGIN = x1 + 70;
+                    timingParam.PRECONDITION_LEFT_MARGIN = x1 + TimeCoord.CANVAS_LEFT;
                     timingParam.PRECONDITION_WIDTH = (X2 - x1);
 
                     if (pre_width == 0)
@@ -208,11 +208,11 @@ namespace ChipViewApp
                     timingData += (X4 + 1) + "," + default_Y + " ";
                     timingData += X5 + "," + default_Y;
 
-                    timingParam.LEDOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.LEDOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.LED_OFFSET_WIDTH = (x1 - (timingParam.LEDOFFSET_LEFT_MARGIN - 70));
+                    timingParam.LED_OFFSET_WIDTH = (x1 - (timingParam.LEDOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.LEDWIDTH_LEFT_MARGIN = X3 + 70;
+                    timingParam.LEDWIDTH_LEFT_MARGIN = X3 + TimeCoord.CANVAS_LEFT;
 
                     timingParam.LED_WIDTH_VAL = (X4 - X3);
 
@@ -300,11 +300,11 @@ namespace ChipViewApp
                     timingData += (X4 + 1) + "," + default_Y + " ";
                     timingData += X5 + "," + default_Y;
 
-                    timingParam.MODOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.MODOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.MODOFFSET_WIDTH = (x1 - (timingParam.MODOFFSET_LEFT_MARGIN - 70));
+                    timingParam.MODOFFSET_WIDTH = (x1 - (timingParam.MODOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.MODWIDTH_LEFT_MARGIN = X3 + 70;
+                    timingParam.MODWIDTH_LEFT_MARGIN = X3 + TimeCoord.CANVAS_LEFT;
 
                     timingParam.MODULATED_WIDTH = (X4 - X3);
 
@@ -391,11 +391,11 @@ namespace ChipViewApp
                     timingData += x6 + "," + default_Y + " ";
                     timingData += X7 + "," + default_Y + " ";
 
-                    timingParam.INTEGOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.INTEGOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.INTEGOFFSET_WIDTH = (x1 - (timingParam.INTEGOFFSET_LEFT_MARGIN - 70));
+                    timingParam.INTEGOFFSET_WIDTH = (x1 - (timingParam.INTEGOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.INTEGWIDTH_LEFT_MARGIN = X4 + 70;
+                    timingParam.INTEGWIDTH_LEFT_MARGIN = X4 + TimeCoord.CANVAS_LEFT;
                     timingParam.INTEGRATED_WIDTH = X5 - X4;
 
                     if (integ_width == 0)
@@ -641,7 +641,7 @@ namespace ChipViewApp
                     timingData += X2 + "," + default_Y + " ";
                     timingData += X3 + "," + default_Y;
 
-                    timingParam.PRECONDITION_LEFT_MARGIN = x1 + 70;
+                    timingParam.PRECONDITION_LEFT_MARGIN = x1 + TimeCoord.CANVAS_LEFT;
                     timingParam.PRECONDITION_WIDTH = (X2 - x1);
 
                     if (pre_width == 0)
@@ -724,12 +724,17 @@ namespace ChipViewApp
                     timingData += X10 + "," + default_Y;
 
 
+                    timingParam.LEDOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.LEDOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.LED_OFFSET_WIDTH = (x1 - (timingParam.LEDOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.LED_OFFSET_WIDTH = (x1 - (timingParam.LEDOFFSET_LEFT_MARGIN - 70));
+                    timingParam.LEDWIDTH_LEFT_MARGIN = X3 + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.LEDWIDTH_LEFT_MARGIN = X3 + 70;
+                    //LEDPULSE 1 to 4 Leftmargin set to show MASKED/FLASHED LED Status
+                    timingParam.LEDPULSE1_LEFT_MARGIN = x1 + TimeCoord.CANVAS_LEFT;
+                    timingParam.LEDPULSE2_LEFT_MARGIN = X3 + TimeCoord.CANVAS_LEFT;
+                    timingParam.LEDPULSE3_LEFT_MARGIN = X5 + TimeCoord.CANVAS_LEFT;
+                    timingParam.LEDPULSE4_LEFT_MARGIN = X7 + TimeCoord.CANVAS_LEFT;
 
                     timingParam.LED_WIDTH_VAL = (X4 - X3);
 
@@ -827,11 +832,15 @@ namespace ChipViewApp
                     timingData += x9 + "," + default_Y + " ";
                     timingData += X10 + "," + default_Y;
 
-                    timingParam.MODOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.MODOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.MODOFFSET_WIDTH = (x1 - (timingParam.MODOFFSET_LEFT_MARGIN - 70));
+                    timingParam.MODOFFSET_WIDTH = (x1 - (timingParam.MODOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.MODWIDTH_LEFT_MARGIN = X3 + 70;
+                    timingParam.MINPERIOD_LEFT_MARGIN = timingParam.MODOFFSET_LEFT_MARGIN + timingParam.MODOFFSET_WIDTH;
+
+                    timingParam.MIN_PERIOD_WIDTH_INFO = (X3 - x1);
+
+                    timingParam.MODWIDTH_LEFT_MARGIN = X3 + TimeCoord.CANVAS_LEFT;
 
                     timingParam.MODULATED_WIDTH = (X4 - X3);
 
@@ -936,11 +945,11 @@ namespace ChipViewApp
 
                     timingData += X14 + "," + default_Y + " ";
 
-                    timingParam.INTEGOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + 70;
+                    timingParam.INTEGOFFSET_LEFT_MARGIN = initial_width + (pre_width * TimeCoord.Per_ms) + TimeCoord.CANVAS_LEFT;
 
-                    timingParam.INTEGOFFSET_WIDTH = (x1 - (timingParam.INTEGOFFSET_LEFT_MARGIN - 70));
+                    timingParam.INTEGOFFSET_WIDTH = (x1 - (timingParam.INTEGOFFSET_LEFT_MARGIN - TimeCoord.CANVAS_LEFT));
 
-                    timingParam.INTEGWIDTH_LEFT_MARGIN = X4 + 70;
+                    timingParam.INTEGWIDTH_LEFT_MARGIN = X4 + TimeCoord.CANVAS_LEFT;
                     timingParam.INTEGRATED_WIDTH = X5 - X4;
 
                     if (integ_width == 0)
@@ -1067,6 +1076,9 @@ namespace ChipViewApp
             public static int Per_ms = 10;  //6;
 
             public const int START_POINT = 1;
+
+            public const int CANVAS_LEFT = 75;
+
             public int initial_width { get; set; }
             public double TotalTimingLength { get; set; }
             public double automatic_period { get; set; }

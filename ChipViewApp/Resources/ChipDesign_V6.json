@@ -411,10 +411,26 @@
           "RegisterFieldName": "LED_OFFSET",
           "StartBit": 0,
           "EndBit": 7,
-          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
         }
       ]
     },
+    "LEDPulseStatus": {
+        "Parameters": [
+          {
+            "Name": "LEDPulse Status",
+            "Control": "NA",
+            "Listval": [ 0, 15 ],
+            "Value": [ 10, 9, 0, 5, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
+            "RegisterName": "PATTERN",
+            "SlotName": "A",
+            "RegisterFieldName": "LED_DISABLE",
+            "StartBit": 12,
+            "EndBit": 15,
+            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+          }
+        ]
+      },
     "IntegratorOffset": {
       "Parameters": [
         {
@@ -480,134 +496,134 @@
       ]
     }
   },
-    "LEDSettings": {
-      "LEDSelect1": {
-        "Parameters": [
-          {
-            "Name": "LEDSelect1",
-            "Control": "ComboBox",
-            "Listval": [ "A", "B" ],
-            "Value": [ 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
-            "RegisterName": "LED_POW12",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_DRIVESIDE1",
-            "StartBit": 7,
-            "EndBit": 7,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDCurrent1": {
-        "Parameters": [
-          {
-            "Name": "LEDCurrent1",
-            "Control": "NumericUpDown",
-            "Listval": [ 0, 127 ],
-            "Value": [ 10, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
-            "RegisterName": "LED_POW12",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_CURRENT1",
-            "StartBit": 0,
-            "EndBit": 6,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDSelect2": {
-        "Parameters": [
-          {
-            "Name": "LEDSelect2",
-            "Control": "ComboBox",
-            "Listval": [ "A", "B" ],
-            "Value": [ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
-            "RegisterName": "LED_POW12",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_DRIVESIDE2",
-            "StartBit": 15,
-            "EndBit": 15,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDCurrent2": {
-        "Parameters": [
-          {
-            "Name": "LEDCurrent2",
-            "Control": "NumericUpDown",
-            "Listval": [ 0, 127 ],
-            "Value": [ 100, 110, 120, 145, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
-            "RegisterName": "LED_POW12",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_CURRENT2",
-            "StartBit": 8,
-            "EndBit": 14,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDSelect3": {
-        "Parameters": [
-          {
-            "Name": "LEDSelect3",
-            "Control": "ComboBox",
-            "Listval": [ "A", "B" ],
-            "Value": [ 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
-            "RegisterName": "LED_POW34",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_DRIVESIDE3",
-            "StartBit": 7,
-            "EndBit": 7,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDCurrent3": {
-        "Parameters": [
-          {
-            "Name": "LEDCurrent3",
-            "Control": "NumericUpDown",
-            "Listval": [ 0, 127 ],
-            "Value": [ 99, 98, 97, 96, 95, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
-            "RegisterName": "LED_POW34",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_CURRENT3",
-            "StartBit": 0,
-            "EndBit": 6,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDSelect4": {
-        "Parameters": [
-          {
-            "Name": "LEDSelect4",
-            "Control": "ComboBox",
-            "Listval": [ "A", "B" ],
-            "Value": [ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
-            "RegisterName": "LED_POW34",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_DRIVESIDE4",
-            "StartBit": 15,
-            "EndBit": 15,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      },
-      "LEDCurrent4": {
-        "Parameters": [
-          {
-            "Name": "LEDCurrent4",
-            "Control": "NumericUpDown",
-            "Listval": [ 0, 127 ],
-            "Value": [ 88, 87, 86, 85, 84, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
-            "RegisterName": "LED_POW34",
-            "SlotName": "A",
-            "RegisterFieldName": "LED_CURRENT4",
-            "StartBit": 8,
-            "EndBit": 14,
-            "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
-          }
-        ]
-      }
+  "LEDSettings": {     
+    "LEDSelect1": {
+      "Parameters": [
+        {
+          "Name": "LEDSelect1",
+          "Control": "ComboBox",
+          "Listval": [ "A", "B" ],
+          "Value": [ 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
+          "RegisterName": "LED_POW12",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_DRIVESIDE1",
+          "StartBit": 7,
+          "EndBit": 7,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDCurrent1": {
+      "Parameters": [
+        {
+          "Name": "LEDCurrent1",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 127 ],
+          "Value": [ 10, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
+          "RegisterName": "LED_POW12",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_CURRENT1",
+          "StartBit": 0,
+          "EndBit": 6,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDSelect2": {
+      "Parameters": [
+        {
+          "Name": "LEDSelect2",
+          "Control": "ComboBox",
+          "Listval": [ "A", "B" ],
+          "Value": [ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
+          "RegisterName": "LED_POW12",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_DRIVESIDE2",
+          "StartBit": 15,
+          "EndBit": 15,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDCurrent2": {
+      "Parameters": [
+        {
+          "Name": "LEDCurrent2",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 127 ],
+          "Value": [ 100, 110, 120, 145, 5, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "RegisterName": "LED_POW12",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_CURRENT2",
+          "StartBit": 8,
+          "EndBit": 14,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDSelect3": {
+      "Parameters": [
+        {
+          "Name": "LEDSelect3",
+          "Control": "ComboBox",
+          "Listval": [ "A", "B" ],
+          "Value": [ 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
+          "RegisterName": "LED_POW34",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_DRIVESIDE3",
+          "StartBit": 7,
+          "EndBit": 7,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDCurrent3": {
+      "Parameters": [
+        {
+          "Name": "LEDCurrent3",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 127 ],
+          "Value": [ 99, 98, 97, 96, 95, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "RegisterName": "LED_POW34",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_CURRENT3",
+          "StartBit": 0,
+          "EndBit": 6,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDSelect4": {
+      "Parameters": [
+        {
+          "Name": "LEDSelect4",
+          "Control": "ComboBox",
+          "Listval": [ "A", "B" ],
+          "Value": [ 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //Values Per Slot,
+          "RegisterName": "LED_POW34",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_DRIVESIDE4",
+          "StartBit": 15,
+          "EndBit": 15,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    },
+    "LEDCurrent4": {
+      "Parameters": [
+        {
+          "Name": "LEDCurrent4",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 127 ],
+          "Value": [ 88, 87, 86, 85, 84, 6, 7, 8, 9, 10, 11, 12 ], //Values Per Slot,
+          "RegisterName": "LED_POW34",
+          "SlotName": "A",
+          "RegisterFieldName": "LED_CURRENT4",
+          "StartBit": 8,
+          "EndBit": 14,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ] //12 slots
+        }
+      ]
+    }
   }   
 }

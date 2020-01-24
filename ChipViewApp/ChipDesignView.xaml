@@ -292,6 +292,7 @@
 										</Canvas>
 									</Grid>
 								</materialDesign:Card>
+								
 								<materialDesign:Card Grid.Row="1" Margin="5,10,5,10" >
 									<StackPanel>
 										<Expander Header="InputMux Config" Name="RadExpInputMux" ExpandDirection="Down" IsExpanded="False"
