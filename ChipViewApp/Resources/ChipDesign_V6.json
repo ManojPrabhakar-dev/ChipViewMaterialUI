@@ -421,7 +421,7 @@
             "Name": "LEDPulse Status",
             "Control": "NA",
             "Listval": [ 0, 15 ],
-            "Value": [ 10, 9, 0, 5, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
+            "Value": [ 9, 10, 0, 5, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
             "RegisterName": "PATTERN",
             "SlotName": "A",
             "RegisterFieldName": "LED_DISABLE",

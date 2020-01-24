@@ -1598,7 +1598,7 @@ namespace ChipViewApp
                 EnCommonCtrls();
                 EnDisCHCtrls(1, true);
 
-                EnDisBPF();
+                EnDisBPF(false);
 
                 UpdateTimingParam_ActiveSlots();
                 Add_TimingDiagram();
@@ -2000,7 +2000,7 @@ namespace ChipViewApp
                     for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
                     {
                         var control_name = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString();
-                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config") || (control_name == "Operating Mode"))
+                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config") || (control_name == "Operating Mode") || (control_name == "LEDPulse Status"))
                         {
                             continue;
                         }
@@ -2282,6 +2282,7 @@ namespace ChipViewApp
                             {
                                 EnDisCHCtrls(2, false);
                                 EnDisCH2MuxCtrls(false);
+                                EnDisBPF(false);
                                 MenuItem channel2Menu = InputMux.ContextMenu.Items[0] as MenuItem;
                                 channel2Menu.Header = "Enable CH2";
                             }
@@ -2289,6 +2290,7 @@ namespace ChipViewApp
                             {
                                 EnDisCHCtrls(2, true);
                                 EnDisCH2MuxCtrls(true);
+                                EnDisBPF(true);
                                 MenuItem channel2Menu = InputMux.ContextMenu.Items[0] as MenuItem;
                                 channel2Menu.Header = "Disable CH2";
                             }
@@ -3474,7 +3476,7 @@ namespace ChipViewApp
 
         }
 
-        private void EnDisBPF()
+        private void EnDisBPF(bool isCh2Enabled = true)
         {
             try
             {
@@ -3496,8 +3498,11 @@ namespace ChipViewApp
                 BPFCh1.Stroke = nStrokeSel;
                 BPFCh1.Fill = nFillGrad;
 
-                BPFCh2.Stroke = nStrokeSel;
-                BPFCh2.Fill = nFillGrad;
+                if (isCh2Enabled)
+                {
+                    BPFCh2.Stroke = nStrokeSel;
+                    BPFCh2.Fill = nFillGrad;
+                }
 
             }
             catch (Exception ex)
@@ -3608,7 +3613,7 @@ namespace ChipViewApp
                     EnDisCHCtrls(2, true);
                     EnDisCh2.Header = "Disable CH2";
                     EnDisCH2MuxCtrls(true);
-
+                    EnDisBPF(true);
                     UpdateChannel2_Status(true);
                 }
                 else
@@ -3616,11 +3621,10 @@ namespace ChipViewApp
                     EnDisCHCtrls(2, false);
                     EnDisCh2.Header = "Enable CH2";
                     EnDisCH2MuxCtrls(false);
-
+                    EnDisBPF(false);
                     UpdateChannel2_Status(false);
                 }
 
-                EnDisBPF();
             }
             catch (Exception ex)
             {
