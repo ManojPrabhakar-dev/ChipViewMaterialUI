@@ -5,8 +5,8 @@
         {
           "Name": "Sampling Rate",
           "Control": "NumericUpDown",
-          "Listval": [ "5", "9999" ],
-          "Value": [ 10000 ],
+          "Listval": [ "3", "10000" ],
+          "Value": [ 100 ],
           "RegisterName": "TS_FREQ",
           "SlotName": "NA",
           "RegisterFieldName": "NA",
@@ -203,8 +203,8 @@
         {
           "Name": "Operating Mode",
           "Control": "ComboBox",
-          "Listval": ["NORMAL", "FLOAT", "DI_INT" ],
-          "Value": [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+          "Listval": ["UNKNOWN", "NORMAL", "FLOAT", "DI_INT" ],
+          "Value": [ 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
           "RegisterName": "OPERATING_MODE",
           "SlotName": "A",
           "RegisterFieldName": "NA",
@@ -357,7 +357,7 @@
           "Name": "Precondition Width (us)",
           "Control": "NoControl",
           "Listval": ["0","15"],
-          "Value": [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+          "Value": [ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ],
           "RegisterName": "TS_PATH",
           "SlotName": "A",
           "RegisterFieldName": "PRE_WIDTH",
@@ -370,7 +370,7 @@
     "AFEWidth": {
       "Parameters": [
         {
-          "Name": "AFE Width (us)",
+          "Name": "Integrator Width (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 31 ],
           "Value": [ 5, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12 ], //Values Per Slot,
@@ -485,12 +485,60 @@
           "Name": "Min Period (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 1023 ],
-          "Value": [ 30, 35, 40, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "Value": [ 31, 36, 41, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
           "RegisterName": "PERIOD",
           "SlotName": "A",
           "RegisterFieldName": "MIN_PERIOD",
           "StartBit": 0,
           "EndBit": 9,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+        }
+      ]
+    },
+    "LitOffset": {
+      "Parameters": [
+        {
+          "Name": "Lit Offset (us)",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 511 ],
+          "Value": [ 30, 35, 40, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "DIGINT_LIT",
+          "SlotName": "A",
+          "RegisterFieldName": "LIT_OFFSET",
+          "StartBit": 0,
+          "EndBit": 8,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+        }
+      ]
+    },
+    "Dark1Offset": {
+      "Parameters": [
+        {
+          "Name": "Dark1 Offset (us)",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 127 ],
+          "Value": [ 14, 15, 16, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "DIGINT_DARK",
+          "SlotName": "A",
+          "RegisterFieldName": "DARK1_OFFSET",
+          "StartBit": 0,
+          "EndBit": 6,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+        }
+      ]
+    },
+    "Dark2Offset": {
+      "Parameters": [
+        {
+          "Name": "Dark2 Offset (us)",
+          "Control": "NumericUpDown",
+          "Listval": [ 0, 511 ],
+          "Value": [ 18, 19, 110, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "DIGINT_DARK",
+          "SlotName": "A",
+          "RegisterFieldName": "DARK2_OFFSET",
+          "StartBit": 7,
+          "EndBit": 15,
           "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
         }
       ]

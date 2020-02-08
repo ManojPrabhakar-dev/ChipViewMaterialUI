@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ChipViewApp.TimingDiagram_DI_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:uc="clr-namespace:ChipViewApp"
+             xmlns:local="clr-namespace:ChipViewApp"
+             Name="uc_timingControls_DigitalIntegration" mc:Ignorable="d" Width="{Binding Path=USERCONTROL_WIDTH,Mode=TwoWay}" Height="350">
+    <Grid Margin="0">
+        <Canvas x:Name="timingDiagram_perSlot"  Margin="0" Width="{Binding ElementName=uc_timingControls,Path=Width}">
+
+            <Path x:Name="path_precondition" Stroke="{Binding Path=PRECONDITION_BRUSH, Mode=TwoWay}" StrokeThickness="2"
+                Data="{Binding Path= PRECONDITION_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="75" Stretch="Fill" Canvas.Top="12.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+
+            <Path x:Name="path_LED" Stroke="{Binding Path=LED_BRUSH, Mode=TwoWay}" StrokeThickness="2"
+                Data="{Binding Path = LED_DATA, Mode=TwoWay}" Height="38.668" Canvas.Left="75" Stretch="Fill" Canvas.Top="109.166" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+
+            <Path x:Name="path_ADC" Stroke="{Binding Path=MOD_BRUSH, Mode=TwoWay}" StrokeThickness="2" IsEnabled="False"
+                Data="M1,100 L 100,100" Height="38.668" Canvas.Left="75" Stretch="Fill" Canvas.Top="180.666" Width="{Binding Path= PATH_WIDTH, Mode=TwoWay}" />
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="46" Canvas.Left="{Binding Path=PRECONDITION_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_PRECONDITIONPATH_ENABLE,Mode=TwoWay}" TimingWidthName="PRE_WIDTH" TimingValue="{Binding Path=PRE_WIDTH, Mode=TwoWay}" Width="{Binding Path=PRECONDITION_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDOFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="LED OFFSET" TimingValue="{Binding Path=LED_OFFSET,Mode=TwoWay}" Width="{Binding Path=LED_OFFSET_WIDTH, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=LEDWIDTH_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LEDPATH_ENABLE,Mode=TwoWay}" TimingWidthName="LED WIDTH" TimingValue="{Binding Path=LED_WIDTH,Mode=TwoWay}" Width="{Binding Path=LED_WIDTH_VAL, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="70" Canvas.Left="{Binding Path=MINPERIOD_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_MODPATH_ENABLE,Mode=TwoWay}" TimingWidthName="MIN_PERIOD" TimingValue="{Binding Path=MIN_PERIOD,Mode=TwoWay}" Width="{Binding Path=MIN_PERIOD_WIDTH_INFO, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="157" Canvas.Left="{Binding Path=DIG_INT_OFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_DARK1_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="DARK1_OFFSET" TimingValue="{Binding Path=DARK1_OFFSET,Mode=TwoWay}" Width="{Binding Path=DARK1_OFFSET_WIDTH_INFO, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="203" Canvas.Left="{Binding Path=DIG_INT_OFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LIT_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="LIT_OFFSET" TimingValue="{Binding Path=LIT_OFFSET,Mode=TwoWay}" Width="{Binding Path=LIT_OFFSET_WIDTH_INFO, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+            <uc:TimingParam_Info_UserControl Canvas.Top="243" Canvas.Left="{Binding Path=DIG_INT_OFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_DARK2_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="DARK2_OFFSET" TimingValue="{Binding Path=DARK2_OFFSET,Mode=TwoWay}" Width="{Binding Path=DARK2_OFFSET_WIDTH_INFO, Mode=TwoWay}">
+            </uc:TimingParam_Info_UserControl>
+
+
+            <TextBlock x:Name="textBlock2" Height="23" Canvas.Left="7" TextWrapping="Wrap" Text="Precondition" Canvas.Top="29" Width="74"/>
+
+            <TextBlock x:Name="textBlock3" Height="26.333" Canvas.Left="15" TextWrapping="Wrap" Text="LED" Canvas.Top="134.383" Width="63" TextAlignment="Center"/>
+
+            <TextBlock x:Name="textBlock4" Height="26.333" Canvas.Left="15" TextWrapping="Wrap" Text="ADC Conversions" Canvas.Top="185.383" Width="63" TextAlignment="Center"/>
+
+        </Canvas>
+    </Grid>
+</UserControl>

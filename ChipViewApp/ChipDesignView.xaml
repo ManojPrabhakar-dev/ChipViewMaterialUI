@@ -106,6 +106,7 @@
 				<Grid Name="TopControls" Grid.Row="0">
 					<ComboBox x:Name="SlotSel" HorizontalAlignment="Left" Margin="20,5,0,5" VerticalAlignment="Top" FontSize="16" FontWeight="ExtraBold" FontStretch="ExtraExpanded"
 							  Height ="30" Width="100" Loaded="SlotSelComboBox_Loaded" SelectionChanged="SlotSelComboBox_SelectionChanged" />
+					<TextBlock x:Name="tb_operatingMode" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="16" FontWeight="DemiBold" Text="{Binding Path=OPERATING_MODE_NAME, Mode=TwoWay}" />
 					<Button Content="Apply" Click="OnApplyConfigClicked" Foreground="Black" Width="70" Height="30" FontSize="14" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0"/>
 				</Grid>
 			</StackPanel>
@@ -385,7 +386,7 @@
 							<RowDefinition Height="20"/>
 							<RowDefinition Height="*"/>
 						</Grid.RowDefinitions>
-						<CheckBox x:Name="cb_isContinuous" Content="Continuous" Margin="2" IsChecked="False" Checked="cb_isContinuous_Checked" Unchecked="cb_isContinuous_Checked" Visibility="Collapsed" ></CheckBox>
+						<CheckBox x:Name="cb_isContinuous" Content="Continuous" Margin="2" IsChecked="False" Visibility="Collapsed" ></CheckBox>
 
 						<ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Right" Width="884">
 							<materialDesign:Card Margin="10,20,10,20" >
