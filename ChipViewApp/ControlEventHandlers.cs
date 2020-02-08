@@ -1,17 +1,8 @@
-﻿using ChipViewApp.Model;
-using ChipViewApp.Utils;
-using ChipViewApp.ViewModel;
-using Newtonsoft.Json;
+﻿using ChipViewApp.Utils;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -742,7 +733,7 @@ namespace ChipViewApp
             }
         }
 
-        void EnDischopMode_Status(bool isEnabled)
+        private void EnDischopMode_Status(bool isEnabled)
         {
             var chopModeDisable_Val = 0x00;
             try
@@ -824,7 +815,7 @@ namespace ChipViewApp
 
         #endregion
 
-        Expander nExp = null;
+        private Expander nExp = null;
         private void AdpdControls_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try

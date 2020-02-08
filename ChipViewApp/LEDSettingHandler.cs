@@ -1,21 +1,7 @@
-﻿using ChipViewApp.Model;
-using ChipViewApp.Utils;
-using ChipViewApp.ViewModel;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using Xceed.Wpf.Toolkit;
 
 namespace ChipViewApp

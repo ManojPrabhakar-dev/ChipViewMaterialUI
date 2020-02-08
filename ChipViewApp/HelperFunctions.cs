@@ -1,22 +1,11 @@
-﻿using ChipViewApp.Model;
-using ChipViewApp.Utils;
-using ChipViewApp.ViewModel;
-using Newtonsoft.Json;
+﻿using ChipViewApp.Utils;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
-using Xceed.Wpf.Toolkit;
 
 namespace ChipViewApp
 {
@@ -36,7 +25,10 @@ namespace ChipViewApp
            where T : DependencyObject
         {
             // Confirm parent and childName are valid. 
-            if (parent == null) return null;
+            if (parent == null)
+            {
+                return null;
+            }
 
             T foundChild = null;
 
@@ -52,7 +44,10 @@ namespace ChipViewApp
                     foundChild = FindChild<T>(child, childName);
 
                     // If the child is found, break so we do not overwrite the found child. 
-                    if (foundChild != null) break;
+                    if (foundChild != null)
+                    {
+                        break;
+                    }
                 }
                 else if (!string.IsNullOrEmpty(childName))
                 {
@@ -74,7 +69,7 @@ namespace ChipViewApp
             }
             return foundChild;
         }
-        
+
         public int setBitValues(int OriginalRegVal, int Bitfieldval, int startBit, int endBit)
         {
             ushort mask = 0xFFFF;
@@ -538,7 +533,7 @@ namespace ChipViewApp
         {
             SendJsonObjectString("Disconnect");
             e.Cancel = true;
-            this.Hide();
+            Hide();
         }
 
         private void RadExpChipSettings_Collapsed(object sender, RoutedEventArgs e)

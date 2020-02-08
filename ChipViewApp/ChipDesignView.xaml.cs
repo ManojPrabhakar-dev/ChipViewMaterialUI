@@ -1,12 +1,10 @@
 ﻿using ChipViewApp.Model;
 using ChipViewApp.Utils;
-using ChipViewApp.ViewModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -20,7 +18,7 @@ using Xceed.Wpf.Toolkit;
 
 namespace ChipViewApp
 {
-    
+
     /// <summary>
     /// Interaction logic for ChipDesignView.xaml
     /// </summary>
@@ -39,12 +37,11 @@ namespace ChipViewApp
         public const string IN8 = "IN8";
         public const string LEDPULSE_MASKED = "MASKED";
         public const string LEDPULSE_FLASHED = "FLASHED";
-
-        Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
-        Brush StrokeDis = Brushes.DarkGray;
+        private Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
+        private Brush StrokeDis = Brushes.DarkGray;
 
         private List<TimingParametersModel> lst_timingParam = new List<TimingParametersModel>();
-        private Dictionary<int,Brush> dict_slotBrushes = new Dictionary<int, Brush>();        
+        private Dictionary<int, Brush> dict_slotBrushes = new Dictionary<int, Brush>();
         private LEDParametersModel ledsettingParam = new LEDParametersModel();
         private SlotConfigParams m_slotConfigParams = new SlotConfigParams();
 
@@ -55,39 +52,40 @@ namespace ChipViewApp
 
         public ObservableCollection<string> activeSlotLst { get; set; }
 
-        double dValue = 0;
-        int iValue = 0;
-        string slotValue = string.Empty;
+        private double dValue = 0;
+        private int iValue = 0;
+        private string slotValue = string.Empty;
 
         public ushort CHIP400x = 0xc0; public ushort CHIP410x = 0xc2;
+        private TextBlock IN1Text;
+        private TextBlock IN2Text;
+        private TextBlock IN3Text;
+        private TextBlock IN4Text;
+        private TextBlock IN5Text;
+        private TextBlock IN6Text;
+        private TextBlock IN7Text;
+        private TextBlock IN8Text;
+        private TextBlock[] aInTextBlk;
+        private System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
+        private double ChipGridAcWid;
+        private double ChipGridAcHeight;
+        private double nLeftDelta = 6;
+        private double nTopDelta = 12;
+        private double FontSizeLbl = 10;
 
-        TextBlock IN1Text; TextBlock IN2Text; TextBlock IN3Text;TextBlock IN4Text;
-        TextBlock IN5Text;TextBlock IN6Text;TextBlock IN7Text;TextBlock IN8Text;
-        TextBlock[] aInTextBlk;
-
-        System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
-        double ChipGridAcWid;
-        double ChipGridAcHeight;
-        double nLeftDelta = 6;
-        double nTopDelta = 12;
-        double FontSizeLbl = 10;
-       
         /* GLOBAL VARIABLES */
 
         private OPERATING_MODE operatingMode;
         public OPERATING_MODE OperatingMode
         {
-            get { return operatingMode; }
-            set { operatingMode = value; }
+            get => operatingMode;
+            set => operatingMode = value;
         }
 
         private int nSlotSel = 0;
         public int NSlotSel
         {
-            get
-            {
-                return nSlotSel;
-            }
+            get => nSlotSel;
             set
             {
                 nSlotSel = value;
@@ -95,19 +93,19 @@ namespace ChipViewApp
                 ledsettingParam.NSlotSelCopy = nSlotSel;
             }
         }
-        
-        static int nActiveSlots = 0;
-        int[] aCh1Inp = new int[2];
-        int[] aCh2Inp = new int[2];
-        
+
+        private static int nActiveSlots = 0;
+        private int[] aCh1Inp = new int[2];
+        private int[] aCh2Inp = new int[2];
+
         //private static ClientNPipe clientPipe { get; set; }
-        private int[] CHOPMODE_ENABLE = new int[] {0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55};
+        private int[] CHOPMODE_ENABLE = new int[] { 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55 };
 
         public ChipDesignView()
         {
             InitializeComponent();
 
-          //  Kill_ChipViewProcess();
+            //  Kill_ChipViewProcess();
 
             activeSlotLst = new ObservableCollection<string>();
             dict_slotBrushes.Clear();
@@ -136,12 +134,12 @@ namespace ChipViewApp
             {
                 ledsettingParam.lst_ledsettingParams.Add(new LEDParametersModel());
             }
-            
+
             //TODO : Need to Remove After integration
             ParseChipDesignJson();
             UpdateChipViewParameters();
             TopControls.DataContext = m_slotConfigParams;
-           
+
         }
 
         //TODO : Need to Remove After integration
@@ -152,7 +150,7 @@ namespace ChipViewApp
                 using (StreamReader r = new StreamReader(chipDesignJsonPath))
                 {
                     string json = r.ReadToEnd();
-                    this.adpdControlJObject = JsonConvert.DeserializeObject<NAryDictionary<string, string, aAdpdCtrlRegParams>>(json);
+                    adpdControlJObject = JsonConvert.DeserializeObject<NAryDictionary<string, string, aAdpdCtrlRegParams>>(json);
                 }
             }
             catch (Exception ex)
@@ -164,41 +162,23 @@ namespace ChipViewApp
         private int chipID = 0xC0;  // Set to Default to ADPD4000
         public int CHIP_ID
         {
-            get
-            {
-                return chipID;
-            }
+            get => chipID;
 
-            set
-            {
-                chipID = value;
-            }
+            set => chipID = value;
         }
 
         private NAryDictionary<string, string, aAdpdCtrlRegParams> aRegAdpdCtrlItems = new NAryDictionary<string, string, aAdpdCtrlRegParams>();
         public NAryDictionary<string, string, aAdpdCtrlRegParams> adpdControlJObject
         {
-            get
-            {
-                return aRegAdpdCtrlItems;
-            }
-            set
-            {
-                aRegAdpdCtrlItems = value;
-            }
+            get => aRegAdpdCtrlItems;
+            set => aRegAdpdCtrlItems = value;
         }
 
         public bool is_ChipViewApp_Initialized = false;
         private bool IsChipView_Initialized
         {
-            get
-            {
-                return is_ChipViewApp_Initialized;
-            }
-            set
-            {
-                is_ChipViewApp_Initialized = value;
-            }
+            get => is_ChipViewApp_Initialized;
+            set => is_ChipViewApp_Initialized = value;
         }
 
         public delegate void ChipDesignViewEventHandler(object sender);  //, ChipViewEventArgs Args);
@@ -208,7 +188,7 @@ namespace ChipViewApp
         {
             var GlobalSetting_EntryError = IsSettingFieldEmpty(GlobalSettings);
             var TimingSetting_EntryError = IsSettingFieldEmpty(TimingSettings);
-            var LedSetting_EntryError = false;  
+            var LedSetting_EntryError = false;
 
             if ((GlobalSetting_EntryError == false) && (TimingSetting_EntryError == false) && (LedSetting_EntryError == false))
             {
@@ -353,7 +333,7 @@ namespace ChipViewApp
                 //Create TextBlock
                 IN1Text = new TextBlock(); IN2Text = new TextBlock(); IN3Text = new TextBlock(); IN4Text = new TextBlock();
                 IN5Text = new TextBlock(); IN6Text = new TextBlock(); IN7Text = new TextBlock(); IN8Text = new TextBlock();
-                aInTextBlk = new TextBlock[8] {IN1Text, IN2Text, IN3Text, IN4Text, IN5Text, IN6Text, IN7Text, IN8Text};
+                aInTextBlk = new TextBlock[8] { IN1Text, IN2Text, IN3Text, IN4Text, IN5Text, IN6Text, IN7Text, IN8Text };
                 ChipGridAcWid = ChipView.Width;
                 ChipGridAcHeight = ChipView.Height;
                 aInpLine[0] = IN1Line; aInpLine[1] = IN2Line; aInpLine[2] = IN3Line; aInpLine[3] = IN4Line;
@@ -412,7 +392,7 @@ namespace ChipViewApp
                         Canvas.SetLeft(aInTextBlk[idx], nLeftval);
                         layer1.Children.Add(aInTextBlk[idx]);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Console.WriteLine("problem in adding Textblock for InputLine");
                     }
@@ -470,7 +450,7 @@ namespace ChipViewApp
                 System.Windows.MessageBox.Show("Exception in UpdateChipView Parameters API = " + ex);
             }
         }
-                        
+
         public void UpdateControlValues(bool is_SoltSelCalled = false, bool OnInitCalled = false)
         {
             try
@@ -488,7 +468,7 @@ namespace ChipViewApp
                     UpdateConfigSettings(TimingSettings, nNameKey, "TimingSettings");
                 }
                 foreach (string nNameKey in aRegAdpdCtrlItems["LEDSettings"].Keys)
-                {                   
+                {
                     UpdateLEDSettings(uc_ledSetting, nNameKey, "LEDSettings");
                 }
                 foreach (string nNameKey in aRegAdpdCtrlItems["SlotChipSettings"].Keys)
@@ -515,7 +495,7 @@ namespace ChipViewApp
                         {
                             continue;
                         }
-                        
+
                         RowDefinition nParamRow = new RowDefinition();
                         nSettingsGrid.RowDefinitions.Add(nParamRow);
                         nParamRow.Height = GridLength.Auto;
@@ -742,7 +722,7 @@ namespace ChipViewApp
                                 MenuItem channel2Menu = InputMux.ContextMenu.Items[0] as MenuItem;
                                 channel2Menu.Header = "Disable CH2";
                             }
-                            
+
                             if (!skip_IsValueChangesSet)
                             {
                                 JArray aArr_IsValChanged = (JArray)aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["IsValueChanged"];
@@ -793,7 +773,7 @@ namespace ChipViewApp
                         }
 
                         if (aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString() == "InputMux Config")
-                        {                            
+                        {
                             iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems[nSettingsKey]["InputMux"].Parameters[0]["Value"]);
                             Update_InputMuxSelection_UI(iValue);
                             continue;
@@ -895,7 +875,7 @@ namespace ChipViewApp
                 Console.WriteLine("Exception in UpdateConfigSettings API = " + ex);
             }
         }
-              
+
         private void Update_Resistor_Lbl(Grid nConfigSettingsGrid, string nNameKey, string nSettingsKey)
         {
             try
