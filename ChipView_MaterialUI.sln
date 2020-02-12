@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1000
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipViewApp", "ChipViewApp\ChipViewApp.csproj", "{46AAB913-5CE0-46CA-9460-0C51F8FAD0F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Highlevel", "Highlevel\Highlevel.csproj", "{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,18 @@ Global
 		{46AAB913-5CE0-46CA-9460-0C51F8FAD0F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{46AAB913-5CE0-46CA-9460-0C51F8FAD0F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{46AAB913-5CE0-46CA-9460-0C51F8FAD0F0}.Release|x86.Build.0 = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Debug|x86.Build.0 = Debug|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{6F3A43DF-4CB6-43AA-9D65-8AB90D7B6F1C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

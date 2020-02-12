@@ -132,6 +132,30 @@ namespace ChipViewApp
                         lst_timingParam[slotSel].LEDPULSE4_STATUS = LEDPULSE_FLASHED;
                     }
                 }
+                else if (nNameKey.Contains("NumInt"))
+                {
+                    lst_timingParam[slotSel].NUM_INT = dValue;
+                }
+                else if (nNameKey.Contains("SampleType"))
+                {
+                    if (dValue == 1)
+                    {
+                        lst_timingParam[slotSel].SAMPLE_TYPE = SAMPLE_TYPE.ONE_REGION_DI_MODE;
+                    }
+                    else if (dValue == 2)
+                    {
+                        lst_timingParam[slotSel].SAMPLE_TYPE = SAMPLE_TYPE.TWO_REGION_DI_MODE;
+                    }
+                    else if (dValue == 3)
+                    {
+                        lst_timingParam[slotSel].SAMPLE_TYPE = SAMPLE_TYPE.IMPULSE_RESPONSE_MODE;
+                    }
+                    else
+                    {
+                        lst_timingParam[slotSel].SAMPLE_TYPE = SAMPLE_TYPE.STANDARD;
+                    }
+
+                }
             }
             catch (Exception ex)
             {
@@ -148,24 +172,24 @@ namespace ChipViewApp
                 TimingDiagram_DI_UserControl uc_timingdiagram_digital;
                 sPanel_timingDiagram.Children.Clear();
 
+                lst_timingParam[nSlotSel].OPERATING_MODE = OperatingMode;
+                lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
+
                 if ((OperatingMode == OPERATING_MODE.NORMAL) || (OperatingMode == OPERATING_MODE.UNKNOWN))
                 {
                     uc_timingdiagram_normal = new TimingDiagram_UserControl(lst_timingParam[nSlotSel], dict_slotBrushes[nSlotSel + 1], nSlotSel + 1);
-                    lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
                     uc_timingdiagram_normal.DataContext = lst_timingParam[nSlotSel];
                     sPanel_timingDiagram.Children.Add(uc_timingdiagram_normal);
                 }
                 else if (OperatingMode == OPERATING_MODE.DIG_INT)
                 {
                     uc_timingdiagram_digital = new TimingDiagram_DI_UserControl(lst_timingParam[nSlotSel], dict_slotBrushes[nSlotSel + 1], nSlotSel + 1);
-                    lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
                     uc_timingdiagram_digital.DataContext = lst_timingParam[nSlotSel];
                     sPanel_timingDiagram.Children.Add(uc_timingdiagram_digital);
                 }
                 else
                 {
                     uc_timingdiagram_float = new TimingDiagram_Float_UserControl(lst_timingParam[nSlotSel], dict_slotBrushes[nSlotSel + 1], nSlotSel + 1);
-                    lst_timingParam[nSlotSel].SLOTNUM = nSlotSel;
                     uc_timingdiagram_float.DataContext = lst_timingParam[nSlotSel];
                     sPanel_timingDiagram.Children.Add(uc_timingdiagram_float);
                 }

@@ -2,12 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChipViewApp.Model
-{ 
+{
     public class LEDParametersModel : INotifyPropertyChanged
     {
         private List<LEDParametersModel> _lst_ledsettingParams;
@@ -85,8 +82,79 @@ namespace ChipViewApp.Model
                     LBL_LEDX_B = "LED 4B";
                 }
 
+                LBL_LEDCURRENT_X_mA = Convert_Ledx_Current_in_mA(LEDCURRENT_X) + " mA";
+
                 OnPropertyChanged(nameof(LED_SELECTED_INDEX));
             }
+        }
+
+        public double Convert_Ledx_Current_in_mA(double LEDCurrentX)
+        {
+            double K1 = 1.0;
+            double K2 = 2.0;
+
+            // char slot = (char)65;
+            ushort calculate_Led_Current = 0;
+            calculate_Led_Current = Calculate_LED_Current();
+            if (calculate_Led_Current > 255)
+            {
+                //DialogResult result = MetroMessageBox.Show(this, "Exceeding Total LED Safe Current Limits" + calculate_Led_Current.ToString(), "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                //m_driverclass.calibrationStatus("Exceeding Total LED Safe Current Limits", "", MESSAGE_PAUSE);
+
+                Console.WriteLine("Exceeding Total LED Safe Current Limits");
+            }
+
+            //Set_bit_status(ref Slot_selection.Led1_Current, SlotTab.SelectedIndex);
+            //btn_apply.Enabled = true;
+            //Num_Led1_Current[SlotTab.SelectedIndex].ForeColor = Color.Red;
+
+            /*
+             * New Stuff to calculate the Led current
+             * 
+             */
+            int led_coarse = (int)LEDCurrentX;
+
+            double led_current = 0;
+
+            if (led_coarse >= 16 && led_coarse <= 127)
+            {
+                led_current = (K2 * (led_coarse - 15)) + (K1 * 16);
+            }
+            else if (led_coarse < 16 && led_coarse > 0)
+            {
+                led_current = K1 * (led_coarse + 1);
+            }
+            else if (led_coarse == 0)
+            {
+                led_current = 0;
+            }
+            else
+            {
+                //Should not come here at all
+            }
+
+            // List_Led1Cuurent_lbl[SlotTab.SelectedIndex].Text = led_current.ToString();
+
+            //if (!regControlList.Contains(ADPDCL_REG_LED_POW12_X + (char)(slot + SlotTab.SelectedIndex)))
+            //    regControlList.Add(ADPDCL_REG_LED_POW12_X + (char)(slot + SlotTab.SelectedIndex));
+
+            return led_current;
+        }
+
+        private ushort Calculate_LED_Current()
+        {
+            ushort Value = 0;
+
+            try
+            {
+                Value = (ushort)(LEDCURRENT1 + LEDCURRENT2 + LEDCURRENT3 + LEDCURRENT4);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception in Calculate_LED_Current API = " + ex);
+            }
+
+            return Value;
         }
 
         #region LED_CURRENT
@@ -100,6 +168,20 @@ namespace ChipViewApp.Model
             {
                 lbl_ledcurrentX = value;
                 OnPropertyChanged(nameof(LBL_LEDCURRENTX));
+            }
+        }
+
+        private string lbl_ledcurrentx_mA;
+        public string LBL_LEDCURRENT_X_mA
+        {
+            get { return lbl_ledcurrentx_mA; }
+
+            set
+            {
+                lbl_ledcurrentx_mA = value;
+                OnPropertyChanged(nameof(LBL_LEDCURRENT_X_mA));
+
+
             }
         }
 

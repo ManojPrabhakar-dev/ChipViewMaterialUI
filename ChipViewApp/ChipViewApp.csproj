@@ -105,6 +105,12 @@
     <Compile Include="ViewModel\Timingdiagram_DIMode.cs" />
     <Compile Include="ViewModel\TimingDiagram_FloatMode.cs" />
     <Compile Include="ViewModel\TimingDiagram_NormalMode.cs" />
+    <Compile Include="View\ADC_Arrow.xaml.cs">
+      <DependentUpon>ADC_Arrow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ADC_Sampling_Region.xaml.cs">
+      <DependentUpon>ADC_Sampling_Region.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InputMuxConfig_UserControl.xaml.cs">
       <DependentUpon>InputMuxConfig_UserControl.xaml</DependentUpon>
     </Compile>
@@ -142,6 +148,14 @@
       <DependentUpon>ChipDesignView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ADC_Arrow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ADC_Sampling_Region.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\InputMuxConfig_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

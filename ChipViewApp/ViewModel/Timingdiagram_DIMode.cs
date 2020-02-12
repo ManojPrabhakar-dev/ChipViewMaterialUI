@@ -1,16 +1,12 @@
 ﻿using ChipViewApp.Model;
 using ChipViewApp.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace ChipViewApp.ViewModel
 {
-    class Timingdiagram_DIMode:IDynamicTimingDiagram
-    {        
+    class Timingdiagram_DIMode : IDynamicTimingDiagram
+    {
         #region DI_MODE
         public TimingParametersModel GetPathData(TimingParametersModel timingParam)
         {
@@ -30,22 +26,23 @@ namespace ChipViewApp.ViewModel
         private string GenerateTimingData(TIMING_TYPE eTimingType, TimingParametersModel timingParam, TimingCoordinates timeCoord)
         {
             string timingData = string.Empty;
-           
+
             var str_pre_width = timingParam.PRE_WIDTH;
-            var str_led_offset = timingParam.LED_OFFSET;            
-            var str_led_width = timingParam.LED_WIDTH;            
+            var str_led_offset = timingParam.LED_OFFSET;
+            var str_led_width = timingParam.LED_WIDTH;
             var str_min_period = timingParam.MIN_PERIOD;
             var str_dark1_offset = timingParam.DARK1_OFFSET;
             var str_lit_offset = timingParam.LIT_OFFSET;
             var str_dark2_offset = timingParam.DARK2_OFFSET;
 
             int pre_width = Convert.ToInt32(str_pre_width.Substring(0, str_pre_width.Length - 3));
-            int led_offset = Convert.ToInt32(str_led_offset.Substring(0, str_led_offset.Length - 3));              
-            int led_width = Convert.ToInt32(str_led_width.Substring(0, str_led_width.Length - 3));           
-            int min_period = Convert.ToInt32(str_min_period.Substring(0, str_min_period.Length - 3)); 
+            int led_offset = Convert.ToInt32(str_led_offset.Substring(0, str_led_offset.Length - 3));
+            int led_width = Convert.ToInt32(str_led_width.Substring(0, str_led_width.Length - 3));
+            int min_period = Convert.ToInt32(str_min_period.Substring(0, str_min_period.Length - 3));
             int dark1_offset = Convert.ToInt32(str_dark1_offset.Substring(0, str_dark1_offset.Length - 3));
-            int lit_offset = Convert.ToInt32(str_lit_offset.Substring(0, str_lit_offset.Length - 3)); 
-            int dark2_offset = Convert.ToInt32(str_dark2_offset.Substring(0, str_dark2_offset.Length - 3)); 
+            int lit_offset = Convert.ToInt32(str_lit_offset.Substring(0, str_lit_offset.Length - 3));
+            int dark2_offset = Convert.ToInt32(str_dark2_offset.Substring(0, str_dark2_offset.Length - 3));
+
 
             if ((led_width > 100) || (led_offset > 100))
             {
@@ -65,8 +62,8 @@ namespace ChipViewApp.ViewModel
             }
 
             var default_Y = 100.0; var peak_height = 50.0;
-            var X1 = 0.0; var X2 = 0.0; var X3 = 0.0; var X4 = 0.0; var X5 = 0.0; 
-            var Y1 = 0.0;            
+            var X1 = 0.0; var X2 = 0.0; var X3 = 0.0; var X4 = 0.0; var X5 = 0.0;
+            var Y1 = 0.0;
 
             try
             {
@@ -116,7 +113,7 @@ namespace ChipViewApp.ViewModel
                     X2 = X1 + led_width_inscale;
                     X3 = X2 + led_time_diff;
                     X4 = X3 + led_width_inscale;
-                   
+
                     if (timeCoord.TotalTimingLength == 0)
                     {
                         X5 = X4 + TimingCoordinates.EXTRA_ENDWIDTH;
@@ -155,7 +152,30 @@ namespace ChipViewApp.ViewModel
                     timingParam.DARK1_OFFSET_WIDTH_INFO = (dark1_offset * TimingCoordinates.Per_ms);
                     timingParam.LIT_OFFSET_WIDTH_INFO = (lit_offset * TimingCoordinates.Per_ms);
                     timingParam.DARK2_OFFSET_WIDTH_INFO = (dark2_offset * TimingCoordinates.Per_ms);
-                                      
+
+                    //var NUM_INT_X = 8;  //TODO: Need to remove this Hardcode value after check
+
+                    timingParam.ARROW_WIDTH_INFO = TimingCoordinates.Per_ms;
+
+                    timingParam.DI_DARK_NUM_INT = timingParam.NUM_INT;
+                    timingParam.DARK_ADC_WIDTH_INFO = timingParam.NUM_INT * TimingCoordinates.Per_ms;
+
+                    timingParam.DI_DARK1_ARROW_LEFT_MARGIN = timingParam.DIG_INT_OFFSET_LEFT_MARGIN + timingParam.DARK1_OFFSET_WIDTH_INFO;
+                    timingParam.DI_DARK2_ARROW_LEFT_MARGIN = timingParam.DIG_INT_OFFSET_LEFT_MARGIN + timingParam.DARK2_OFFSET_WIDTH_INFO;
+
+                    if (timingParam.SAMPLE_TYPE == SAMPLE_TYPE.TWO_REGION_DI_MODE)
+                    {
+                        timingParam.DI_LIT_NUM_INT = (2 * timingParam.NUM_INT);
+                    }
+                    else
+                    {
+                        timingParam.DI_LIT_NUM_INT = timingParam.NUM_INT;
+                    }
+
+
+                    timingParam.DI_LIT_ARROW_LEFT_MARGIN = timingParam.DIG_INT_OFFSET_LEFT_MARGIN + timingParam.LIT_OFFSET_WIDTH_INFO;
+                    timingParam.LIT_ADC_WIDTH_INFO = timingParam.DI_LIT_NUM_INT * TimingCoordinates.Per_ms;
+
                     timingParam.LED_WIDTH_VAL = (X4 - X3);
 
                     if (led_width == 0)
@@ -198,13 +218,26 @@ namespace ChipViewApp.ViewModel
                         timingParam.IS_LIT_OFFSET_ENABLE = "Visible";
                     }
 
-                    if (dark2_offset == 0)
+
+
+                    if (timingParam.SAMPLE_TYPE == SAMPLE_TYPE.TWO_REGION_DI_MODE)
                     {
-                        timingParam.IS_DARK2_OFFSET_ENABLE = "Hidden";
+                        timingParam.IS_DARK2_ARROW_ENABLE = "Visible";
+
+                        if (dark2_offset == 0)
+                        {
+                            timingParam.IS_DARK2_OFFSET_ENABLE = "Hidden";
+                        }
+                        else
+                        {
+                            timingParam.IS_DARK2_OFFSET_ENABLE = "Visible";
+                        }
                     }
                     else
                     {
-                        timingParam.IS_DARK2_OFFSET_ENABLE = "Visible";
+
+                        timingParam.IS_DARK2_ARROW_ENABLE = "Hidden";
+                        timingParam.IS_DARK2_OFFSET_ENABLE = "Hidden";
                     }
 
                     if ((dark1_offset == 0) && (lit_offset == 0) && (dark2_offset == 0))

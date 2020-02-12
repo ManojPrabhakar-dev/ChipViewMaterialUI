@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ChipViewApp.Utils;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace ChipViewApp.Model
-{    
+{
     public class TimingParametersModel : INotifyPropertyChanged
     {
         private int nSlotSel;
@@ -15,6 +11,35 @@ namespace ChipViewApp.Model
         {
             get { return nSlotSel; }
             set { nSlotSel = value; }
+        }
+
+        private OPERATING_MODE operatingMode;
+        public OPERATING_MODE OPERATING_MODE
+        {
+            get { return operatingMode; }
+            set { operatingMode = value; }
+        }
+
+        private double num_int;
+        public double NUM_INT
+        {
+            get { return num_int; }
+
+            set
+            {
+                num_int = value;
+            }
+        }
+
+        private SAMPLE_TYPE sample_type;
+        public SAMPLE_TYPE SAMPLE_TYPE
+        {
+            get { return sample_type; }
+
+            set
+            {
+                sample_type = value;
+            }
         }
 
         #region Timing_Register_Values
@@ -314,6 +339,41 @@ namespace ChipViewApp.Model
             }
         }
 
+        private double di_dark1_arrow_leftMargin;
+        public double DI_DARK1_ARROW_LEFT_MARGIN
+        {
+            get { return di_dark1_arrow_leftMargin; }
+
+            set
+            {
+                di_dark1_arrow_leftMargin = value;
+                OnPropertyChanged(nameof(DI_DARK1_ARROW_LEFT_MARGIN));
+            }
+        }
+
+        private double di_lit_arrow_leftMargin;
+        public double DI_LIT_ARROW_LEFT_MARGIN
+        {
+            get { return di_lit_arrow_leftMargin; }
+
+            set
+            {
+                di_lit_arrow_leftMargin = value;
+                OnPropertyChanged(nameof(DI_LIT_ARROW_LEFT_MARGIN));
+            }
+        }
+
+        private double di_dark2_arrow_leftMargin;
+        public double DI_DARK2_ARROW_LEFT_MARGIN
+        {
+            get { return di_dark2_arrow_leftMargin; }
+
+            set
+            {
+                di_dark2_arrow_leftMargin = value;
+                OnPropertyChanged(nameof(DI_DARK2_ARROW_LEFT_MARGIN));
+            }
+        }
 
         #endregion Param_Leftmargin_Info
 
@@ -549,6 +609,67 @@ namespace ChipViewApp.Model
             }
         }
 
+        private double arrow_width_info;
+        public double ARROW_WIDTH_INFO
+        {
+            get { return arrow_width_info; }
+
+            set
+            {
+                arrow_width_info = value;
+                OnPropertyChanged(nameof(ARROW_WIDTH_INFO));
+            }
+        }
+
+        private double dark_adc_width_info;
+        public double DARK_ADC_WIDTH_INFO
+        {
+            get { return dark_adc_width_info; }
+
+            set
+            {
+                dark_adc_width_info = value;
+                OnPropertyChanged(nameof(DARK_ADC_WIDTH_INFO));
+            }
+        }
+
+        private double lit_adc_width_info;
+        public double LIT_ADC_WIDTH_INFO
+        {
+            get { return lit_adc_width_info; }
+
+            set
+            {
+                lit_adc_width_info = value;
+                OnPropertyChanged(nameof(LIT_ADC_WIDTH_INFO));
+            }
+        }
+
+
+        private double di_dark_num_int;
+        public double DI_DARK_NUM_INT
+        {
+            get { return di_dark_num_int; }
+
+            set
+            {
+                di_dark_num_int = value;
+                OnPropertyChanged(nameof(DI_DARK_NUM_INT));
+            }
+        }
+
+        private double di_lit_num_int;
+        public double DI_LIT_NUM_INT
+        {
+            get { return di_lit_num_int; }
+
+            set
+            {
+                di_lit_num_int = value;
+                OnPropertyChanged(nameof(DI_LIT_NUM_INT));
+            }
+        }
+
         #endregion Param_Width_info
 
         private double path_width;
@@ -696,6 +817,18 @@ namespace ChipViewApp.Model
             {
                 is_dark2_offset_enable = value;
                 OnPropertyChanged(nameof(IS_DARK2_OFFSET_ENABLE));
+            }
+        }
+
+        private string is_dark2_arrow_enable;
+        public string IS_DARK2_ARROW_ENABLE
+        {
+            get { return is_dark2_arrow_enable; }
+
+            set
+            {
+                is_dark2_arrow_enable = value;
+                OnPropertyChanged(nameof(IS_DARK2_ARROW_ENABLE));
             }
         }
 

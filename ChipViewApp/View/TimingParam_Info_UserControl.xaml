@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:ChipViewApp"
              mc:Ignorable="d" 
              Name="uc_timingInfo" d:DesignHeight="40" d:DesignWidth="100">
-    <Grid Name="grid_pulsewidth" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{Binding Width, ElementName=canvas_timingInfo}">
+    <Grid Name="grid_pulsewidth" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="70*"/>
             <RowDefinition Height="30*" />

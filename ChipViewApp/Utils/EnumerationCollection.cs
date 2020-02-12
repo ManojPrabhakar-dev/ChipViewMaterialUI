@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace ChipViewApp.Utils
-{    
+{
     public enum OPERATING_MODE
     {
         UNKNOWN = 0,
@@ -23,6 +20,14 @@ namespace ChipViewApp.Utils
         MODULATED_STIMULUS,
         INTEG_SEQUENCE,
         NONE
+    }
+
+    public enum SAMPLE_TYPE
+    {
+        STANDARD,
+        ONE_REGION_DI_MODE,
+        TWO_REGION_DI_MODE,
+        IMPULSE_RESPONSE_MODE
     }
 
     enum SLOT_TYPE

@@ -39,6 +39,14 @@
             <uc:TimingParam_Info_UserControl Canvas.Top="243" Canvas.Left="{Binding Path=DIG_INT_OFFSET_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_DARK2_OFFSET_ENABLE,Mode=TwoWay}" TimingWidthName="DARK2_OFFSET" TimingValue="{Binding Path=DARK2_OFFSET,Mode=TwoWay}" Width="{Binding Path=DARK2_OFFSET_WIDTH_INFO, Mode=TwoWay}">
             </uc:TimingParam_Info_UserControl>
 
+            <uc:ADC_Sampling_Region_UserControl Canvas.Top="157" Canvas.Left="{Binding Path=DI_DARK1_ARROW_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_DARK1_OFFSET_ENABLE,Mode=TwoWay}" ArrowColor="Black" ArrowWidth="{Binding Path=ARROW_WIDTH_INFO, Mode=TwoWay}" Num_Int_ADC="{Binding Path=DI_DARK_NUM_INT, Mode=TwoWay}" Width="{Binding Path=DARK_ADC_WIDTH_INFO, Mode=TwoWay}">
+            </uc:ADC_Sampling_Region_UserControl>
+
+            <uc:ADC_Sampling_Region_UserControl Canvas.Top="157" Canvas.Left="{Binding Path=DI_LIT_ARROW_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_LIT_OFFSET_ENABLE,Mode=TwoWay}" ArrowColor="#FFFFA200" ArrowWidth="{Binding Path=ARROW_WIDTH_INFO, Mode=TwoWay}" Num_Int_ADC="{Binding Path=DI_LIT_NUM_INT, Mode=TwoWay}" Width="{Binding Path=LIT_ADC_WIDTH_INFO, Mode=TwoWay}">
+            </uc:ADC_Sampling_Region_UserControl>
+
+            <uc:ADC_Sampling_Region_UserControl Canvas.Top="157" Canvas.Left="{Binding Path=DI_DARK2_ARROW_LEFT_MARGIN, Mode=TwoWay}" Visibility="{Binding Path=IS_DARK2_ARROW_ENABLE,Mode=TwoWay}" ArrowColor="#FF534A4A" ArrowWidth="{Binding Path=ARROW_WIDTH_INFO, Mode=TwoWay}" Num_Int_ADC="{Binding Path=DI_DARK_NUM_INT, Mode=TwoWay}" Width="{Binding Path=DARK_ADC_WIDTH_INFO, Mode=TwoWay}">
+            </uc:ADC_Sampling_Region_UserControl>
 
             <TextBlock x:Name="textBlock2" Height="23" Canvas.Left="7" TextWrapping="Wrap" Text="Precondition" Canvas.Top="29" Width="74"/>
 

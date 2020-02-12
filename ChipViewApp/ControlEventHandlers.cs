@@ -557,6 +557,7 @@ namespace ChipViewApp
                     ledsettingParam.lst_ledsettingParams[nSlotSel].LEDCURRENT4 = (double)radNumUpDown.Value;
                 }
 
+                ledsettingParam.lst_ledsettingParams[nSlotSel].LBL_LEDCURRENT_X_mA = ledsettingParam.lst_ledsettingParams[nSlotSel].Convert_Ledx_Current_in_mA((double)radNumUpDown.Value) + " mA";
 
                 if (aRegAdpdCtrlItems.Count != 0)
                 {
@@ -626,19 +627,19 @@ namespace ChipViewApp
                     nStrokeSel = StrokeDis;
                     nFillGrad = (LinearGradientBrush)LayoutWin.Resources["disablegradient"];
                 }
-                if (chkbox.Name.Contains("Swap"))
+                if (chkbox.Name.Contains("Chop"))
                 {
                     if (chkbox.Name.Contains("Ch1"))
                     {
-                        SwapCh1.IsEnabled = (bool)chkbox.IsChecked;
-                        SwapCh1.Fill = nFillGrad;
-                        SwapCh1.Stroke = nStrokeSel;
+                        ChopCh1.IsEnabled = (bool)chkbox.IsChecked;
+                        ChopCh1.Fill = nFillGrad;
+                        ChopCh1.Stroke = nStrokeSel;
                     }
                     else if (chkbox.Name.Contains("Ch2"))
                     {
-                        SwapCh2.IsEnabled = (bool)chkbox.IsChecked;
-                        SwapCh2.Fill = nFillGrad;
-                        SwapCh2.Stroke = nStrokeSel;
+                        ChopCh2.IsEnabled = (bool)chkbox.IsChecked;
+                        ChopCh2.Fill = nFillGrad;
+                        ChopCh2.Stroke = nStrokeSel;
                     }
                 }
             }
@@ -709,27 +710,27 @@ namespace ChipViewApp
             }
         }
 
-        private void Swap_MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Chop_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem swapMenu = (MenuItem)sender;
+            MenuItem chopMenu = (MenuItem)sender;
             try
             {
-                if (swapMenu.Header.ToString() == "Enable ChopMode")
+                if (chopMenu.Header.ToString() == "Enable ChopMode")
                 {
-                    swapMenu.Header = "Disable ChopMode";
+                    chopMenu.Header = "Disable ChopMode";
                     EnDischopMode_Status(true);
                     Update_ChopModeEnDis_UI("ON");
                 }
                 else
                 {
-                    swapMenu.Header = "Enable ChopMode";
+                    chopMenu.Header = "Enable ChopMode";
                     EnDischopMode_Status(false);
                     Update_ChopModeEnDis_UI("OFF");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception in Swap_MenuItem_Click API = " + ex);
+                Console.WriteLine("Exception in Chop_MenuItem_Click API = " + ex);
             }
         }
 
@@ -826,7 +827,7 @@ namespace ChipViewApp
                 string nNameKey = (string)((FrameworkElement)sender).Tag;
                 Point relativePoint = e.GetPosition(layer1);
 
-                if (nNameKey.Contains("BPF") || nNameKey.Contains("Swap"))
+                if (nNameKey.Contains("BPF") || nNameKey.Contains("Chop"))
                 {
                     return;
                 }
@@ -863,7 +864,10 @@ namespace ChipViewApp
                     FrameworkElementExt.BringToFront(nExp);
                     if (nNameKey.Contains("ADC"))
                     {
-                        ChipView.Width = ChipView.Width + 100;
+                        if (ChipView.Width < 1000)
+                        {
+                            ChipView.Width = ChipView.Width + 100;
+                        }                       
                     }
 
                     if ((nNameKey.Equals("RinChX") || nNameKey.Equals("RintCh2")) && (relativePoint.Y > 280))

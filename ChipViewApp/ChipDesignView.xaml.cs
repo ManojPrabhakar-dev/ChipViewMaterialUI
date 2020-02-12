@@ -35,8 +35,8 @@ namespace ChipViewApp
         public const string IN6 = "IN6";
         public const string IN7 = "IN7";
         public const string IN8 = "IN8";
-        public const string LEDPULSE_MASKED = "MASKED";
-        public const string LEDPULSE_FLASHED = "FLASHED";
+        public const string LEDPULSE_MASKED = "MASKED LED PULSE";
+        public const string LEDPULSE_FLASHED = "FLASH LED";
         private Brush StrokeEn = Brushes.DarkCyan; // (Brush)new BrushConverter().ConvertFrom("#FF008066");
         private Brush StrokeDis = Brushes.DarkGray;
 
@@ -57,14 +57,8 @@ namespace ChipViewApp
         private string slotValue = string.Empty;
 
         public ushort CHIP400x = 0xc0; public ushort CHIP410x = 0xc2;
-        private TextBlock IN1Text;
-        private TextBlock IN2Text;
-        private TextBlock IN3Text;
-        private TextBlock IN4Text;
-        private TextBlock IN5Text;
-        private TextBlock IN6Text;
-        private TextBlock IN7Text;
-        private TextBlock IN8Text;
+        private TextBlock IN1Text; private TextBlock IN2Text; private TextBlock IN3Text; private TextBlock IN4Text;
+        private TextBlock IN5Text; private TextBlock IN6Text; private TextBlock IN7Text; private TextBlock IN8Text;
         private TextBlock[] aInTextBlk;
         private System.Windows.Shapes.Path[] aInpLine = new System.Windows.Shapes.Path[8];
         private double ChipGridAcWid;
@@ -78,14 +72,14 @@ namespace ChipViewApp
         private OPERATING_MODE operatingMode;
         public OPERATING_MODE OperatingMode
         {
-            get => operatingMode;
-            set => operatingMode = value;
+            get { return operatingMode; }
+            set { operatingMode = value; }
         }
 
         private int nSlotSel = 0;
         public int NSlotSel
         {
-            get => nSlotSel;
+            get { return nSlotSel; }
             set
             {
                 nSlotSel = value;
@@ -99,6 +93,7 @@ namespace ChipViewApp
         private int[] aCh2Inp = new int[2];
 
         //private static ClientNPipe clientPipe { get; set; }
+
         private int[] CHOPMODE_ENABLE = new int[] { 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55, 0x55 };
 
         public ChipDesignView()
@@ -108,6 +103,9 @@ namespace ChipViewApp
             //  Kill_ChipViewProcess();
 
             activeSlotLst = new ObservableCollection<string>();
+
+            //clientPipe = CreateClient();
+
             dict_slotBrushes.Clear();
             dict_slotBrushes.Add(1, Brushes.CadetBlue);
             dict_slotBrushes.Add(2, Brushes.DarkSalmon);
@@ -138,6 +136,7 @@ namespace ChipViewApp
             //TODO : Need to Remove After integration
             ParseChipDesignJson();
             UpdateChipViewParameters();
+
             TopControls.DataContext = m_slotConfigParams;
 
         }
@@ -162,27 +161,24 @@ namespace ChipViewApp
         private int chipID = 0xC0;  // Set to Default to ADPD4000
         public int CHIP_ID
         {
-            get => chipID;
+            get { return chipID; }
 
-            set => chipID = value;
+            set { chipID = value; }
         }
 
         private NAryDictionary<string, string, aAdpdCtrlRegParams> aRegAdpdCtrlItems = new NAryDictionary<string, string, aAdpdCtrlRegParams>();
         public NAryDictionary<string, string, aAdpdCtrlRegParams> adpdControlJObject
         {
-            get => aRegAdpdCtrlItems;
-            set => aRegAdpdCtrlItems = value;
+            get { return aRegAdpdCtrlItems; }
+            set { aRegAdpdCtrlItems = value; }
         }
 
         public bool is_ChipViewApp_Initialized = false;
         private bool IsChipView_Initialized
         {
-            get => is_ChipViewApp_Initialized;
-            set => is_ChipViewApp_Initialized = value;
+            get { return is_ChipViewApp_Initialized; }
+            set { is_ChipViewApp_Initialized = value; }
         }
-
-        public delegate void ChipDesignViewEventHandler(object sender);  //, ChipViewEventArgs Args);
-        public event ChipDesignViewEventHandler chipviewHandler;
 
         private void OnApplyConfigClicked(object sender, RoutedEventArgs e)
         {
@@ -346,8 +342,8 @@ namespace ChipViewApp
                 DisableInputLines(null);
                 InputMux.ContextMenu = (ContextMenu)LayoutWin.Resources["InpMuxMenu"];
                 SetSingleDiffInputLines();
-                SwapCh1.ContextMenu = (ContextMenu)LayoutWin.Resources["SwapMenu"];
-                SwapCh2.ContextMenu = (ContextMenu)LayoutWin.Resources["SwapMenu"];
+                ChopCh1.ContextMenu = (ContextMenu)LayoutWin.Resources["ChopMenu"];
+                ChopCh2.ContextMenu = (ContextMenu)LayoutWin.Resources["ChopMenu"];
 
                 GetOperatingMode();
 
@@ -491,7 +487,8 @@ namespace ChipViewApp
                     for (int nParamIdx = 0; nParamIdx < aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters.Count; nParamIdx++)
                     {
                         var control_name = aRegAdpdCtrlItems[nSettingsKey][nNameKey].Parameters[nParamIdx]["Name"].ToString();
-                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config") || (control_name == "Operating Mode") || (control_name == "LEDPulse Status"))
+                        if ((control_name == "Channel2 Config") || (control_name == "InputMux Config") || (control_name == "Precondition Width (us)") || (control_name == "ChopMode Config")
+                            || (control_name == "Operating Mode") || (control_name == "LEDPulse Status") || (control_name == "Num Int") || (control_name == "Sample Type"))
                         {
                             continue;
                         }
@@ -748,15 +745,15 @@ namespace ChipViewApp
 
                             if (iValue == 0)
                             {
-                                MenuItem SwapMenu = SwapCh1.ContextMenu.Items[0] as MenuItem;
-                                SwapMenu.Header = "Enable ChopMode";
+                                MenuItem ChopMenu = ChopCh1.ContextMenu.Items[0] as MenuItem;
+                                ChopMenu.Header = "Enable ChopMode";
                                 Update_ChopModeEnDis_UI("OFF");
                             }
                             else
                             {
                                 CHOPMODE_ENABLE[nSlotSel] = iValue;
-                                MenuItem SwapMenu = SwapCh1.ContextMenu.Items[0] as MenuItem;
-                                SwapMenu.Header = "Disable ChopMode";
+                                MenuItem ChopMenu = ChopCh1.ContextMenu.Items[0] as MenuItem;
+                                ChopMenu.Header = "Disable ChopMode";
                                 Update_ChopModeEnDis_UI("ON");
                             }
                             continue;

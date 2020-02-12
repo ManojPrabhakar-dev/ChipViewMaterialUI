@@ -16,8 +16,8 @@ namespace ChipViewApp
                 iValue = (int)get_SelectedSlot_RegValue(aRegAdpdCtrlItems["SlotGlobalSettings"]["OperatingMode"].Parameters[0]["Value"]);
 
                 OperatingMode = (OPERATING_MODE)iValue;
-
                 SetSlotConfig_OperatingMode(OperatingMode);
+
             }
             catch (Exception ex)
             {

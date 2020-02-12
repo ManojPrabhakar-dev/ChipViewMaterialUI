@@ -38,7 +38,7 @@
           "Name": "Active Slots Num",
           "Control": "ComboBox",
           "Listval": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
-          "Value": [ 3 ],
+          "Value": [ 4 ],
           "RegisterName": "OPMODE",
           "SlotName": "NA",
           "RegisterFieldName": "TIMESLOT_EN",
@@ -204,7 +204,7 @@
           "Name": "Operating Mode",
           "Control": "ComboBox",
           "Listval": ["UNKNOWN", "NORMAL", "FLOAT", "DI_INT" ],
-          "Value": [ 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+          "Value": [ 3, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 ],
           "RegisterName": "OPERATING_MODE",
           "SlotName": "A",
           "RegisterFieldName": "NA",
@@ -276,13 +276,13 @@
         }
       ]
     },
-    "SwapCh1": {
+    "ChopCh1": {
       "Parameters": [
         {
         }
       ]
     },
-    "SwapCh2": {
+    "ChopCh2": {
       "Parameters": [
         {
         }
@@ -533,12 +533,44 @@
           "Name": "Dark2 Offset (us)",
           "Control": "NumericUpDown",
           "Listval": [ 0, 511 ],
-          "Value": [ 18, 19, 110, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "Value": [ 40, 40, 110, 14, 15, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
           "RegisterName": "DIGINT_DARK",
           "SlotName": "A",
           "RegisterFieldName": "DARK2_OFFSET",
           "StartBit": 7,
           "EndBit": 15,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+        }
+      ]
+    },
+    "NumInt": {
+      "Parameters": [
+        {
+          "Name": "Num Int",
+          "Control": "NoControl",
+          "Listval": [ 1, 255 ], // Setting 0 not allowed
+          "Value": [ 8, 4, 4, 4, 4, 4, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "COUNTS",
+          "SlotName": "A",
+          "RegisterFieldName": "NUM_INT",
+          "StartBit": 8,
+          "EndBit": 15,
+          "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
+        }
+      ]
+    },
+    "SampleType": {
+      "Parameters": [
+        {
+          "Name": "Sample Type",
+          "Control": "NoControl",
+          "Listval": [ 0, 3 ],
+          "Value": [ 1, 2, 0, 0, 0, 16, 17, 18, 19, 110, 111, 112 ], //Values Per Slot,
+          "RegisterName": "TS_CTRL",
+          "SlotName": "A",
+          "RegisterFieldName": "SAMPLE_TYPE",
+          "StartBit": 12,
+          "EndBit": 13,
           "IsValueChanged": [ "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False", "False" ]  //12 slots
         }
       ]

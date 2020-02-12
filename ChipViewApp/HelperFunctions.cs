@@ -200,13 +200,13 @@ namespace ChipViewApp
 
                             Console.WriteLine("nameKey Text = " + nTextblk.Text);
 
-                            if (nNameKey.Contains("BPF") || (nNameKey.Contains("Swap")))
+                            if (nNameKey.Contains("BPF") || (nNameKey.Contains("Chop")))
                             {
                                 fTop = Canvas.GetTop(nRect) + nTopDelta;
                                 Canvas.SetTop(nTextblk, fTop);
                                 nTextLabelColl.Add(nTextblk);
 
-                                if (nNameKey.Contains("Swap"))
+                                if (nNameKey.Contains("Chop"))
                                 {
                                     nTextblk = new TextBlock();
                                     nTextblk.Text = "ON";
@@ -314,7 +314,7 @@ namespace ChipViewApp
                     aTextblockList = nChildrenColl.OfType<TextBlock>();
                     foreach (TextBlock nTextBlock in aTextblockList)
                     {
-                        if (nTextBlock.Name.Contains("Swap"))
+                        if (nTextBlock.Name.Contains("Chop"))
                         {
                             nTextBlock.Text = EnableState;
                         }
